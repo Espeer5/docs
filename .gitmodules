@@ -1,0 +1,3 @@
+[submodule "filesys/CliMA/ClimaLand.jl"]
+	path = filesys/CliMA/ClimaLand.jl
+	url = git@github.com:CliMA/ClimaLand.jl.git
