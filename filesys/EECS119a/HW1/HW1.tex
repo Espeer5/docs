@@ -123,7 +123,8 @@
             low, notice that $B_1$ and $B_0$ enumerate all cases and may be
             eliminated. This leaves only the cases where $B_2$ is active, in 
             which case $B_0$ enumerates all of its possibilities but all other 
-            inputs are active. Combining all factors, \fbox{$S_6 = B_3(B_2'+B_2B_1)$}
+            inputs are active. Remove the redundancy on $B_2$ from other cases, 
+            and combining all factors, \fbox{$S_6 = B_3(B_2'+B_1)$}.
             \item For $S_7$, the cases are the last 4 in the truth table. It is 
             obvious to see that these are the only 4 cases where both $B_3$ and
             $B_2$ are active. Therefore, \fbox{$S_7 = B_2B_3$}.
@@ -146,7 +147,7 @@
         \begin{itemize}
             \item \fbox{$B_1 = Q_3'Q_1 + Q_3'Q_2'Q_0'$}
             \item \fbox{$B_3 = Q_3Q_1'$}
-            \item \fbox{$B_4 = Q_3'Q_1 + Q_3'Q_2'Q_0'$}
+            \item \fbox{$B_4 = Q_3'Q_2'Q_1'Q_0' + Q_3Q_1$}
         \end{itemize}
 
         AND/OR/INVERT circuit:

@@ -1,8 +1,8 @@
-PWD /Users/espeer/Desktop/docs/filesys/EECS199a/HW1
+PWD /Users/espeer/Desktop/docs/filesys/EECS119a/HW1
 INPUT /usr/local/texlive/2022/texmf.cnf
 INPUT /usr/local/texlive/2022/texmf-dist/web2c/texmf.cnf
 INPUT /usr/local/texlive/2022/texmf-var/web2c/pdftex/pdflatex.fmt
-INPUT /Users/espeer/Desktop/docs/filesys/EECS199a/HW1/HW1.tex
+INPUT /Users/espeer/Desktop/docs/filesys/EECS119a/HW1/HW1.tex
 OUTPUT HW1.log
 INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/base/article.cls
 INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/base/article.cls

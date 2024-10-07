@@ -1,6 +1,6 @@
 # Fdb version 3
-["pdflatex"] 1728231589 "/Users/espeer/Desktop/docs/filesys/EECS199a/HW1/HW1.tex" "HW1.pdf" "HW1" 1728231590
-  "/Users/espeer/Desktop/docs/filesys/EECS199a/HW1/HW1.tex" 1728231589 6553 8d3540cb45333e205924f86c74c82a6b ""
+["pdflatex"] 1728323069 "/Users/espeer/Desktop/docs/filesys/EECS119a/HW1/HW1.tex" "HW1.pdf" "HW1" 1728323070
+  "/Users/espeer/Desktop/docs/filesys/EECS119a/HW1/HW1.tex" 1728322303 6620 cc5d968234e3bc6236166ac72cf0bc87 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm" 1136768653 1536 e07581a4bb3136ece9eeb4c3ffab8233 ""
@@ -31,14 +31,14 @@
   "/usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1647878959 4410336 7d30a02e9fa9a16d7d1f8d037ba69641 ""
   "/usr/local/texlive/2022/texmf-var/web2c/pdftex/pdflatex.fmt" 1672857705 2826441 d66aafb38daa2354e230becabf65ce33 ""
   "/usr/local/texlive/2022/texmf.cnf" 1647878952 577 209b46be99c9075fd74d4c0369380e8c ""
-  "HW1.aux" 1728231590 32 c81c40425fbb5e93b90fba65da0b5e61 "pdflatex"
-  "HW1.tex" 1728231589 6553 8d3540cb45333e205924f86c74c82a6b ""
-  "figs/p1a.jpeg" 1728154689 87912 18470935b7b71973556b6a4bd8d763cf ""
-  "figs/p1b.jpeg" 1728154797 87472 865f186b588ca03f21bfc432492db333 ""
+  "HW1.aux" 1728323070 32 c81c40425fbb5e93b90fba65da0b5e61 "pdflatex"
+  "HW1.tex" 1728322303 6620 cc5d968234e3bc6236166ac72cf0bc87 ""
+  "figs/p1a.jpeg" 1728322097 77853 e652371a7112abb71f579f530ab3f3ae ""
+  "figs/p1b.jpeg" 1728322157 84419 ea1815a78f454f629f2217ef7b77a735 ""
   "figs/p2.jpeg" 1728156746 124034 e94923b343c5a0c9d5bb968060f5c523 ""
-  "figs/p3.jpeg" 1728169524 246254 d5d76e1b4cba94bde0ff283a5aecb073 ""
-  "figs/p4a.jpeg" 1728162930 207535 01b2aca22c7ed61d52bd4789cccca59b ""
-  "figs/p4b.jpeg" 1728163027 214165 4f322c9b4499e8ebdf7faad766deb7d7 ""
+  "figs/p3.jpeg" 1728322891 265326 fd5bd78ad48096c39811f210d9a186b5 ""
+  "figs/p4a.jpeg" 1728322964 219040 ed9df7972f08d08b50babb7a787211eb ""
+  "figs/p4b.jpeg" 1728323040 238650 7011893911db7eed5b056a0142b6ffb8 ""
   "figs/p4k.png" 1728231187 76989 dc91deee8112ddd4084f7badd76c9f02 ""
   (generated)
   "HW1.aux"

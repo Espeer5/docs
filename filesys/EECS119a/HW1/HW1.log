@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.1.4)  6 OCT 2024 09:19
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.1.4)  7 OCT 2024 10:44
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**/Users/espeer/Desktop/docs/filesys/EECS199a/HW1/HW1.tex
-(/Users/espeer/Desktop/docs/filesys/EECS199a/HW1/HW1.tex
+**/Users/espeer/Desktop/docs/filesys/EECS119a/HW1/HW1.tex
+(/Users/espeer/Desktop/docs/filesys/EECS119a/HW1/HW1.tex
 LaTeX2e <2021-11-15> patch level 1
 L3 programming layer <2022-02-24> (/usr/local/texlive/2022/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2021/10/04 v1.4n Standard LaTeX document class
@@ -91,16 +91,16 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <7> on input line 28.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 28.
-<figs/p1a.jpeg, id=1, 1662.21pt x 612.2875pt>
+<figs/p1a.jpeg, id=1, 1436.36626pt x 493.845pt>
 File: figs/p1a.jpeg Graphic file (type jpg)
 <use figs/p1a.jpeg>
 Package pdftex.def Info: figs/p1a.jpeg  used on input line 34.
-(pdftex.def)             Requested size: 166.23073pt x 61.23233pt.
-<figs/p1b.jpeg, id=2, 1692.3225pt x 597.23125pt>
+(pdftex.def)             Requested size: 143.64503pt x 49.38739pt.
+<figs/p1b.jpeg, id=2, 1592.95125pt x 525.965pt>
 File: figs/p1b.jpeg Graphic file (type jpg)
 <use figs/p1b.jpeg>
 Package pdftex.def Info: figs/p1b.jpeg  used on input line 40.
-(pdftex.def)             Requested size: 169.24216pt x 59.72661pt.
+(pdftex.def)             Requested size: 159.30446pt x 52.59958pt.
 
 Underfull \hbox (badness 10000) in paragraph at lines 44--45
 
@@ -118,32 +118,33 @@ Underfull \hbox (badness 10000) in paragraph at lines 68--69
 
  []
 
-<figs/p3.jpeg, id=17, 1227.58624pt x 1247.66125pt>
+[2]
+<figs/p3.jpeg, id=20, 1383.1675pt x 1315.91624pt>
 File: figs/p3.jpeg Graphic file (type jpg)
 <use figs/p3.jpeg>
-Package pdftex.def Info: figs/p3.jpeg  used on input line 132.
-(pdftex.def)             Requested size: 245.5129pt x 249.52783pt.
-[2]
-Underfull \hbox (badness 10000) in paragraph at lines 135--136
+Package pdftex.def Info: figs/p3.jpeg  used on input line 133.
+(pdftex.def)             Requested size: 276.6286pt x 263.17859pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 136--137
 
  []
 
 <figs/p4k.png, id=21, 510.90875pt x 383.4325pt>
 File: figs/p4k.png Graphic file (type png)
 <use figs/p4k.png>
-Package pdftex.def Info: figs/p4k.png  used on input line 142.
+Package pdftex.def Info: figs/p4k.png  used on input line 143.
 (pdftex.def)             Requested size: 255.45375pt x 191.71577pt.
 [3 <./figs/p3.jpeg> <./figs/p4k.png>]
-<figs/p4a.jpeg, id=27, 1274.7625pt x 1178.4025pt>
+<figs/p4a.jpeg, id=27, 1340.00626pt x 1264.725pt>
 File: figs/p4a.jpeg Graphic file (type jpg)
 <use figs/p4a.jpeg>
-Package pdftex.def Info: figs/p4a.jpeg  used on input line 154.
-(pdftex.def)             Requested size: 254.94798pt x 235.67632pt.
-<figs/p4b.jpeg, id=28, 1283.79625pt x 1187.43625pt>
+Package pdftex.def Info: figs/p4a.jpeg  used on input line 155.
+(pdftex.def)             Requested size: 267.9965pt x 252.94052pt.
+<figs/p4b.jpeg, id=28, 1363.0925pt x 1269.74374pt>
 File: figs/p4b.jpeg Graphic file (type jpg)
 <use figs/p4b.jpeg>
-Package pdftex.def Info: figs/p4b.jpeg  used on input line 159.
-(pdftex.def)             Requested size: 256.7547pt x 237.48305pt.
+Package pdftex.def Info: figs/p4b.jpeg  used on input line 160.
+(pdftex.def)             Requested size: 272.61366pt x 253.94424pt.
  [4 <./figs/p4a.jpeg> <./figs/p4b.jpeg>] (./HW1.aux) ) 
 Here is how much of TeX's memory you used:
  1344 strings out of 478268
@@ -152,9 +153,9 @@ Here is how much of TeX's memory you used:
  19583 multiletter control sequences out of 15000+600000
  470248 words of font info for 31 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,7n,62p,228b,264s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 55i,7n,62p,228b,257s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on HW1.pdf (4 pages, 1102337 bytes).
+Output written on HW1.pdf (4 pages, 1144241 bytes).
 PDF statistics:
  67 PDF objects out of 1000 (max. 8388607)
  36 compressed objects within 1 object stream
