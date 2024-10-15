@@ -5,10 +5,10 @@
 # Quine-McCluskey outputs a simplified boolean expression given a truth table. #
 #                                                                              #
 # Author: Edward Speer                                                         #
-# Date:   10/9/2024                                                            #
 #                                                                              #
 # Revision History:                                                            #
-# 10/9/2024 - Initial revision                                                 #
+# 10/9/2024  - Initial revision                                                #
+# 10/14/2024 - Debug repeated implicants in recursion                          #
 ################################################################################
 
 ################################################################################
@@ -71,18 +71,24 @@ class LogicProblem():
     # CONSTRUCTORS
 
     """
-    __init__(self, active: List[str], inactive: List[str])
+    __init__(self, active: List[str], inactive: List[str], mutex: bool=False)
 
     Given a list of active and inactive minterms, create a new LogicProblem
     object. The active minterms are the minterms that are true in the truth
     table, and the inactive minterms are the minterms that are false in the
     truth table. The false minterms are used to collect the don't care terms
-    for the problem.
+    for the problem. If mutex (mutally exclusive) is set to True, the inactive
+    set will automatically be set to the complement of the active set.
     """
-    def __init__(self, active: List[str], inactive: List[str]):
+    def __init__(self, active: List[str], inactive: List[str],
+                 mutex: bool=False):
         self.minterms = active
         self.vars = len(active[0])
-        self.super = list(set([''.join(bits) for bits in product('01',
+
+        if mutex:
+            self.super = self.minterms
+        else:
+            self.super = list(set([''.join(bits) for bits in product('01',
                           repeat=self.vars)]) - set(inactive))
 
     # METHODS
@@ -123,7 +129,7 @@ class LogicProblem():
 
         # If no merges were made, return the prime implicants list. Otherwise,
         # call the function recursively.
-        self.p_is = p_is
+        self.p_is = list(set(p_is))
         if merge_cnt != 0:
             self.get_prime_implicants(minterms=self.p_is)
 
