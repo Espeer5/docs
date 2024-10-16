@@ -9,6 +9,7 @@
 # Revision History:                                                            #
 # 10/9/2024  - Initial revision                                                #
 # 10/14/2024 - Debug repeated implicants in recursion                          #
+# 10/15/2024 - Add nice printing of prime implicant chart                      #
 ################################################################################
 
 ################################################################################
@@ -120,8 +121,6 @@ class LogicProblem():
                     True) if check_merge(t[0], t[1]) and merge(t[0], t[1]) not
                     in minterms else False,
                     list(combinations(minterms, 2)))).count(True)
-
-        print(merge_cnt)
                 
         # Add any unmerged terms to the prime implicants list
         p_is += list(set([minterm for minterm in minterms if not
@@ -161,4 +160,18 @@ class LogicProblem():
     def run_qm(self)->None:
         self.get_prime_implicants()
         self.p_i_chart()
-        print(self.p_i_dict)
+
+    """
+    get_table() -> None
+
+    Print the prime implicant chart in a table format.
+    """
+    def get_table(self)->None:
+        table_len = (5 * len(self.minterms) + self.vars + 4)
+        print("=" * table_len)
+        for p_i in self.p_i_dict:
+            coverage = ["| x |" if c == "1" else "|   |" for c in
+                        self.p_i_dict[p_i]]
+            print(f"| {p_i} " + "".join(coverage))
+            print("-" * table_len)
+        print("=" * table_len)

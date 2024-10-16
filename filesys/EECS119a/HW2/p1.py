@@ -9,6 +9,7 @@
 # Revision History:                                                            #
 # 10/9/2024  - Initial revision                                                #
 # 10/14/2024 - Fill in remaining signals to solve                              #
+# 10/15/2024 - Remove unnecessary printing                                     #
 ################################################################################
 
 ################################################################################
@@ -72,23 +73,17 @@ implicants for the truth table.
 def main():
 
     for input_name in INPUTS:
-        print("-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-")
-        print(f"Problem: {input_name}")
-        print("Active Inputs:")
+        print(f"Signal: {input_name}")
         active = INPUTS[input_name]["active"]
-        print(active)
         mutex = INPUTS[input_name]["mutex"]
         if not mutex:
-            print("Inactive Inputs:")
             inactive = INPUTS[input_name]["inactive"]
-            print(inactive)
         else:
             inactive = []
 
         lp = qm.LogicProblem(active, inactive, mutex=mutex)
         lp.run_qm()
-
-        print("-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-\n\n")
+        lp.get_table()
 
 
 if __name__ == "__main__":
