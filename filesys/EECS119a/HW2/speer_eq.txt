@@ -1,0 +1,35 @@
+" This file contains the equations for Problem 1 of homework 2 in EE/CS 119a,
+" Fall of 2024. The equations are formatted in ABEL format. The equations
+" constitute a codebar decoder, which takes in a 7 bit signal from a codebar
+" reader, flags good signals and start characters, and outputs a 4 bit output
+" code. This file omits the setup/hardware details that would be required for 
+" an ABEL module and provides only the equations of the outputs.
+"
+" Inputs: I6..I0 - 7 bit input data from codebar reader
+" 
+" Outputs: S      - Start character indicator bit
+"          V3..V0 - 4 bit decoded signal from codebar
+"          G      - Indicates whether an input is a good or bad signal
+
+
+" Revision History:
+" 10/16/24  Edward Speer  Initial Revision
+
+" Output signal equations
+
+S = I3 # I1
+
+V3 = I4 # (!I6 & I3) # (I6 & I2)
+V2 = I6 # (I3 & !I0) # (I2 & I0)
+V1 = I5
+V0 = I3 # I0
+
+G = (!I6 & !I5 & !I4 & (I2 $ I0) & (I1 # I3)) #
+    (!I6 & !I5 & I4 & ((!I2 & I1 & !I0) # 
+        (!I3 & I2 & !I1 & I0) # (I3 & !I2 & !I0))) #
+    (!I6 & I5 & !I4 & ((!I2 & !I1 & I0) # (!I3 & I2 & !I1 & !I0))) #
+    (!I6 & I5 & I4 & !I3 & !I2 & !I1 & !I0) #
+    (I6 & !I5 & !I4 & ((!I3 & !I2 & I1 & !I0) # (I3 & !I2 & !I1 & !I0) #
+        !I3 & I2 & !I1 & I0)) #
+    (I6 & !I5 & I4 & !I3 & !I1 & (I2 $ I0)) #
+    (I6 & I5 & !I4 & !I3 & !I2 & !I1 & !I0)

@@ -1,7 +1,7 @@
 # Fdb version 3
-["pdflatex"] 1729099680 "/Users/espeer/Desktop/docs/filesys/EECS119a/HW2/HW2.tex" "HW2.pdf" "HW2" 1729099680
+["pdflatex"] 1729100158 "/Users/espeer/Desktop/docs/filesys/EECS119a/HW2/HW2.tex" "HW2.pdf" "HW2" 1729100159
   "../Q-M/qm.py" 1729053147 7352 6492d953125fcf9a0581246cc8f0f81d ""
-  "/Users/espeer/Desktop/docs/filesys/EECS119a/HW2/HW2.tex" 1729099679 19107 1493bf966ef1110ec4bc93861830c1de ""
+  "/Users/espeer/Desktop/docs/filesys/EECS119a/HW2/HW2.tex" 1729100157 19107 9690fb688d97e70b87bd16edeaafc2f8 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm" 1136768653 1536 e07581a4bb3136ece9eeb4c3ffab8233 ""
@@ -37,8 +37,8 @@
   "/usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1647878959 4410336 7d30a02e9fa9a16d7d1f8d037ba69641 ""
   "/usr/local/texlive/2022/texmf-var/web2c/pdftex/pdflatex.fmt" 1672857705 2826441 d66aafb38daa2354e230becabf65ce33 ""
   "/usr/local/texlive/2022/texmf.cnf" 1647878952 577 209b46be99c9075fd74d4c0369380e8c ""
-  "HW2.aux" 1729099680 33 49835556b7333b11e315c53cb0218aaa "pdflatex"
-  "HW2.tex" 1729099679 19107 1493bf966ef1110ec4bc93861830c1de ""
+  "HW2.aux" 1729100159 33 49835556b7333b11e315c53cb0218aaa "pdflatex"
+  "HW2.tex" 1729100157 19107 9690fb688d97e70b87bd16edeaafc2f8 ""
   "check_1.py" 1728978259 8360 59b677a14e2de9bc94cd1be17aa8cea5 ""
   "figs/p1.jpeg" 1729042370 322778 0c1c9c1efee1deeb6af1a381f2d49b8d ""
   "p1.py" 1729053087 4189 4071f9847f7e89c3ea262e52f73233d3 ""
