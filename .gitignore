@@ -121,6 +121,5 @@ target/
 _Tex/
 auto/
 
-
 # Docx backups
-*/~$*
+*~$*
