@@ -4,3 +4,6 @@
 [submodule "filesys/pl/paperInAPaper"]
 	path = filesys/pl/paperInAPaper
 	url = git@github.com:Espeer5/paperInAPaper.git
+[submodule "filesys/CliMA/ClimaArtifacts"]
+	path = filesys/CliMA/ClimaArtifacts
+	url = git@github.com:CliMA/ClimaArtifacts.git
