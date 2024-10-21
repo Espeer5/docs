@@ -10,6 +10,7 @@
 # 10/9/2024  - Initial revision                                                #
 # 10/14/2024 - Debug repeated implicants in recursion                          #
 # 10/15/2024 - Add nice printing of prime implicant chart                      #
+# 10/19/2024 - Print column numbers in PI tables                               #
 ################################################################################
 
 ################################################################################
@@ -169,6 +170,14 @@ class LogicProblem():
     def get_table(self)->None:
         table_len = (5 * len(self.minterms) + self.vars + 4)
         print("=" * table_len)
+        print(f"| {' ' * len(self.minterms[0])} ", end="")
+        for i in range(1, len(self.minterms) + 1):
+            if (i < 10):
+                print(f"| {i} |", end="")
+            else:
+                print(f"|{i} |", end="")
+        print("")
+        print("-" * table_len)
         for p_i in self.p_i_dict:
             coverage = ["| x |" if c == "1" else "|   |" for c in
                         self.p_i_dict[p_i]]
