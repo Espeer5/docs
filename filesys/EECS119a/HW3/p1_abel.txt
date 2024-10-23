@@ -1,0 +1,25 @@
+" This file contains the equations for Problem 1 of homework 3 in EE/CS 119a,
+" Fall of 2024. The equations are formatted in ABEL format. The equations
+" constitute a 7-segment decimal counter, which consists of 7 storage elements
+" (DFFS) which are updated on each clock cycle. Each DFF represents 1 segment of
+" the display. The display will count from 0 to 9 and restart, and can be reset
+" to zero using the reset signal.
+"
+" Inputs:  Reset - resets display to zero when high
+" 
+" Outputs: a..g - 7 segments of display
+"
+" Revision History:
+" 10/22/24  Edward Speer  Initial Revision
+
+EQUATIONS
+
+" Output signals
+
+a = (e & g) # !d + r
+b = (a & b) # e # !f # r
+c = a # g # r 
+d = (a & !b) # !c # !d + r
+e = (!f & !g) # (a & !e & f) # r
+f = (a & !e) # (b & c & g) # r
+g = !r & ((!a & b) # (a & d & g) # !f)

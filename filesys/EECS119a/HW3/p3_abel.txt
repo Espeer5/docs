@@ -1,0 +1,29 @@
+" This file contains the equations for Problem 3 of homework 3 in EE/CS 119a,
+" Fall of 2024. The equations are formatted in ABEL format. The equations
+" constitute a 7 bit binary counter which counts from 8-89, then resets to 8.
+" The logic includes an active high reset which will force the counter back to
+" 8.
+"
+" Inputs:  Reset - reset counter to 9 when high
+"
+" Outputs: I6..I0 - 7 bit output from counter
+"
+" Revision History:
+" 10/22/24  Edward Speer  Initial Revision
+" 10/23/23  Edward Speer  Fix typos
+
+EQUATIONS
+
+"Intermediate Terms
+
+r = (I6 & I4 & I3 & I0) # Reset
+
+" Output Equations
+
+I0 = !r & !I0
+I1 = !r & (I0 $ I1)
+I2 = !r & ((I0 & I1) $ I2)
+I3 =  r # ((I0 & I1 & I2) $ I3)
+I4 = !r & ((I0 & I1 & I2 & I3) $ I4)
+I5 = !r & ((I0 & I1 & I2 & I3 & I4) $ I5)
+I6 = !r & ((I0 & I1 & I2 & I3 & I4 & I5) $ I6)

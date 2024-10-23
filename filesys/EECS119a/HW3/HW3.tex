@@ -46,6 +46,7 @@
                 0&1&1&0&0&1&1& 1&0&1&1&0&1&1\\
                 1&0&1&1&0&1&1& 0&0&1&1&1&1&1\\
                 0&0&1&1&1&1&1& 1&1&1&0&0&0&0\\
+                1&1&1&0&0&0&0& 1&1&1&1&1&1&1\\
                 1&1&1&1&1&1&1& 1&1&1&0&0&1&1\\
                 1&1&1&0&0&1&1& 1&1&1&1&1&1&0\\
                 \hline
@@ -369,8 +370,9 @@ Signal: g
             Notice that the gate count here is the count of the 9 DFFs, plus 10.
             This should be around 64 gates. Compare this to a 9 bit synchronous
             counter, which should require 1 DFF, 1 XOR gate, and 1 AND gate per
-            bit, giving roughly 94 to 95 gates. This LFSR uses around 30 less
-            gates, making it massively more efficient!
+            bit, giving roughly 94.5 gates. Given you need less gates on the first
+            and last bits, you would have around 88 gates.This LFSR uses around
+            25-30 less gates, making it much more efficient.
             \pagebreak
 
         \item \textbf{Problem 3}: \emph{Range Counter} \\
@@ -388,8 +390,7 @@ Signal: g
 
         Now, we need to restrict the range and include the RESET signal. To
         detect the top end of the range, place an AND gate out the outputs which
-        detects the exact top end of the range. We can ignore bit 5 since it will
-        never be high concurrently with bit 6 given the range restriction. We
+        detects all of the 1s from the top end of the range. We
         need to force the circuit to output 8 if either this AND gate is high,
         or the reset signal is high. Therefore, feed the RESET signal and the
         output of the AND gate into an OR gate. Take the resulting signal and
@@ -403,7 +404,7 @@ Signal: g
 
         \begin{tabular}{|l|}
             \hline
-            $R = I_6I_4I_3I_2'I_1'I_0 + RESET$ \\
+            $R = I_6I_4I_3I_0 + RESET$ \\
             $I_0 = R'I_0'$ \\
             $I_1 = R'(I_0 \oplus I_1)$ \\
             $I_2 = R'(I_0I_1 \oplus I_2)$ \\
@@ -441,7 +442,8 @@ Signal: g
     \begin{enumerate}
         \item Packages U1 and U5 are 74LS92 counters. These counters use 
               JK flip-flops as storage elements, which are not D flip-flops, and
-              therefore violate rule a listed above. 
+              therefore violate rule a listed above. They are therefore storage
+              elements not synchronized to the clock.
         \item The system clock signal is gated by part U18C on the way into U1,
               violating rule d listed above.
         \item Part U7 is a 74LS175 containing 4DFFS. However its clock signal 
@@ -451,6 +453,9 @@ Signal: g
         \item Roll is an external signal generated off of switch S1, which is 
               not synchronized to the system clock. This violates rule e listed 
               above.
+        \item U29C and U29D are cross-coupled nand gates, constituting an RS
+              latch used as a storage element. This is a storage element which
+              is not a DFF, violating rule a listed above.
     \end{enumerate}
 
 
