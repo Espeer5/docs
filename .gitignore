@@ -123,3 +123,6 @@ auto/
 
 # Docx backups
 *~$*
+
+# Compiled VHDL files
+*-obj93.cf
