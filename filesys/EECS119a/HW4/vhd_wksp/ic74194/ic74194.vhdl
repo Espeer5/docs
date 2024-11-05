@@ -32,6 +32,7 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
+
 --
 -- ic74194 entity declaration
 --
@@ -47,6 +48,7 @@ entity ic74194 is
         DO  : buffer std_logic_vector(3 downto 0) -- Data outputs
     );
 end ic74194;
+
 
 --
 -- ic74194 dataFlow architecture

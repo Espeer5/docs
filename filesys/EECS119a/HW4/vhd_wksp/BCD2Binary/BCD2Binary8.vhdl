@@ -10,7 +10,7 @@
 --           BCD[7..0] - 8-bit BCD value to convert to binary                 --
 --                                                                            --
 --  Outputs:                                                                  --
---           B[7..0] - 8-bit binary value converted from BCD                  --
+--           B[7..0]   - 8-bit binary value converted from BCD                --
 --                                                                            --
 --  Revision History:                                                         --
 --      10/27/24  Edward Speer    Initial Revision                            --
@@ -21,6 +21,7 @@
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
+
 
 --
 -- BCD2Binary8 entity declaration
