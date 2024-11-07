@@ -1,0 +1,207 @@
+\documentclass{article}
+
+% Packages
+\usepackage{fullpage}
+\usepackage{graphicx}
+\usepackage{verbatim}
+\usepackage{pdflscape}
+
+% Macros
+% INSERT HW NUM HERE
+\newcommand{\HWNUM}{5}
+\newcommand{\fig}[2]{
+    \begin{center}
+        \includegraphics[scale=#1]{figs/#2}
+    \end{center}
+}
+
+\begin{document}
+
+    % TITLE SECTION
+
+    \begin{center}
+        ************************************ \\
+        EE/CS 119A Homework \HWNUM \\
+        Edward Speer \\
+        \today \\
+        ************************************
+    \end{center}
+
+    % PROBLEMS
+    \begin{enumerate}
+    
+        \item \textbf{Problem 1}: \\
+            Since CLK is in the sensitivity list, we need to update $x$ to
+            reflect the value of $a$ on both the rising and falling edges of 
+            the clock. We therefore need 2 DFFs to detect each edge and store
+            the value of $a$ at that time. We then know which DFF should be
+            output by the value of the CLK signal. If the clock is high, we
+            output the value of the DFF storing the value of $a$ on the rising
+            edge and vice versa.
+            \fig{.4}{p1.jpg}
+
+        \item \textbf{Problem 2}: \\
+            Since the clock is in the sensitivity list, but we only update $x$
+            when the clock is high, we only need a single DFF to detect the
+            rising edge of the clock. When we do detect the rising edge, we
+            simply check if $b$ is high, and either pass through $a$ or keep $x$
+            the same accordingly.
+            \fig{.5}{p2.jpg}
+
+        \pagebreak
+        \item \textbf{Problem 3}: \\
+            In this case, with both b and the clock in the sensitivity list, but
+            only updating $x$ when both are high, we need to detect any time the
+            clock or b have a rising edge while the other is high. So feed the
+            two signals into an AND gate and detect a rising edge on the AND
+            gate's output. When either signal has a rising edge, if the other
+            signal is high, the AND gate will have a rising edge.
+            \fig{.4}{p3.jpg}
+
+        \item \textbf{Problem 4}: \\
+            In this problem, only the clock is in the sensitivity list. We then
+            check if the clock is high before continuing. Therefore, activity
+            should only be triggered on the rising edge of the clock. However,
+            we then demand a rising edge on $b$. This means that this circuit is
+            looking for the extremely rare condition of simultaneous rising
+            edges on both the clock and on $b$. We won't be able to ensure that
+            the two rising edges are exactly simultaneous, but what we do do is
+            detect whether or not $b$ has experience a rising edge within the
+            propagation delay time of a DFF. Begin by clocking a DFF on the
+            rising edge of the clock. Feed $b$ into the DFF. Feed the
+            $\overline{Q}$ output of the DFF into an AND gate with $b$. This
+            is essentially ANDing $b$ with the value of $\overline{b}$. Now, if
+            $b$ has a rising edge within the propagation delay of the DFF, the
+            $\overline{Q}$ output will be high, and $b$ will go high, meaning
+            there will be a very short pulse on the output of the AND gate.
+            In only this case, we will update $x$ to be the value of $a$. This
+            is a horrible circuit that essentially depends on a glitch, and I
+            don't recommend anyone ever build it.
+            \fig{.5}{p4.jpg}
+        \pagebreak
+
+        \item \textbf{Problem 5}: \\
+            This is a simple mux. Outside of a process this is simply concurrent
+            logic that udates whenever an input to the mux changes. Note that
+            this will synthesize to a 4:2 mux, but there are only 3 inputs, so
+            the 4th input is tied to 0.
+            \fig{.5}{p5.jpg}
+
+        \item \textbf{Problem 6}: \\
+            Luckily, every input to this mux is included in the sensitivity
+            list, so that the circuit does not change from the previous problem.
+            When any input to the mux changes, the output will update so that we
+            essentially have concurrent logic. Notice again we must tie off one
+            of the inputs to the mux to 0.
+            \fig{.5}{p5.jpg}
+        \pagebreak
+
+        \item \textbf{Problem 7}: \\
+            Since now only the control signals are included in the sensitivity
+            list, we need to essentially cache the values of the inputs to the
+            mux according to when the control signals are updated. To do so, use
+            3 DFFs, one for each input to the mux. Clock each of the DFFs on an
+            AND gate that will go high for the rising edge of the control
+            signals that correspond to that input. Then, when the control
+            signals are updated, the DFF will store the value of the input at 
+            that time, and pass it through accordingly. We once again have to
+            tie off the 4th input to the mux to 0.
+            \fig{.5}{p7.jpg}
+
+        \item \textbf{Problem 8}: \\
+            Notice in the code that (a) $x$ is a signal, and (b) instead of
+            using if/elsif/else, each case is a separate if statement. As a
+            result of (a), any change to $x$ is scheduled at time $t + \Delta$,
+            and as a result of (b), the if statement priorities will be last to
+            first, meaning if the third to last if statement is true, it will
+            overwrite the value of $x$ set by the second to last or first if
+            statement. Therefore, the circuit should essentially check each if
+            condition. Then assign $x$ according to the first condition AND 
+            the exclusion of all other conditions, OR the second condition AND
+            the exclusion of all later conditions, etc. There is no default
+            assignement for $x$, so if none of the conditions are met, $x$ will
+            not be updated.
+            \fig{.5}{p8.jpg}
+        \pagebreak
+
+        \item \textbf{Problem 9}: \\
+            In this case, there are two notable changes. Firstly, we are now
+            using if/elsif/else. This switches the order of precedence so that
+            if the first condition is true, we will not check any later
+            conditions so that earlier conditions supercede later ones. Secondly
+            if none of the conditions are true $x$ will take on $e$ as a default
+            now instead of not updating.
+            \fig{.5}{p9.jpg}
+
+        \item \textbf{Problem 10}: \\
+            In this case, we have reverted to using if/then statements alone,
+            reversing the order of priority back to the last cases taking
+            precedence over earlier ones. Notice that before the if statements
+            are evaluated, $x$ is set to $e$. However, remember that since $x$
+            is a signal, this assignment is scheduled for time $t + \Delta$.
+            This means this assignment will be overwritten by any if condition
+            that is true. Therefore, this assignment to $e$ will function like
+            a default if none of the if conditions are met.
+            \fig{.5}{p10.jpg}
+        \pagebreak
+
+        \item \textbf{Problem 11}: \\
+            This is a simple 8:3 mux. Since $i$ is an integer ranging up to 7 it
+            will take 3 bits to represent all 8 values. We will simply pass each
+            bit of the 8 bit opcode into a different input of the mux and set
+            the control signals to the 3 bit value of $i$ so that the mux will
+            output the value of the bit corresponding to $i$.
+            \fig{.5}{p11.jpg}
+
+        \item \textbf{Problem 12}: \\
+            For this problem, recall that $x$ is a signal. This means that any
+            changes to the value of $x$ are scheduled for time $t + \Delta$. So
+            for this code, setting $x$ to $a$ is scheduled but not executed.
+            This assignment is then overwritten by each successive assignment to
+            $x$. Thus, no execution of the loop will have any impact on $x$
+            except the final iteration. Therefore we will very simply set $x$ to
+            $x$ AND opcode$[7]$. Since the opcode is in the sensitivity list,
+            and changes in MSB of the opcode are the only thing that can
+            possibly change the value of $x$ we don't need to worry about
+            timing or clocking.
+            \fig{.3}{p12.jpg}
+        \pagebreak
+
+        \item \textbf{Problem 13}: \\
+            For this problem, we need to build a comparator that checks if the
+            upper nibble of opcode is less than the lower nibble. Then, we use
+            the output of the comparator which I named $LT$. If $LT$ is high, we
+            set $x$ to $a$, otherwise we set $x$ to $x$. To simplify the logic
+            of the comparator, I used the Quine-McCluskey python package I
+            developed for homework 3. The full code of the package and the
+            script which uses it to generate the prime implicants chart is
+            attached. The prime implicants chart for the comparator is also
+            attached. I then implemented the strict SOP form from the prime
+            implicants chart in the given archtecture resulting in the
+            following.
+            \fig{.75}{p13.jpg}
+
+        \item \textbf{Problem 14}: \\
+            Use the same comparator logic from the previous problem. I
+            therefore implemented the strict SOP form from the prime implicants
+            chart for the comparator in the given archtecture. Note I ommitted
+            several of the muxes from most of the CLBs as they were never used.
+            Apologies for the handwritten labels.
+            \fig{.65}{p14.jpg}
+
+    \end{enumerate}
+
+    \pagebreak
+
+    \begin{scriptsize}
+
+        \verbatiminput{../Q-M/qm.py}
+        \pagebreak
+        \verbatiminput{red.py}
+        \pagebreak
+        \begin{landscape}
+                \verbatiminput{out.txt}
+        \end{landscape}
+    \end{scriptsize}
+
+\end{document}
