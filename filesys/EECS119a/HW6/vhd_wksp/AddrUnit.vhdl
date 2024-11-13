@@ -20,6 +20,7 @@
 --  Revision History:                                                         --
 --      11/10/2024  Edward Speer  Initial Revision                            --
 --      11/11/2024  Edward Speer  Clk divider to external                     --
+--      11/12/2024  Edward Speer  Add implementation architecture             --
 --                                                                            --
 --------------------------------------------------------------------------------
 
@@ -54,8 +55,8 @@ begin
     process(CLK)
     begin
         if rising_edge(CLK) then
-            if LOAD = '1' then
-                AudioAddr(18 downto 0) <= AddrIn(18 downto 0);
+            if std_match(LOAD, '1') = TRUE then
+                AudioAddr <= AddrIn;
                 AddrValid <= '1';
             else
                 if std_match(AudioAddr, AddrStop) then
@@ -70,3 +71,29 @@ begin
     end process;
 
 end behavioral;
+
+--
+-- AddrUnit implementation architecture
+--
+
+architecture implementation of AddrUnit is
+
+    signal cnt19     : unsigned(18 downto 0); -- 19 bit counter
+    signal AddrMatch : std_logic;             -- cnt reached AddrStop
+
+begin
+
+    AddrValid <= '0' when (std_match(cnt19, unsigned(AddrStop)) = TRUE) else '1';
+
+    process(CLK)
+    begin
+        if rising_edge(CLK) then
+            cnt19 <= cnt19 + 1;
+            with LOAD select
+                AudioAddr <= AddrIn when '1',
+                             std_logic_vector(unsigned(AudioAddr) + 1) when
+                                                                         others;
+        end if;
+    end process;
+
+end implementation;

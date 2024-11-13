@@ -5,18 +5,20 @@
 --  This is a test bench for the M32ToK8ClockDiv clock divider entity. The    --
 --  test bench thouroughly tests the entity by exercising it and checking     --
 --  the timing of the output clocks. The test bench entity is called          --
---  M32ToK8ClockDiv_tb and it is currently defined to test the behavioral     --
---  architecture of the M32ToK8ClockDiv entity.                               --
+--  M32ToK8ClockDiv_tb and it is currently defined to test the                --
+--  implementation architecture of the M32ToK8ClockDiv entity.                --
 --                                                                            --
 --  Revision History:                                                         --
 --      11/10/2024  Edward Speer  Initial Revision                            --
 --      11/11/2024  Edward Speer  Assume 4096 clocks per period               --
+--      11/12/2024  Edward Speer  Fixup configuration                         --
 --                                                                            --
 --------------------------------------------------------------------------------
 
 -- IMPORTS
 library ieee;
 use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
 
 entity M32ToK8ClockDiv_tb is
 end M32ToK8ClockDiv_tb;
@@ -48,7 +50,7 @@ architecture TB_ARCHITECTURE of M32ToK8ClockDiv_tb is
     -- Observed signals
     --
 
-    signal CLK_8kHz     : std_logic;
+    signal CLK_8kHz : std_logic := '0';
 
     --
     -- Flag used to end simulation
@@ -82,11 +84,13 @@ begin
 
             -- Wait for next clock value change
             -- Note that assuming 4096 clocks per period offsets period slightly
-            wait for 63578 ns;
+            wait for 64000 ns;
 
             -- check clock has been toggled starting second time through loop
+            -- to allow for the first loop to get the correct value loaded into
+            -- c80
             if i < 99 then
-                assert (CLK_8kHz = not c80)
+                assert (std_match(CLK_8kHz, not c80) = TRUE)
                     report "8 KHZ CLOCK FAILED TO TOGGLE"
                     severity ERROR;
             end if;
@@ -104,7 +108,7 @@ begin
     -- This process generates a 32 MHz x 50% duty cycle clock, and stops the
     -- clock when the end of simulation is reached.
     begin
-        -- Generates 8 kHz clock
+        -- Generates 32 MHz clock
         if END_SIM = FALSE then
             CLK <= '0';
             wait for 15625 ps;
@@ -123,11 +127,21 @@ begin
 
 end TB_ARCHITECTURE;
 
--- Configure M32ToK8ClockDiv architecture used
-configuration TESTBENCH_FOR_M32ToK8ClockDiv of M32ToK8ClockDiv_tb is
+-- Configure use of M32ToK8ClockDiv behavioral architecture in test
+configuration TESTBENCH_FOR_M32ToK8ClockDiv_BEHAVIORAL of M32ToK8ClockDiv_tb is
     for TB_ARCHITECTURE
         for DUT : M32ToK8ClockDiv
             use entity work.M32ToK8ClockDiv(behavioral);
         end for;
     end for;
-end TESTBENCH_FOR_M32ToK8ClockDiv;
+end TESTBENCH_FOR_M32ToK8ClockDiv_BEHAVIORAL;
+
+-- Configure use of M32ToK8ClockDiv implementation architecture in test
+configuration TESTBENCH_FOR_M32ToK8ClockDiv_IMPLEMENTATION of M32ToK8ClockDiv_tb
+                                                                              is
+    for TB_ARCHITECTURE
+        for DUT : M32ToK8ClockDiv
+            use entity work.M32ToK8ClockDiv(behavioral);
+        end for;
+    end for;
+end TESTBENCH_FOR_M32ToK8ClockDiv_IMPLEMENTATION;

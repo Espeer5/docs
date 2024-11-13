@@ -9,7 +9,9 @@
 --  architecture of the PwmDriver unit.                                       --
 --                                                                            --
 --  Revision History:                                                         --
---      11/11/2024 Edward Speer Initial Revision                              --
+--      11/11/2024  Edward Speer  Initial revision                            --
+--      11/12/2024  Edward Speer  Remove dependency on clock divider module   --
+--      11/12/2024  Edward Speer  Test implementation architecture            --
 --                                                                            --
 --------------------------------------------------------------------------------
 
@@ -41,17 +43,6 @@ architecture TB_ARCHITECTURE of PwmDriver_tb is
     end component;
 
     --
-    -- Component declaration of useful clock divider
-    --
-
-   component M32ToK8ClockDiv
-        port (
-            CLK          : in     std_logic; -- 32 MHz input clock
-            CLK_8kHz     : buffer std_logic  -- 8 kHz output clock
-        );
-    end component;
-
-    --
     -- Stimulus signals
     --
 
@@ -63,10 +54,10 @@ architecture TB_ARCHITECTURE of PwmDriver_tb is
     -- Observed signals
     --
 
-    signal AudioPWMOut : std_logic;
+    signal AudioPWMOut : std_logic := '0';
 
     --
-    -- Flaga used to start and end simulation
+    -- Flag used to start and end simulation
     --
     signal END_SIM   : BOOLEAN := FALSE;
 
@@ -82,15 +73,6 @@ begin
             CLK_8kHz    => CLK_8kHz,
             AudioData   => AudioData,
             AudioPWMOut => AudioPWMOut
-        );
-
-    --
-    -- Clock divider port map
-    --
-    U1 : M32ToK8ClockDiv
-        port map (
-            CLK      => CLK_32MHz,
-            CLK_8kHz => CLK_8kHz
         );
 
     process(CLK_8kHz) -- STIMULUS_PROCESS
@@ -120,7 +102,7 @@ begin
     begin
         if END_SIM = FALSE then
             if rising_edge(CLK_32MHz) then
-                if AudioPWMOut = '1' then
+                if std_match(AudioPWMOut, '1') then
                     pwm_cnt := pwm_cnt + 1;
                 end if;
                 clocks := (clocks + 1) rem 4096;
@@ -140,10 +122,14 @@ begin
 
     CLOCK_CLK : process
 
-    -- This process generates a 32 MHz x 50% duty cycle clock, and stops the
-    -- clock when the end of simulation is reached.
+    -- This process generates both a 32 MHz x 50% duty cycle clock, and an 8 kHz
+    -- x 50% duty cycle clock synchronized to the 32 MHz clock, and stops both
+    -- clocks when the end of simulation is reached.
+
+    variable clk_cnt : integer := 0; -- Counter on 32 MHz clocks to produce 8kHz
+
     begin
-        -- Generates 8 kHz clock
+        -- Generate clock signals
         if END_SIM = FALSE then
             CLK_32MHz <= '0';
             wait for 15625 ps;
@@ -153,6 +139,13 @@ begin
 
         if END_SIM = FALSE then
             CLK_32MHz <= '1';
+            clk_cnt := clk_cnt + 1;
+            if clk_cnt = 2048 then
+                CLK_8kHz <= '0';
+            elsif clk_cnt = 4096 then
+                CLK_8kHz <= '1';
+                clk_cnt := 0;
+            end if;
             wait for 15625 ps;
         else
             wait;
@@ -162,11 +155,20 @@ begin
 
 end TB_ARCHITECTURE;
 
--- Configure PwmDriver architecture used
-configuration TESTBENCH_FOR_PwmDriver of PwmDriver_tb is
+-- Configure use of PwmDriver behavioral architecture
+configuration TESTBENCH_FOR_PwmDriver_BEHAVIORAL of PwmDriver_tb is
     for TB_ARCHITECTURE
         for DUT : PwmDriver
             use entity work.PwmDriver(behavioral);
         end for;
     end for;
-end TESTBENCH_FOR_PwmDriver;
+end TESTBENCH_FOR_PwmDriver_BEHAVIORAL;
+
+-- Configure use of PwmDriver implementation architecture
+configuration TESTBENCH_FOR_PwmDriver_IMPLEMENTATION of PwmDriver_tb is
+    for TB_ARCHITECTURE
+        for DUT : PwmDriver
+            use entity work.PwmDriver(implementation);
+        end for;
+    end for;
+end TESTBENCH_FOR_PwmDriver_IMPLEMENTATION;

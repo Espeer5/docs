@@ -14,12 +14,14 @@
 --  Revision History:                                                         --
 --      11/10/2024  Edward Speer  Initial Revision                            --
 --      11/11/2024  Edward Speer  Assume 4096 clocks per period               --
+--      11/12/2024  Edward Speer  Add implementation architecture             --
 --                                                                            --
 --------------------------------------------------------------------------------
 
 -- IMPORTS
 library ieee;
 use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
 
 --
 -- M32ToK8ClockDiv entity declaration
@@ -60,3 +62,28 @@ begin
     end process;
 
 end behavioral;
+
+--
+-- M32ToK8ClockDiv implementation architecture
+--
+
+architecture implementation of M32ToK8ClockDiv is
+
+    signal cnt12 : unsigned(11 downto 0); -- 12 bit counter
+
+begin
+
+    process(CLK) -- COUNTER_PROCESS
+    begin
+        if rising_edge(CLK) then
+            if std_match(cnt12(11), '1') = TRUE then
+                REPORT "TOGGLE";
+                cnt12 <= (others => '0');
+                CLK_8kHz  <= not CLK_8kHz;
+            else
+                cnt12 <= cnt12 + 1;
+            end if;
+        end if;
+    end process; -- COUNTER_PROCESS
+
+end implementation;

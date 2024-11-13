@@ -149,3 +149,21 @@ begin
         );
 
 end behavioral;
+
+-- Configure the PWMAudioPlayer implementation
+configuration PWMAudioPlayer_IMPLEMENTATION of PWMAudioPlayer is
+    for behavioral
+        for U1 : M32ToK8ClockDiv
+            use entity work.M32ToK8ClockDiv(implementation);
+        end for;
+        for U2 : AddrUnit
+            use entity work.addrUnit(implementation);
+        end for;
+        for U3 : Btn4Decoder
+            use entity work.Btn4Decoder(implementation);
+        end for;
+        for U4 : PwmDriver
+            use entity work.PwmDriver(implementation);
+        end for;
+    end for;
+end PWMAudioPlayer_IMPLEMENTATION;

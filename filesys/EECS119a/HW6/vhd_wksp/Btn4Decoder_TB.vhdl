@@ -10,13 +10,16 @@
 --  architecture of the Btn4Decoder entity.                                   --
 --                                                                            --
 --  Revision History:                                                         --
---      11/13/2024  Edward Speer  Initial Revision                            --
+--      11/12/2024  Edward Speer  Initial Revision                            --
+--      11/13/2024  Edward Speer  Test implementation architecture            --
+--      11/14/2024  Edward Speer  Test concurrent button presses              --
 --                                                                            --
 --------------------------------------------------------------------------------
 
 -- IMPORTS
 library ieee;
 use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
 
 entity Btn4Decoder_tb is
 end Btn4Decoder_tb;
@@ -91,14 +94,14 @@ begin
 
         -- Wait for a bit and make sure the output hasn't changed
         wait for 1000 ns;
-        assert (LOAD = '0')
+        assert (std_match(LOAD, '0') = TRUE)
             report "FAILED INITIALIZATION"
             severity ERROR;
 
         -- Toggle enable and ensure the system still holds correctly
         enable <= '0';
         wait for 1000 ns;
-        assert (LOAD = '0')
+        assert (std_match(LOAD, '0') = TRUE)
             report "SPURIOUS LOAD SIGNAL"
             severity ERROR;
 
@@ -107,7 +110,7 @@ begin
         wait for 1000 ns;
         BTN <= "0000";
         wait for 50 ns;
-        assert (LOAD = '1')
+        assert (std_match(LOAD, '1') = TRUE)
             report "MISSED BUTTON PRESS"
             severity ERROR;
         assert (Sample0 = "1000000000000000000")
@@ -120,7 +123,33 @@ begin
         -- Ensure that once enable goes high, LOAD goes low
         enable <= '1';
         wait for 1000 ns;
-        assert (LOAD = '0')
+        assert (std_match(LOAD, '0'))
+            report "FAILED TO RESET LOAD"
+            severity ERROR;
+
+        -- Try a combination of multiple buttons
+        enable <= '0';
+        wait for 1000 ns;
+        assert (std_match(LOAD, '0'))
+            report "FAILED TO HOLD LOAD"
+            severity ERROR;
+
+        BTN <= "1010";
+        wait for 50 ns;
+        assert(std_match(LOAD, '1') = TRUE)
+            report "MISSED BUTTON PRESS"
+            severity ERROR;
+        assert (Sample0 = "1000000000000000000")
+            report "FAILED STARTING ADDR"
+            severity ERROR;
+        assert (SampleEnd <= "1001000000000000000")
+            report "FAILED FINAL ADDR"
+            severity ERROR;
+
+        -- Ensure that once enable goes high, LOAD goes low
+        enable <= '1';
+        wait for 1000 ns;
+        assert (std_match(LOAD, '0'))
             report "FAILED TO RESET LOAD"
             severity ERROR;
 
@@ -135,7 +164,7 @@ begin
     -- This process generates a 32 MHz x 50% duty cycle clock, and stops the
     -- clock when the end of simulation is reached.
     begin
-        -- Generates 8 kHz clock
+        -- Generates 32 MHz clock
         if END_SIM = FALSE then
             CLK <= '0';
             wait for 15625 ps;
@@ -154,11 +183,20 @@ begin
 
 end TB_ARCHITECTURE;
 
--- Configure Btn4Decoder architecture used
-configuration TESTBENCH_FOR_BTN4DECODER of Btn4Decoder_tb is
+-- Configure use of Btn4Decoder behavioral architecture
+configuration TESTBENCH_FOR_BTN4DECODER_BEHAVIORAL of Btn4Decoder_tb is
     for TB_ARCHITECTURE
         for DUT : Btn4Decoder
             use entity work.Btn4Decoder(behavioral);
         end for;
     end for;
-end TESTBENCH_FOR_BTN4DECODER;
+end TESTBENCH_FOR_BTN4DECODER_BEHAVIORAL;
+
+-- Configure use of Btn4Decoder implementation architecture
+configuration TESTBENCH_FOR_BTN4DECODER_IMPLEMENTATION of Btn4Decoder_tb is
+    for TB_ARCHITECTURE
+        for DUT : Btn4Decoder
+            use entity work.Btn4Decoder(implementation);
+        end for;
+    end for;
+end TESTBENCH_FOR_BTN4DECODER_IMPLEMENTATION;

@@ -18,6 +18,7 @@
 --                                                                            --
 --  Revision History:                                                         --
 --      11/11/2024  Edward Speer  Initial Revision                            --
+--      11/12/2024  Edward Speer  Add implementation architecture             --
 --                                                                            --
 --------------------------------------------------------------------------------
 
@@ -45,7 +46,7 @@ end PwmDriver;
 
 architecture behavioral of PwmDriver is
 
-    signal cntr        : integer := 0;
+    signal cntr        : integer := 0;                 -- 8 bit counter
     signal audio_cache : std_logic_vector(7 downto 0); -- Holds data sample
 
 begin
@@ -71,3 +72,36 @@ begin
     end process;              -- OUTPUT
 
 end behavioral;
+
+--
+-- PwmDriver implementation architecture
+--
+
+architecture implementation of PwmDriver is
+
+    -- Provide initial value for cnt8 so that test bench will run
+    signal cnt8        : unsigned(7 downto 0) := "00000000"; -- 8 bit counter
+    signal audio_cache : std_logic_vector(7 downto 0); -- Holds data sample
+
+begin
+
+    process(CLK_8kHz)  -- LOAD_SAMPLE
+    begin
+        if rising_edge(CLK_8kHz) then
+            audio_cache <= AudioData;
+        end if;
+    end process;       -- LOAD_SAMPLE
+
+    process(CLK_32MHz) -- OUTPUT
+    begin
+        if rising_edge(CLK_32MHz) then
+            cnt8 <= cnt8 + 1;
+            if (cnt8 < unsigned(audio_cache)) then
+                AudioPWMOut <= '1';
+            else
+                AudioPWMOut <= '0';
+            end if;
+        end if;
+    end process;      -- OUTPUT
+
+end implementation;

@@ -11,6 +11,7 @@
 --  Revision History:                                                         --
 --      11/10/2024  Edward Speer  Initial Revision                            --
 --      11/11/2024  Edward Speer  Test clock to 8kHz                          --
+--      11/12/2024  Edward Speer  Test implementation architecture            --
 --                                                                            --
 --------------------------------------------------------------------------------
 
@@ -119,7 +120,7 @@ begin
             UnsignedAddr := unsigned(AudioAddr);
         end loop;
 
-        assert (AddrValid = '0')
+        assert (std_match(AddrValid, '0') = TRUE)
             report "CHECK ADDR VALID FAILED"
             severity ERROR;
 
@@ -131,7 +132,7 @@ begin
 
     CLOCK_CLK : process
 
-    -- This process generates a 32 MHz x 50% duty cycle clock, and stops the
+    -- This process generates an 8 MHz x 50% duty cycle clock, and stops the
     -- clock when the end of simulation is reached.
     begin
         -- Generates 8 kHz clock
@@ -154,11 +155,20 @@ begin
 
 end TB_ARCHITECTURE;
 
--- Configure AddrUnit architecture used
-configuration TESTBENCH_FOR_AddrUnit of AddrUnit_tb is
+-- Configure use of AddrUnit behavioral architecture
+configuration TESTBENCH_FOR_AddrUnit_BEHAVIORAL of AddrUnit_tb is
     for TB_ARCHITECTURE
         for DUT : AddrUnit
             use entity work.AddrUnit(behavioral);
         end for;
     end for;
-end TESTBENCH_FOR_AddrUnit;
+end TESTBENCH_FOR_AddrUnit_BEHAVIORAL;
+
+-- Configure use of AddrUnit implementation architecture
+configuration TESTBENCH_FOR_AddrUnit_IMPLEMENTATION of AddrUnit_tb is
+    for TB_ARCHITECTURE
+        for DUT : AddrUnit
+            use entity work.AddrUnit(behavioral);
+        end for;
+    end for;
+end TESTBENCH_FOR_AddrUnit_IMPLEMENTATION;
