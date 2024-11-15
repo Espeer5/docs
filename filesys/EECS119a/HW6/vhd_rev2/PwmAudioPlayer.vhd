@@ -1,6 +1,6 @@
 --------------------------------------------------------------------------------
 --                                                                            --
---  PwmAudioPlayer Logic Designer                                             --
+--  PwmAudioPlayer Logic Design                                               --
 --                                                                            --
 --  This is an entity declaration and architecture definition for the PWM     --
 --  audio player system. The system pipelines audio samples from an EPROM     --
@@ -8,6 +8,7 @@
 --                                                                            --
 --  Inputs:                                                                   --
 --           CLK              - 32MHz system clock                            --
+--           RESET            - Asynchronous active high reset                --
 --           BTN[3..0]        - 4 input buttons                               --
 --           AudioData[7..0]  - Audio sample data input                       --
 --                                                                            --
@@ -17,6 +18,7 @@
 --                                                                            --
 --  Revision History:                                                         --
 --      11/11/2024  Edward Speer  Initial Revision                            --
+--      11/13/2024  Edward Speer  Remap addr & btns to reconfigured modules   --
 --                                                                            --
 --------------------------------------------------------------------------------
 
@@ -31,6 +33,7 @@ use ieee.std_logic_1164.all;
 entity PwmAudioPlayer is
     port (
         CLK         : in     std_logic;                     -- 32 MHz sys clock
+        RESET       : in     std_logic;                     -- Asynch reset
         BTN         : in     std_logic_vector(3 downto 0);  -- User buttons in
         AudioData   : in     std_logic_vector(7 downto 0);  -- EPROM data in
         AudioAddr   : buffer std_logic_vector(18 downto 0); -- EPROM addr out
@@ -45,13 +48,15 @@ end PwmAudioPlayer;
 architecture behavioral of PwmAudioPlayer is
 
     --
-    -- Component declaration of 32 MHz to 8 kHz clock divider
+    -- Component declaration of shared counter module
     --
 
-    component M32ToK8ClockDiv
+    component Cntr8ClockDiv
         port (
-            CLK          : in     std_logic; -- 32 MHz input clock
-            CLK_8kHz     : buffer std_logic  -- 8 kHz output clock
+            CLK      : in     std_logic;                     -- 32 MHz sys clk
+            RESET    : in     std_logic;                     -- Async reset
+            CLK_8kHz : buffer std_logic;                     -- 8 kHz clk out
+            Cntr8    : out    std_logic_vector(7 downto 0)   -- 8 bit cnt out
         );
     end component;
 
@@ -61,27 +66,11 @@ architecture behavioral of PwmAudioPlayer is
 
     component AddrUnit
         port (
-            CLK       : in     std_logic;                    -- 8 kHz clock
-            LOAD      : in     std_logic;                    -- Load AddrIn 
-            AddrIn    : in     std_logic_vector(18 downto 0);-- 19 bit addr in
+            CLK_8kHz  : in     std_logic;                    -- 8 kHz clock
+            RESET     : in     std_logic;                    -- Async reset
+            Btn       : in     std_logic_vector(3 downto 0); -- User buttons in
             AudioAddr : buffer std_logic_vector(18 downto 0);-- 19 bit addr out
-            AddrValid : buffer std_logic;                    -- Legal addr?
-            AddrStop  : in     std_logic_vector(18 downto 0) -- Max track addr
-        );
-    end component;
-
-    --
-    -- Component declaration of button input decoding unit
-    --
-
-    component Btn4Decoder
-        port (
-            CLK        : in     std_logic;                    -- 32 MHz sys clk
-            BTN        : in     std_logic_vector(3 downto 0); -- 4 buttons in
-            enable     : in     std_logic;                    -- active low en
-            LOAD       : buffer std_logic;                    -- addr load
-            Sample0    : out    std_logic_vector(18 downto 0);-- Low sample addr
-            SampleEnd  : out    std_logic_vector(18 downto 0) -- Hi sample addr
+            Enable    : buffer std_logic                     -- Enable PWM out
         );
     end component;
 
@@ -91,10 +80,12 @@ architecture behavioral of PwmAudioPlayer is
 
     component PwmDriver
         port (
-            CLK_32MHz   : in std_logic;                    -- 32 Mhz sys clock
-            CLK_8kHz    : in std_logic;                    -- 8 kHz sample clk
-            AudioData   : in std_logic_vector(7 downto 0); -- 8 bit audio sample
-            AudioPWMOut : out std_logic                    -- PWM output
+            CLK_8kHz    : in  std_logic;                    -- 8 kHz clk
+            RESET       : in  std_logic;                    -- Asynch reset
+            enable      : in  std_logic;                    -- enable pwm out
+            AudioData   : in  std_logic_vector(7 downto 0); -- 8 bit sample
+            Cntr8       : in  std_logic_vector(7 downto 0); -- 8 bit counter in
+            AudioPWMOut : out std_logic                     -- PWM output
         );
     end component;
 
@@ -103,10 +94,8 @@ architecture behavioral of PwmAudioPlayer is
     --
 
     signal CLK_8kHz  : std_logic;
-    signal LOAD      : std_logic;
-    signal AddrValid : std_logic;
-    signal AddrIn    : std_logic_vector(18 downto 0);
-    signal AddrStop  : std_logic_vector(18 downto 0);
+    signal enable    : std_logic;
+    signal Cntr8     : std_logic_vector(7 downto 0);
 
 begin
 
@@ -114,37 +103,30 @@ begin
     -- Port maps for each of the components of the system
     -- 
 
-    U1 : M32ToK8ClockDiv
+    U1 : Cntr8ClockDiv
         port map (
             CLK      => CLK,
-            CLK_8kHz => CLK_8kHz
+            RESET    => RESET,
+            CLK_8kHz => CLK_8kHz,
+            Cntr8    => Cntr8
         );
 
     U2 : AddrUnit
         port map (
-            CLK       => CLK_8kHz,
-            LOAD      => LOAD,
-            AddrIn    => AddrIn,
+            CLK_8kHz  => CLK_8kHz,
+            RESET     => RESET,
+            Btn       => BTN,
             AudioAddr => AudioAddr,
-            AddrValid => AddrValid,
-            AddrStop  => AddrStop
+            Enable    => enable
         );
 
-    U3 : Btn4Decoder
+    U3 : PwmDriver
         port map (
-            CLK       => CLK,
-            BTN       => BTN,
-            enable    => AddrValid,
-            LOAD      => LOAD,
-            Sample0   => AddrIn,
-            SampleEnd => AddrStop
-        );
-
-    U4 : PwmDriver
-        port map (
-            CLK_32MHz   => CLK,
             CLK_8kHz    => CLK_8kHz,
+            RESET       => RESET,
+            enable      => enable,
             AudioData   => AudioData,
+            Cntr8       => Cntr8,
             AudioPWMOut => AudioPWMOut
         );
 
@@ -153,17 +135,14 @@ end behavioral;
 -- Configure the PWMAudioPlayer implementation
 configuration PWMAudioPlayer_IMPLEMENTATION of PWMAudioPlayer is
     for behavioral
-        for U1 : M32ToK8ClockDiv
-            use entity work.M32ToK8ClockDiv(implementation);
+        for U1 : Cntr8ClockDiv
+            use entity work.Cntr8ClockDiv(implementation);
         end for;
         for U2 : AddrUnit
-            use entity work.addrUnit(implementation);
+            use entity work.AddrUnit(implementation);
         end for;
-        for U3 : Btn4Decoder
-            use entity work.Btn4Decoder(implementation);
-        end for;
-        for U4 : PwmDriver
-            use entity work.PwmDriver(implementation);
+        for U3 : PwmDriver
+            use entity work.PwmDriver(behavioral);
         end for;
     end for;
 end PWMAudioPlayer_IMPLEMENTATION;

@@ -44,7 +44,7 @@ architecture TB_ARCHITECTURE of M32ToK8ClockDiv_tb is
     -- Stimulus signals
     --
 
-    signal CLK   : std_logic;
+    signal CLK   : std_logic := '0';
 
     --
     -- Observed signals
@@ -141,7 +141,7 @@ configuration TESTBENCH_FOR_M32ToK8ClockDiv_IMPLEMENTATION of M32ToK8ClockDiv_tb
                                                                               is
     for TB_ARCHITECTURE
         for DUT : M32ToK8ClockDiv
-            use entity work.M32ToK8ClockDiv(behavioral);
+            use entity work.M32ToK8ClockDiv(implementation);
         end for;
     end for;
 end TESTBENCH_FOR_M32ToK8ClockDiv_IMPLEMENTATION;

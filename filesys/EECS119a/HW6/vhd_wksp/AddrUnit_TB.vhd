@@ -12,6 +12,7 @@
 --      11/10/2024  Edward Speer  Initial Revision                            --
 --      11/11/2024  Edward Speer  Test clock to 8kHz                          --
 --      11/12/2024  Edward Speer  Test implementation architecture            --
+--      11/13/2024  Edward Speer  include button => address logic             --
 --                                                                            --
 --------------------------------------------------------------------------------
 
@@ -36,11 +37,10 @@ architecture TB_ARCHITECTURE of AddrUnit_tb is
     component AddrUnit
         port (
             CLK       : in     std_logic;                    -- 8 kHz clock
-            LOAD      : in     std_logic;                    -- Load AddrIn 
-            AddrIn    : in     std_logic_vector(18 downto 0);-- 19 bit addr in
+            RESET     : in     std_logic;                    -- Reset AddrUnit
+            FilButton : in     std_logic_vector(3 downto 0); -- 4 buttons in
             AudioAddr : buffer std_logic_vector(18 downto 0);-- 19 bit addr out
-            AddrValid : buffer std_logic;                    -- Legal addr?
-            AddrStop  : in     std_logic_vector(18 downto 0) -- Max track addr
+            AddrValid : buffer std_logic                     -- Legal addr?
         );
     end component;
 
@@ -49,16 +49,16 @@ architecture TB_ARCHITECTURE of AddrUnit_tb is
     --
 
     signal CLK       : std_logic;
-    signal LOAD      : std_logic;
-    signal AddrValid : std_logic;
-    signal AddrIn    : std_logic_vector(18 downto 0);
-    signal AddrStop  : std_logic_vector(18 downto 0);
+    signal RESET     : std_logic;
+    signal FilButton : std_logic_vector(3 downto 0) := "0000";
+
 
     --
     -- Observed signals
     --
 
     signal AudioAddr : std_logic_vector(18 downto 0);
+    signal AddrValid : std_logic;
 
     --
     -- Flag used to end simulation
@@ -75,53 +75,88 @@ begin
     DUT : AddrUnit 
         port map (
             CLK       => CLK,
-            LOAD      => LOAD,
-            AddrIn    => AddrIn,
+            RESET     => RESET,
+            FilButton => FilButton,
             AddrValid => AddrValid,
-            AddrStop  => AddrStop,
             AudioAddr => AudioAddr
         );
 
     process -- STIMULUS_PROCESS
-
-        variable UnsignedAddr : unsigned(18 downto 0); -- Unsigned of AudioAddr
-        constant MAX_19BIT    : integer := 524287;     -- Max 19 bit address
-
     begin
 
-        -- Initialize the AddrUnit DUT by loading a value and a top value
-        LOAD     <= '1';
-        AddrIn   <= "1111111111111111110";
-        AddrStop <= "0000000000000000001";
+        -- Reset the AddrUnit
+        RESET <= '1';
+        wait for 100 ns;
+        RESET <= '0';
 
-        -- Wait for load to take effect and check it
-        wait for 250000 ns;
-        assert(AudioAddr = "1111111111111111110")
-            report "INITIALIZATION FAILED"
+        -- Make sure that the address is initially invalid so the system won't
+        -- start playing audio until a button press is detected
+        wait for 100 ms;
+        assert (AddrValid = '0')
+            report "AddrValid is not 0 at start of simulation"
             severity ERROR;
 
-        -- Release the load signal and store unsigned val of addr
-        LOAD <= '0';
-        UnsignedAddr := unsigned(AudioAddr);
-        
-        -- Count through enough values to loop over MAX_19BIT and check looping
-        -- and that addr has become invalid
-        for i in 100 downto 0 loop
-            -- Wait until clock cycle has passed
-            wait for 125000 ns;
+        -- Now, input a button press to start the audio player
+        FilButton <= "1000";
+        wait for 300000 ns;
+        assert (AddrValid = '1')
+            report "AddrValid is not 1 after button press"
+            severity ERROR;
+        FilButton <= "0000";
 
-            -- Check that the value has been incremented correctly
-            assert(unsigned(AudioAddr) = ((UnsignedAddr + 1) rem
-                                                               (MAX_19BIT + 1)))
-                report "INCREMENT FAILED"
-                severity ERROR;
+        -- Wait until the end of the track is reached and ensure that the
+        -- address becomes invalid again.
+        wait for 5 sec;
+        assert (AddrValid = '0')
+            report "AddrValid is not 0 at end of track"
+            severity ERROR;
 
-            -- Store value of AudioAddr
-            UnsignedAddr := unsigned(AudioAddr);
-        end loop;
+        -- Ensure that the output address stopped at the expected location
+        assert (AudioAddr = "1001000000000000000")
+            report "AudioAddr did not stop at expected location"
+            severity ERROR;
 
-        assert (std_match(AddrValid, '0') = TRUE)
-            report "CHECK ADDR VALID FAILED"
+        -- Ensure that each button signal stops at the expected location
+        FilButton <= "0100";
+        wait for 1 sec;
+        assert (AddrValid = '1')
+            report "AddrValid is not 1 after button press"
+            severity ERROR;
+        FilButton <= "0000";
+        wait for 9 sec;
+        assert (AddrValid = '0')
+            report "AddrValid is not 0 at end of track"
+            severity ERROR;
+        assert (AudioAddr = "1011000000000000000")
+            report "AudioAddr did not stop at expected location"
+            severity ERROR;
+
+        FilButton <= "0010";
+        wait for 1 sec;
+        assert (AddrValid = '1')
+            report "AddrValid is not 1 after button press"
+            severity ERROR;
+        FilButton <= "0000";
+        wait for 19 sec;
+        assert (AddrValid = '0')
+            report "AddrValid is not 0 at end of track"
+            severity ERROR;
+        assert (AudioAddr = "1111100000000000000")
+            report "AudioAddr did not stop at expected location"
+            severity ERROR;
+
+        FilButton <= "0001";
+        wait for 1 sec;
+        assert (AddrValid = '1')
+            report "AddrValid is not 1 after button press"
+            severity ERROR;
+        FilButton <= "0000";
+        wait for 3 sec;
+        assert (AddrValid = '0')
+            report "AddrValid is not 0 at end of track"
+            severity ERROR;
+        assert (AudioAddr = "1111111111111111111")
+            report "AudioAddr did not stop at expected location"
             severity ERROR;
 
         -- Shut off the clock and wait for the simulation to end

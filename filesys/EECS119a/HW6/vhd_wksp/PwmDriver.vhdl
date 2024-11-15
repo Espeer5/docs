@@ -81,7 +81,7 @@ architecture implementation of PwmDriver is
 
     -- Provide initial value for cnt8 so that test bench will run
     signal cnt8        : unsigned(7 downto 0) := "00000000"; -- 8 bit counter
-    signal audio_cache : std_logic_vector(7 downto 0); -- Holds data sample
+    signal audio_cache : std_logic_vector(7 downto 0);       -- Holds sample
 
 begin
 

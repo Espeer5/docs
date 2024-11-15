@@ -77,7 +77,6 @@ begin
     begin
         if rising_edge(CLK) then
             if std_match(cnt12(11), '1') = TRUE then
-                REPORT "TOGGLE";
                 cnt12 <= (others => '0');
                 CLK_8kHz  <= not CLK_8kHz;
             else
