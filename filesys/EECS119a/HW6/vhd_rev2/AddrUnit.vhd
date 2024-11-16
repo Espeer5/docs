@@ -67,11 +67,14 @@ architecture behavioral of AddrUnit is
 begin
 
     -- Concurrent logic assignments
+
+    -- Filter button presses to be mutually exclusive
     FilBtn(3) <= Btn(3);
     FilBtn(2) <= Btn(2) and not Btn(3);
     FilBtn(1) <= Btn(1) and not Btn(2) and not Btn(3);
     FilBtn(0) <= Btn(0) and not Btn(1) and not Btn(2) and not Btn(3);
 
+    -- Set start & stop addresses for each button press
     BtnAddr0 <= B3_START when FilBtn = "1000" else
                 B2_START when FilBtn = "0100" else
                 B1_START when FilBtn = "0010" else
@@ -82,6 +85,7 @@ begin
                 B0_START when FilBtn = "0010" else
                 B0_END;
 
+    -- Output is enabled when we haven't reached a stop address
     enable <= '1' when std_match(AudioAddr, AddrStop) = FALSE else '0';
 
     process(CLK_8kHz, RESET)
@@ -98,6 +102,7 @@ begin
                     AddrStop  <= BtnAddr1;
                 end if;
             else
+                -- Otherwise simply increment the address
                 AudioAddr <= std_logic_vector(unsigned(AudioAddr) + 1);
             end if;
         end if;
@@ -134,11 +139,13 @@ begin
     -- Compute invididual terms of Button addresses based on simple equations
     BtnAddr0     <= '1' & FilBtn(0) & (FilBtn(0) or FilBtn(1)) & (FilBtn(0) or
                     FilBtn(1) or FilBtn(2)) & FilBtn(0) & "00000000000000";
+
     BtnAddr1_other <= (others => FilBtn(0));
     BtnAddr1     <= '1' & (FilBtn(1) or FilBtn(0)) & (FilBtn(2) or FilBtn(1) or
                     FilBtn(0)) & '1' & (FilBtn(1) or FilBtn(0))
                     & BtnAddr1_other;
 
+    -- Output is enabled when we haven't reached a stop address
     enable <= '1' when std_match(AudioAddr, AddrStop) = FALSE else '0';
 
     process(CLK_8kHz, RESET)
@@ -155,6 +162,7 @@ begin
                     AddrStop  <= BtnAddr1;
                 end if;
             else
+                -- Otherwise simply increment the address
                 AudioAddr <= std_logic_vector(unsigned(AudioAddr) + 1);
             end if;
         end if;

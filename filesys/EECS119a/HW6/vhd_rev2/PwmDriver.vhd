@@ -58,7 +58,11 @@ architecture behavioral of PWMdriver is
 
 begin
 
-    -- Concurrent loigc assignments
+    -- Concurrent logic assignments
+
+    -- PWM output is computed 16 times per sample period. In each of the 16
+    -- periods, the PWM output is high if the counter value is less than the
+    -- audio data value. The PWM output is low otherwise.
     AudioPWMOut <= '1' when std_match(enable, '1') = TRUE and
                             unsigned(Cntr8) < unsigned(AudioCache) else '0';
 
