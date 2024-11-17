@@ -25,9 +25,6 @@
 % Load the fancy headers package, using the defaults.
 \usepackage{fancyhdr}
 \pagestyle{fancy}
-%\fancyfoot[C]{\thepage}  
-%\renewcommand{\headrulewidth}{0pt}
-%\renewcommand{\footrulewidth}{0pt}
 
 % Setup the listings, including using color.
 \usepackage{listings}
@@ -79,8 +76,8 @@
 
 \section*{Intoduction - What is Git?}
 Git is what's known as a \textit{distributed version control system} or DVCS.
-It was invented by Linus Torvalds, the creator of Linux, in 2005 to reake the
-place of centralized version control systems (SVCS) used by Linux developers.
+It was invented by Linus Torvalds, the creator of Linux, in 2005 to take the
+place of centralized version control systems (CVCS) used by Linux developers.
 
 Version control systems are used to track changes in files and directories over
 time. All VCSs have the following elements:
@@ -90,9 +87,11 @@ time. All VCSs have the following elements:
                                and directories.
     \item \textbf{Working Directory:} A directory on your computer where you can
                                       edit files from the repository.
-    \item \textbf{Commit:} A snapshot of the repository at a given time.
     \item \textbf{Staging Area:} A cache of changes from the working directory
                                 that are ready to be committed.
+    \item \textbf{Commit:} A snapshot of the repository at a given time.
+    \item \textbf{Commit History:} A log of all the commits that have been
+                                   made to the repository.
 \end{itemize}
 
 Git, and other DVCS, are distributed in that every user has a complete copy of
@@ -101,30 +100,24 @@ central server upstream. This allows for more flexibility and robustness in
 collaborative development.
 
 \begin{center}
-    \includegraphics[scale=0.2]{cvcs.png}
-    \includegraphics[scale=0.2]{dvcs.png}
+    \includegraphics[scale=0.15]{cvcs.png}
+    \includegraphics[scale=0.15]{dvcs.png}
 \end{center}
 
-\section*{Setting Up}
+The way a DVCS like Git is used is to have a repository hosted on a server - i.e
+a repository hosted at \texttt{gitlab.caltech.edu} - which serves as the official
+version of the code. Each developer will then clone the repository to their local
+machine, work on the code in their working directory, and then upload or
+\texttt{push} their changes up to the server. An overview of the git architecture
+is show in the following diagram. We will be explaining and understanding each
+component of this diagram as we go:
 
-To start using Git, you need to first configure your system with your name and
-email address. This information is used to identify you as the author of commits
-you make.
+\begin{center}
+    \includegraphics[scale=0.3]{overview.png}
+\end{center}
 
-\begin{lstlisting}
-git config --global user.name <Your Name>
-git config --global user.email <Your Email>
-\end{lstlisting}
 
-Now you are ready to create a new repository. \texttt{cd} to the directory where
-you want to create the repository and run the following command:
-
-\begin{lstlisting}
-git init
-\end{lstlisting}
-
-This will create a \texttt{.git} folder under the current directory, which is
-where Git stores all of the information about the repository.
+\pagebreak
 
 \section*{Committing}
 The most basic operation in Git is committing. This is the process of taking a
@@ -170,6 +163,13 @@ git diff <commit hash>               # Compare a commit to the working directory
 git diff <commit hash> <commit hash> # Compare two commits
 \end{lstlisting}
 
+To see your current status, including which files are staged, unstaged changes,
+and much more that will make sense as you get more familiar with Git:
+
+\begin{lstlisting}
+git status
+\end{lstlisting}
+
 Finally, you may want to reset certain files or the entire repository to a
 previous commit (notice that you CAN LOSE WORK this way if you aren't careful):
 
@@ -186,7 +186,7 @@ git reset --hard <commit>  # Reset the entire repository to a specific commit
 \section*{Branching}
 
 Using a DVCS like Git allows users to create branches, which are separate
-lines of development split off from a commmon origin that can be worked on
+commit histories split off from a commmon origin that can be worked on
 independently. 
 
 \begin{center}
@@ -238,14 +238,87 @@ conflict manually.
 
 \pagebreak
 
+\section*{Stashing}
+
+Sometimes while working, you may run into the following situations:
+\begin{itemize}
+    \item You want to run the code from your latest commit, but you have
+          uncommitted changes in your working directory.
+    \item You want to switch to a different branch, but you have uncommitted
+          changes in your working directory.
+    \item You accidentally edited on the wrong branch, and you need to move your
+          changes to a different branch.
+    \item You want to see what your code looked like before you edited it, and
+          the output of \texttt{git diff} is annoying to read.
+\end{itemize}
+
+In these use cases, and in more (any time you want to save your changes without
+committing them), you can use the \texttt{git stash} command. The Git stash is 
+a LIFO stack that allows you to save your changes and restore them later
+without committing them or making a seperate branch.
+
+For example:
+
+\begin{lstlisting}
+git checkout main                    # Switch to the main branch
+vim hello_world.py                   # Make some changes to a file
+
+(OOPS I want to run the old version)
+
+git stash push                       # Save your changes to the stash
+python hello_world.py                # Run the old version of the code
+git stash pop                        # Restore your changes from the stash
+\end{lstlisting}
+
+\begin{lstlisting}
+git checkout main                   # Switch to the main branch
+
+(work on main with unsaved changes) # OOPS I meant to work on my feature branch
+
+git stash                           # Save your changes to the stash
+git checkout <branchname>           # Switch to your feature branch
+git stash pop                       # Restore your changes from the stash
+\end{lstlisting}
+
+In this example, as is always the case with git, there could be merge conflicts
+to resolve when you apply the changes from the most recent stash entry to your
+working directory.
+
+Keep in mind that the stash can have many entries in it. I recommend adding a
+message to your stash entries to keep track of what you are stashing. You can 
+see a list of all our your stash entries and their associated messages using
+\texttt{git stash list}.
+
+\begin{lstlisting}
+git stash push -m <commit message>  # Stash your changes with a message
+git stash list                      # List all your stash entries
+\end{lstlisting}
+
+You can also appply changes from a specific stash entry not at the top of the
+stash using \texttt{git stash apply}. You refer to each entry as
+\texttt{stash@n}, where \texttt{n} is the 0-indexed index of the stash entry.
+For example, to apply the second stash entry:
+
+\begin{lstlisting}
+git stash apply stash@{1}  # Apply the second stash entry
+\end{lstlisting}
+
+To delete an old entry from the stash that you don't need anymore:
+
+\begin{lstlisting}
+git stash drop stash@{1}  # Delete the second stash entry
+\end{lstlisting}
+
+\pagebreak
+
 \section*{Rebasing}
 
-Rebasing is another way to integrate changes from one branch into another.
-It works by moving the commits from one branch to another, and then replaying
-the commits on top of the branch you are rebasing onto. For example, say you
-have a feature branch that you aren't ready to merge into main yet, but you
-want to keep it up to date with the main branch. You can rebase the feature
-branch onto the main branch to incorporate the changes from main.
+Rebasing is another way to integrate changes from one branch into another
+besides merging. It works by moving the commits from one branch to another, and
+then replaying the commits on top of the branch you are rebasing onto. For
+example, say you have a feature branch that you aren't ready to merge into main
+yet, but you want to keep it up to date with the main branch. You can rebase the
+feature branch onto the main branch to incorporate the changes from main.
 
 \begin{center}
     \includegraphics[scale=0.4]{rebase.png}
@@ -257,7 +330,7 @@ shared with other people. I recommend always backing up your branch before
 attemping a rebase. To backup your branch:
 
 \begin{lstlisting}
-git branch backup
+git branch my_backup_branch
 \end{lstlisting}
 
 To rebase your branch onto another branch:
@@ -313,6 +386,27 @@ git remote add <remote name> <repository URL>
 By convention, the main remote should be named \texttt{origin}. By the power of
 DVCS, you can have multiple remotes for a single repository.
 
+In a simple workflow, you may not need to use multiple branches. In this case,
+you may simply edit files in the working directory on the \texttt{main} branch,
+add and commit changes, and push them to the remote repository.
+
+\begin{lstlisting}
+git pull   # Pull changes on main from the remote repository
+
+(Work on main branch)
+
+git add .  # Add changes to the staging area
+git commit -m <commit message> # Commit changes to the repository
+git push   # Push changes on main to the remote repository
+\end{lstlisting}
+
+If you want to sync your local repository with the remote repository without
+making changes to your working directory you can use \texttt{git fetch}. This
+will download the changes from the remote repository to your local repository,
+but will not merge them into your working directory. This means you can check
+to see if there are any changes on the remote that you need to rebase onto, or
+if you need to pull changes from the remote.
+
 Remember that with a DVCS, you have a complete copy of the repository on your
 local machine. This means that your local repository can have multiple branches
 that are not present in the remote repository. To synchronize your local
@@ -321,7 +415,7 @@ This is simply a mapping between a local branch and a remote branch. Once an
 upstream is set, you simply use \texttt{git push} to push changes to the remote
 branch, and \texttt{git pull} to pull changes from the remote branch.
 
-Take the following example:
+Take the following example of a slightly more complex workflow:
 
 \begin{lstlisting}
 git clone <repository URL>    # Clone repo from remote
@@ -348,10 +442,27 @@ discussions with other developers.
 
 \pagebreak
 
+\section*{Simple Workflow - Single Developer or Group Programming}
+
+If all developers are working together on the same code at the same time, we can
+use a simple workflow that involves only the \texttt{main} branch. Without
+working on multiple feature in parallel, we don't have to worry about merge
+conflicts, rebasing, or pull requests. In this workflow:
+
+\begin{enumerate}
+    \item Clone the repository to your local machine.
+    \item Work on the code in the working directory.
+    \item Add changes to the staging area and commit them.
+    \item Push changes to the remote repository.
+    \item Anytime changes were pushed to the remote from another device, be sure
+          to \texttt{git pull} them down to your local repository before making
+          more changes.
+\end{enumerate}
+
 \section*{Typical Workflow}
 
-A typical workflow (called feature branching) for using Git in a collaborative
-environment is as follows:
+The industry-standard workflow (called feature branching) for using Git in a
+collaborative environment is as follows:
 
 \begin{enumerate}
 
@@ -381,7 +492,7 @@ and concepts of Git in order to use it effectively. The best way to learn Git
 is to use it, so I encourage you to practice using best Git practices in your
 upcoming final projects. There are many more advanced features of Git that I
 have not covered in this recitation, so I encourage you to explore the Git
-documentation and tutorials to learn more. If you get stuck or have any trouble
-with Git during the projects, don't hesitate to ask me for help!
+documentation to learn more. If you get stuck or have any trouble with Git
+during the projects, don't hesitate to ask me for help!
 
 \end{document}
