@@ -14,10 +14,19 @@
 \usepackage{comment}
 \usepackage{subcaption}
 \usepackage{bm}
+\usepackage{hyperref}
 \usepackage{multirow}
 
 % Setup the geometry package (for page layout) and spacing.
 \usepackage[margin=1.0in]{geometry}
+
+% Setup the hyperref package for clickable links.
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=blue,
+}
 
 \setlength{\parskip}{6pt plus 2pt minus 2pt}
 \setlength{\parindent}{0in}
@@ -100,8 +109,8 @@ central server upstream. This allows for more flexibility and robustness in
 collaborative development.
 
 \begin{center}
-    \includegraphics[scale=0.15]{cvcs.png}
-    \includegraphics[scale=0.15]{dvcs.png}
+    \includegraphics[scale=0.25]{cvcs.png}
+    \includegraphics[scale=0.25]{dvcs.png}
 \end{center}
 
 The way a DVCS like Git is used is to have a repository hosted on a server - i.e
@@ -113,9 +122,40 @@ is show in the following diagram. We will be explaining and understanding each
 component of this diagram as we go:
 
 \begin{center}
-    \includegraphics[scale=0.3]{overview.png}
+    \includegraphics[scale=0.4]{overview.png}
 \end{center}
 
+\section*{Setting Up - Git Config}
+
+Before you start using Git, there are a few things you need to do. First, check
+that git is installed on your computer by running:
+
+\begin{lstlisting}
+git --version
+\end{lstlisting}
+
+If you don't have git installed, you can download it from the Git website. Once
+you have git installed, you need to configure it with your name and email. This
+is important because every commit you make will have this information attached
+to it, and it will identify to the server who you are when you want to push your
+changes. To set your name and email:
+
+\begin{lstlisting}
+git config --global user.name "Your Name"
+git config --global user.email "
+\end{lstlisting}
+
+These commands will add your information to your global git configuration file,
+which is located at \texttt{\textasciitilde/.gitconfig} on Unix systems and
+\texttt{C:\textbackslash Users\textbackslash username\textbackslash .gitconfig}
+on Windows systems.
+
+You will also need to set up an SSH key to authenticate with the remote
+repository. Follow the instruction given
+\href{https://docs.gitlab.com/ee/user/ssh.html}{here} to set up an SSH key for
+your GitLab account.
+
+You're now ready to clone a repository from Gitlab and begin working!
 
 \pagebreak
 
@@ -361,7 +401,7 @@ So far, we have only been working with a local repository on our computer.
 However, Git is designed to work with remote repositories as well. A remote
 repository is a copy of the repository that is stored on a server, and can be
 accessed by multiple users. The most common way to interact with a remote
-repository is through a service like GitHub, GitLab, or Bitbucket.
+repository is through a web service. For us, this will be GitLab.
 
 To copy a remote repository to your local machine:
 
@@ -391,13 +431,13 @@ you may simply edit files in the working directory on the \texttt{main} branch,
 add and commit changes, and push them to the remote repository.
 
 \begin{lstlisting}
-git pull   # Pull changes on main from the remote repository
+git pull                       # Pull changes on main from the remote repository
 
 (Work on main branch)
 
-git add .  # Add changes to the staging area
+git add .                      # Add changes to the staging area
 git commit -m <commit message> # Commit changes to the repository
-git push   # Push changes on main to the remote repository
+git push                       # Push changes on main to the remote repository
 \end{lstlisting}
 
 If you want to sync your local repository with the remote repository without
