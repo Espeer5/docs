@@ -442,17 +442,15 @@ git push                       # Push changes on main to the remote repository
 
 If you want to sync your local repository with the remote repository without
 making changes to your working directory you can use \texttt{git fetch}. This
-will download the changes from the remote repository to your local repository,
-but will not merge them into your working directory. This means you can check
-to see if there are any changes on the remote that you need to rebase onto, or
-if you need to pull changes from the remote.
+means you can check to see if there are any changes on the remote that you need
+to rebase onto, or if you need to pull changes from the remote.
 
 Remember that with a DVCS, you have a complete copy of the repository on your
 local machine. This means that your local repository can have multiple branches
 that are not present in the remote repository. To synchronize your local
-branches with the remote repository, you set what is called an upstream branch.
-This is simply a mapping between a local branch and a remote branch. Once an
-upstream is set, you simply use \texttt{git push} to push changes to the remote
+branches with the remote repository, you set an upstream branch.
+This is a mapping between a local branch and a remote branch. Once an
+upstream is set, you use \texttt{git push} to push changes to the remote
 branch, and \texttt{git pull} to pull changes from the remote branch.
 
 Take the following example of a slightly more complex workflow:
@@ -468,6 +466,7 @@ git push -u origin feature    # Push changes to remote and set upstream
 (Work on feature branch more)
 
 git push                      # Push changes to remote (upstream already set)
+git push -f                   # Push changes to remote if you have divergent histories
 \end{lstlisting}
 
 It's best practice to push your new commits to the remote frequently as a 
