@@ -1,0 +1,101 @@
+\documentclass[11pt, a4paper]{article}
+\usepackage[a4paper, left=30mm, right=30mm]{geometry} % margin=2.6cm
+
+\usepackage[utf8]{inputenc}  % allow utf-8 input
+\usepackage[T1]{fontenc}     % use 8-bit T1 fonts
+\usepackage{ebgaramond}
+
+\usepackage{hyperref}         % hyperlinks
+\usepackage{url}              % simple URL typesetting
+\usepackage{booktabs}         % professional-quality tables
+\usepackage{amsfonts}         % blackboard math symbols
+\usepackage{nicefrac}         % compact symbols for 1/2, etc.
+\usepackage{microtype}        % microtypography
+\usepackage{xcolor}           % colors
+\usepackage{bbm}
+\usepackage{amsthm}
+\usepackage{rotating}
+
+\hypersetup{                 % setup the hyperref package
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=blue,
+    urlcolor=blue,
+    citecolor=blue,
+    pdftitle={Entitlement Justice and Measures of Algorithmic Fairness},
+    pdfauthor={Edward Speer, Llama-2-7b},
+    pdfkeywords={entitlement justice, algorithmic fairness, AI ethics},
+    bookmarks=true,
+}
+
+
+\usepackage{graphicx} % Required for inserting images
+\usepackage[ngerman, english]{babel}
+\usepackage[iso, ngerman]{isodate}
+
+
+\usepackage{bbold}
+\usepackage{mathtools}
+\usepackage{amsmath} % Required for \DeclareMathOperator
+\usepackage{nicefrac}
+\usepackage{tikz}
+\usepackage{subcaption}
+\usepackage{centernot} % for the comparison
+
+%\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+
+\usepackage{verbatim}
+
+\RequirePackage[T1]{fontenc} 
+\RequirePackage[tt=false, type1=true]{libertine} 
+\RequirePackage[varqu]{zi4} 
+\RequirePackage[libertine]{newtxmath}
+
+\usepackage[round,comma]{natbib}
+\bibliographystyle{plainnat}
+
+\newcommand{\monthyeardate}{\ifcase \month \or January\or February\or March\or %
+April\or May \or June\or July\or August\or September\or October\or November\or %
+December\fi, \number \year} 
+
+\title{The Good Life+: Well-Being in Virtual Worlds}
+\author{%
+  Edward Speer
+  \\
+  California Institute of Technology\\
+  HPS/Pl 136, FA '24 \\
+}
+\date{\monthyeardate}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+    \input{sections/abstract.tex}
+\end{abstract}
+
+\section{Introduction}
+\input{sections/intro.tex}
+
+\section{The Experience Machine}
+\input{sections/experience_machine.tex}
+
+\section{Virtual Worlds}
+\input{sections/virtual_worlds.tex}
+
+\section{Virtual Digitalism}
+\input{sections/virtual_ont.tex}
+
+\section{Authenticity of Virtual Experience}
+\input{sections/auth_virt.tex}
+
+\section{Conclusion}
+\input{sections/conclusion.tex}
+
+\pagebreak
+
+\bibliography{references}
+\end{document}
