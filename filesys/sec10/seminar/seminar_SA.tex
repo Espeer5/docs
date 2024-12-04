@@ -1,0 +1,63 @@
+\documentclass{article}
+
+% Packages
+\usepackage{fullpage}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{enumerate}
+
+% Macros
+\newcommand{\ans}[1]{\color{blue} #1 \color{black}}
+
+\begin{document}
+
+    % TITLE SECTION
+
+    \begin{center}
+        ************************************ \\
+        SEC10 Seminar Talk, Self-Assessment \\
+        Edward Speer \\
+        \today \\
+        ************************************
+    \end{center}
+
+    \noindent \emph{Q: What was the FINAL title of your talk?}
+    \\ \hfill \\
+    Transforming Climate Science: The Secret Sauce of Radiative Transfer
+    \\ \hfill \\
+    \noindent \emph{Q: If you had to do your Seminar Talk again, what three
+                       things would you do differently?}
+
+    \begin{enumerate}[(1)]
+    
+        \item I feel that while most of my presentation was very clear, my
+              explanation of the formula for the TwoStream scheme was a bit hard
+              to follow for the audience. The graphics were very clear on the
+              slides, but I think I could have done a better job explaining
+              exactly how the equation worked.
+        \item I would have liked to talk just a bit about the implementation of
+              the equations in the CliMA software. I cut any discussion about
+              the code implementation for the sake of time, but I think it might
+              have been interesting for the audience to see how the equation is
+              turned from what seems like should be iteration into matrix based
+              operations for speed in my code. Maybe I could have spent a bit
+              less time on the theory and more on the implementation, though it
+              would be tough for the audience to follow the implementation
+              without sufficient discussion of the theory.
+        \item I think while I was talking I could have spoken more about the 
+              material appearing in the slides. I kept my eyes off the text on
+              the slides and spoke at a high level, but there were some points
+              on the slides that I could have elaborated on in the theory
+              section. For example, I didn't describe what the solar zenith
+              angle or leaf angular distributions were, despite the fact that
+              they are important parameters of the radiative transfer equation.
+              Had I stuck just a bit more to the text on the slides, I wouldn't
+              have glossed over them. Whether or not \emph{everything} on the 
+              slides needed to be said, planning in advance those parts that I
+              needed to make \emph{sure} were said would have been helpful - 
+              i.e laying out the key elements of the story I wanted to tell in 
+              advance would ensure I didn't skip any of them.
+
+    \end{enumerate}
+
+\end{document}
