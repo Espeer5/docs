@@ -66,7 +66,6 @@ architecture implementation of CORDIC16 is
             XIn  : in  std_logic_vector(21 downto 0);  -- X input buffer
             YIn  : in  std_logic_vector(21 downto 0);  -- Y input buffer
             ZIn  : in  std_logic_vector(21 downto 0);  -- Z input buffer
-            Cst  : in  std_logic_vector(21 downto 0);  -- Constant val for Z sum
             di   : in  std_logic;                      -- CORDIC decision var
             m    : in  std_logic_vector(1 downto  0);  -- CORDIC coordinate mode
             XOut : out std_logic_vector(21 downto 0);  -- X buffer out
@@ -81,64 +80,8 @@ architecture implementation of CORDIC16 is
     
     -- K constant for sin/cos and sinh/cosh
     constant K     : std_logic_vector(21  downto 0) := "0000100110110111010010";
-    constant hK    : std_logic_vector(21  downto 0) := "0000110110100010011100";
-
-    -- 2^-i for i = 0 to 16
-    constant delta : std_logic_vector(373 downto 0) := "0001000000000000000000" &
-                                                       "0000100000000000000000" &
-                                                       "0000010000000000000000" &
-                                                       "0000001000000000000000" &
-                                                       "0000000100000000000000" &
-                                                       "0000000010000000000000" &
-                                                       "0000000001000000000000" &
-                                                       "0000000000100000000000" &
-                                                       "0000000000010000000000" &
-                                                       "0000000000001000000000" &
-                                                       "0000000000000100000000" &
-                                                       "0000000000000010000000" &
-                                                       "0000000000000001000000" &
-                                                       "0000000000000000100000" &
-                                                       "0000000000000000010000" &
-                                                       "0000000000000000001000" &
-                                                       "0000000000000000000100";
-
-    -- atan(2^-i) for i = 0 to 16
-    constant atans : std_logic_vector(373 downto 0) := "0000110010010000111111" &
-                                                       "0000011101101011000110" &
-                                                       "0000001111101011011011" &
-                                                       "0000000111111101010110" &
-                                                       "0000000011111111101010" &
-                                                       "0000000001111111111101" &
-                                                       "0000000000111111111111" &
-                                                       "0000000000011111111111" &
-                                                       "0000000000001111111111" &
-                                                       "0000000000000111111111" &
-                                                       "0000000000000011111111" &
-                                                       "0000000000000001111111" &
-                                                       "0000000000000000111111" &
-                                                       "0000000000000000011111" &
-                                                       "0000000000000000001111" &
-                                                       "0000000000000000000111" &
-                                                       "0000000000000000000011";
-
-    -- atanhs for i = 0 to 16
-    constant htans : std_logic_vector(373 downto 0) := "0000100011001001111101" &
-                                                       "0000010000010110001010" &
-                                                       "0000001000000010101100" &
-                                                       "0000000100000000010101" &
-                                                       "0000000010000000000010" &
-                                                       "0000000001000000000000" &
-                                                       "0000000000100000000000" &
-                                                       "0000000000010000000000" &
-                                                       "0000000000001000000000" &
-                                                       "0000000000000100000000" &
-                                                       "0000000000000010000000" &
-                                                       "0000000000000001000000" &
-                                                       "0000000000000000100000" &
-                                                       "0000000000000000010000" &
-                                                       "0000000000000000001000" &
-                                                       "0000000000000000000100" &
-                                                       "0000000000000000000010";
+    constant hK    : std_logic_vector(21  downto 0) := "0000110101000110110010";
+                                                       
     --
     -- Internal signals
     --
@@ -151,15 +94,12 @@ architecture implementation of CORDIC16 is
     signal xOuts : std_logic_vector(373 downto 0); -- X outputs for all rows
     signal yOuts : std_logic_vector(373 downto 0); -- Y outputs for all rows
     signal zOuts : std_logic_vector(373 downto 0); -- Z outputs for all rows
-    signal cIns  : std_logic_vector(373 downto 0); -- Select constant based on m
 
 begin
 
-    -- m is 0 for multiplication and division only
-    m(1) <= f(1) or f(0);
-
-    -- m is positive for sin/cos and negative for sinh/cosh
-    m(0) <= f(0);
+    -- m is 0 for multiplication and division only, positive for sin/cos an
+    --    negative for sinh/cosh
+    m <= (f(1) or f(0)) & f(0);
 
     -- Xin is x when m is 0, K otherwise
     with m select
@@ -171,18 +111,12 @@ begin
     Y0 <= "00" & y & "0000" when f(3) = '1' else "0000000000000000000000";
 
     -- Zin is 0 when dividing, otherwise input 2
-    Z0 <= "0000000000000000000000" when f(3) = '1' else "00" & y & "0000";
-
-    -- Select which constants to use in z sum based on m value
-    with m select
-        cIns <= delta when "00",
-                atans when "11",
-                htans when others;
+    Z0 <= "0000000000000000000000" when f(3) = '1' else "00" & x & "0000";
 
     -- Decision var at every row is 1 when we want to subtract, 0 for add
-    d(0) <= Z0(19);
+    d(0) <= Z0(19) when f(3) = '0' else not Y0(19);
     GenD: for i in 1 to 16 generate
-        d(i) <= ZOuts(393 - i * 22);
+        d(i) <= ZOuts(393 - i * 22) when f(3) = '0' else not YOuts(393 - i * 22);
     end generate;
 
     -- Create port map for the first XYZ row
@@ -191,7 +125,6 @@ begin
         XIn  => X0,
         YIn  => Y0,
         ZIn  => Z0,
-        Cst  => cIns(373 downto 352),
         di   => d(0),
         m    => m,
         XOut => xOuts(373 downto 352),
@@ -206,7 +139,6 @@ begin
             XIn  => xOuts(373 - i * 22 downto 352 - i * 22),
             YIn  => yOuts(373 - i * 22 downto 352 - i * 22),
             ZIn  => zOuts(373 - i * 22 downto 352 - i * 22),
-            Cst  =>  cIns(351 - i * 22 downto 330 - i * 22),
             di   => d(i + 1),
             m    => m,
             XOut => xOuts(373 - (i + 1) * 22 downto 352 - (i + 1) * 22),
