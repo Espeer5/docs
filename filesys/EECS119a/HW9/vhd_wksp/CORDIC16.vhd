@@ -79,8 +79,8 @@ architecture implementation of CORDIC16 is
     --
     
     -- K constant for sin/cos and sinh/cosh
-    constant K     : std_logic_vector(21  downto 0) := "0000100110110111010010";
-    constant hK    : std_logic_vector(21  downto 0) := "0000110101000110110010";
+    constant K     : std_logic_vector(21  downto 0) := "0000100110110111010011";
+    constant hK    : std_logic_vector(21  downto 0) := "0001001101100000000000";
                                                        
     --
     -- Internal signals
