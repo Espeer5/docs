@@ -25,6 +25,8 @@
 --                                                                            --
 --  Revision History:                                                         --
 --      12/5/24  Edward Speer  Initial Revision                               --
+--      12/6/24  Edward Speer  Compute sub signals for x and y                --
+--      12/8/24  Edward Speer  Add hyperbolic sequencing, fix constants       --
 --                                                                            --
 --------------------------------------------------------------------------------
 

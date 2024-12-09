@@ -29,6 +29,15 @@ def hk_vals():
         print(k)
     print(dec_to_fp18(k))
 
+def gen_lin_tst():
+    a = 0.1
+    b = 1.1
+    while a < 1.1:
+        #print("\"" + dec_to_fp(a) + "\" &")#, dec_to_fp(b))
+        print("\"" + dec_to_fp(b) + "\" &")
+        a += .025
+        b -= .025
+
 def gen_tests():
     th = np.radians(2)
     while th < np.radians(90):
@@ -37,4 +46,4 @@ def gen_tests():
         th += np.radians(2)
 
 if __name__ == '__main__':
-    gen_tests()
+    gen_lin_tst()

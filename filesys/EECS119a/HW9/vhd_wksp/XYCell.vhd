@@ -26,6 +26,10 @@
 --           XCOut  - Carry out from the X adder/subtractor                   --
 --           YCOut  - Carry out from the Y adder/subtractor                   --
 --                                                                            --
+--  Revision History:                                                         --
+--      12/5/2024  Edward Speer  Initial Revision                             --
+--      12/6/2024  Edward Speer  Take in subs instead of m/di                 --
+--                                                                            --
 --------------------------------------------------------------------------------
 
 --

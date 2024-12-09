@@ -26,6 +26,8 @@
 --                                                                            --
 --  Revision History:                                                         --
 --      12/5/24  Edward Speer  Initial Revision                               --
+--      12/6/24  Edward Speer  Repair d calculation                           --
+--      12/8/24  Edward Speer  Remove constants to XYZRow                     --
 --                                                                            --
 --------------------------------------------------------------------------------
 
@@ -111,7 +113,9 @@ begin
     Y0 <= "00" & y & "0000" when f(3) = '1' else "0000000000000000000000";
 
     -- Zin is 0 when dividing, otherwise input 2
-    Z0 <= "0000000000000000000000" when f(3) = '1' else "00" & x & "0000";
+    Z0 <= "0000000000000000000000" when f(3) = '1'
+           else "00" & y & "0000" when f = "00100"
+           else "00" & x & "0000";
 
     -- Decision var at every row is 1 when we want to subtract, 0 for add
     d(0) <= Z0(19) when f(3) = '0' else not Y0(19);

@@ -1,0 +1,770 @@
+Release 14.7 - xst P.20131013 (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.17 secs
+ 
+--> Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.17 secs
+ 
+--> Reading design: CORDIC16.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Compilation
+  3) Design Hierarchy Analysis
+  4) HDL Analysis
+  5) HDL Synthesis
+     5.1) HDL Synthesis Report
+  6) Advanced HDL Synthesis
+     6.1) Advanced HDL Synthesis Report
+  7) Low Level Synthesis
+  8) Partition Report
+  9) Final Report
+      9.1) Device utilization summary
+      9.2) Partition Resource Summary
+      9.3) TIMING REPORT
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "CORDIC16.prj"
+Input Format                       : mixed
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "CORDIC16"
+Output Format                      : NGC
+Target Device                      : xc3s1200e-5-fg320
+
+---- Source Options
+Top Module Name                    : CORDIC16
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : LUT
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Mux Style                          : Auto
+Decoder Extraction                 : YES
+Priority Encoder Extraction        : Yes
+Shift Register Extraction          : YES
+Logical Shifter Extraction         : YES
+XOR Collapsing                     : YES
+ROM Style                          : Auto
+Mux Extraction                     : Yes
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Multiplier Style                   : Auto
+Automatic Register Balancing       : No
+
+---- Target Options
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 500
+Add Generic Clock Buffer(BUFG)     : 24
+Register Duplication               : YES
+Slice Packing                      : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Yes
+Use Synchronous Set                : Yes
+Use Synchronous Reset              : Yes
+Pack IO Registers into IOBs        : Auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Keep Hierarchy                     : No
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+Verilog 2001                       : YES
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "//microserver/udrive/EE119a/es/CORDIC/CORDIC16/AddSub1.vhd" in Library work.
+Entity <AddSub1> compiled.
+Entity <AddSub1> (Architecture <implementation>) compiled.
+Compiling vhdl file "//microserver/udrive/EE119a/es/CORDIC/CORDIC16/XYCell.vhd" in Library work.
+Entity <XYCell> compiled.
+Entity <XYCell> (Architecture <DataFlow>) compiled.
+Compiling vhdl file "//microserver/udrive/EE119a/es/CORDIC/CORDIC16/XYZRow.vhd" in Library work.
+Entity <XYZRow> compiled.
+Entity <XYZRow> (Architecture <DataFlow>) compiled.
+Compiling vhdl file "//microserver/udrive/EE119a/es/CORDIC/CORDIC16/CORDIC16.vhd" in Library work.
+Entity <CORDIC16> compiled.
+Entity <CORDIC16> (Architecture <implementation>) compiled.
+
+=========================================================================
+*                     Design Hierarchy Analysis                         *
+=========================================================================
+Analyzing hierarchy for entity <CORDIC16> in library <work> (architecture <implementation>).
+
+Analyzing hierarchy for entity <XYZRow> in library <work> (architecture <DataFlow>).
+
+Analyzing hierarchy for entity <XYCell> in library <work> (architecture <DataFlow>).
+
+Analyzing hierarchy for entity <AddSub1> in library <work> (architecture <implementation>).
+
+
+=========================================================================
+*                            HDL Analysis                               *
+=========================================================================
+Analyzing Entity <CORDIC16> in library <work> (Architecture <implementation>).
+Entity <CORDIC16> analyzed. Unit <CORDIC16> generated.
+
+Analyzing Entity <XYZRow> in library <work> (Architecture <DataFlow>).
+Entity <XYZRow> analyzed. Unit <XYZRow> generated.
+
+Analyzing Entity <XYCell> in library <work> (Architecture <DataFlow>).
+Entity <XYCell> analyzed. Unit <XYCell> generated.
+
+Analyzing Entity <AddSub1> in library <work> (Architecture <implementation>).
+Entity <AddSub1> analyzed. Unit <AddSub1> generated.
+
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Performing bidirectional port resolution...
+
+Synthesizing Unit <AddSub1>.
+    Related source file is "//microserver/udrive/EE119a/es/CORDIC/CORDIC16/AddSub1.vhd".
+    Found 1-bit xor3 for signal <S>.
+    Found 1-bit xor2 for signal <COut$xor0000> created at line 55.
+    Summary:
+      inferred   1 Xor(s).
+Unit <AddSub1> synthesized.
+
+
+Synthesizing Unit <XYCell>.
+    Related source file is "//microserver/udrive/EE119a/es/CORDIC/CORDIC16/XYCell.vhd".
+Unit <XYCell> synthesized.
+
+
+Synthesizing Unit <XYZRow>.
+    Related source file is "//microserver/udrive/EE119a/es/CORDIC/CORDIC16/XYZRow.vhd".
+WARNING:Xst:646 - Signal <ZCarry<21>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <YCarry<21>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <XCarry<21>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+    Found 22-bit 4-to-1 multiplexer for signal <Cst>.
+    Found 5x5-bit multiplier for signal <Cst$mult0000> created at line 198.
+    Found 22-bit shifter logical right for signal <XShift>.
+    Found 5-bit 17-to-1 multiplexer for signal <XShift$varindex0000> created at line 191.
+    Found 1-bit xor2 for signal <XSub>.
+    Found 22-bit shifter logical right for signal <YShift$shift0001> created at line 194.
+    Summary:
+      inferred   1 Multiplier(s).
+      inferred  27 Multiplexer(s).
+      inferred   2 Combinational logic shifter(s).
+Unit <XYZRow> synthesized.
+
+
+Synthesizing Unit <CORDIC16>.
+    Related source file is "//microserver/udrive/EE119a/es/CORDIC/CORDIC16/CORDIC16.vhd".
+WARNING:Xst:646 - Signal <zOuts<21:20>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <zOuts<3:0>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <yOuts<21:20>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <yOuts<3:0>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <xOuts<21:20>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <xOuts<3:0>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+    Found 22-bit 4-to-1 multiplexer for signal <X0>.
+    Summary:
+      inferred  22 Multiplexer(s).
+Unit <CORDIC16> synthesized.
+
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# Multipliers                                          : 17
+ 5x5-bit multiplier                                    : 17
+# Multiplexers                                         : 35
+ 22-bit 4-to-1 multiplexer                             : 18
+ 5-bit 17-to-1 multiplexer                             : 17
+# Logic shifters                                       : 34
+ 22-bit shifter logical right                          : 34
+# Xors                                                 : 2261
+ 1-bit xor2                                            : 1139
+ 1-bit xor3                                            : 1122
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+WARNING:Xst:1290 - Hierarchical block <AddSub1ZGen[20].AddSub1ZN> is unconnected in block <XYZ1>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <AddSub1ZGen[21].AddSub1ZN> is unconnected in block <XYZ1>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <AddSub1ZGen[20].AddSub1ZN> is unconnected in block <GenXYZRows[0].XYZRowN>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <AddSub1ZGen[21].AddSub1ZN> is unconnected in block <GenXYZRows[0].XYZRowN>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <AddSub1ZGen[20].AddSub1ZN> is unconnected in block <GenXYZRows[1].XYZRowN>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <AddSub1ZGen[21].AddSub1ZN> is unconnected in block <GenXYZRows[1].XYZRowN>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <AddSub1ZGen[20].AddSub1ZN> is unconnected in block <GenXYZRows[2].XYZRowN>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <AddSub1ZGen[21].AddSub1ZN> is unconnected in block <GenXYZRows[2].XYZRowN>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <AddSub1ZGen[20].AddSub1ZN> is unconnected in block <GenXYZRows[3].XYZRowN>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <AddSub1ZGen[21].AddSub1ZN> is unconnected in block <GenXYZRows[3].XYZRowN>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <AddSub1ZGen[20].AddSub1ZN> is unconnected in block <GenXYZRows[4].XYZRowN>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <AddSub1ZGen[21].AddSub1ZN> is unconnected in block <GenXYZRows[4].XYZRowN>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <AddSub1ZGen[20].AddSub1ZN> is unconnected in block <GenXYZRows[5].XYZRowN>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <AddSub1ZGen[21].AddSub1ZN> is unconnected in block <GenXYZRows[5].XYZRowN>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <AddSub1ZGen[20].AddSub1ZN> is unconnected in block <GenXYZRows[6].XYZRowN>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <AddSub1ZGen[21].AddSub1ZN> is unconnected in block <GenXYZRows[6].XYZRowN>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <AddSub1ZGen[20].AddSub1ZN> is unconnected in block <GenXYZRows[7].XYZRowN>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <AddSub1ZGen[21].AddSub1ZN> is unconnected in block <GenXYZRows[7].XYZRowN>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <AddSub1ZGen[20].AddSub1ZN> is unconnected in block <GenXYZRows[8].XYZRowN>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <AddSub1ZGen[21].AddSub1ZN> is unconnected in block <GenXYZRows[8].XYZRowN>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <AddSub1ZGen[20].AddSub1ZN> is unconnected in block <GenXYZRows[9].XYZRowN>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <AddSub1ZGen[21].AddSub1ZN> is unconnected in block <GenXYZRows[9].XYZRowN>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <AddSub1ZGen[20].AddSub1ZN> is unconnected in block <GenXYZRows[10].XYZRowN>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <AddSub1ZGen[21].AddSub1ZN> is unconnected in block <GenXYZRows[10].XYZRowN>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <AddSub1ZGen[20].AddSub1ZN> is unconnected in block <GenXYZRows[11].XYZRowN>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <AddSub1ZGen[21].AddSub1ZN> is unconnected in block <GenXYZRows[11].XYZRowN>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <AddSub1ZGen[20].AddSub1ZN> is unconnected in block <GenXYZRows[12].XYZRowN>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <AddSub1ZGen[21].AddSub1ZN> is unconnected in block <GenXYZRows[12].XYZRowN>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <AddSub1ZGen[20].AddSub1ZN> is unconnected in block <GenXYZRows[13].XYZRowN>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <AddSub1ZGen[21].AddSub1ZN> is unconnected in block <GenXYZRows[13].XYZRowN>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <AddSub1ZGen[20].AddSub1ZN> is unconnected in block <GenXYZRows[14].XYZRowN>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <AddSub1ZGen[21].AddSub1ZN> is unconnected in block <GenXYZRows[14].XYZRowN>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <XYCellGen[20].XYCellN> is unconnected in block <GenXYZRows[15].XYZRowN>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <XYCellGen[21].XYCellN> is unconnected in block <GenXYZRows[15].XYZRowN>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <AddSub1ZGen[20].AddSub1ZN> is unconnected in block <GenXYZRows[15].XYZRowN>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <AddSub1ZGen[21].AddSub1ZN> is unconnected in block <GenXYZRows[15].XYZRowN>.
+   It will be removed from the design.
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# Multipliers                                          : 17
+ 5x5-bit multiplier                                    : 17
+# Multiplexers                                         : 35
+ 22-bit 4-to-1 multiplexer                             : 18
+ 5-bit 17-to-1 multiplexer                             : 17
+# Logic shifters                                       : 34
+ 22-bit shifter logical right                          : 34
+# Xors                                                 : 2261
+ 1-bit xor2                                            : 1139
+ 1-bit xor3                                            : 1122
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+
+Optimizing unit <CORDIC16> ...
+
+Optimizing unit <XYZRow> ...
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block CORDIC16, actual ratio is 23.
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Found no macro
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+Final Results
+RTL Top Level Output File Name     : CORDIC16.ngr
+Top Level Output File Name         : CORDIC16
+Output Format                      : NGC
+Optimization Goal                  : Speed
+Keep Hierarchy                     : No
+
+Design Statistics
+# IOs                              : 53
+
+Cell Usage :
+# BELS                             : 3053
+#      BUF                         : 1
+#      GND                         : 1
+#      INV                         : 2
+#      LUT2                        : 43
+#      LUT3                        : 727
+#      LUT4                        : 2070
+#      MUXCY                       : 28
+#      MUXF5                       : 145
+#      VCC                         : 1
+#      XORCY                       : 35
+# IO Buffers                       : 53
+#      IBUF                        : 37
+#      OBUF                        : 16
+=========================================================================
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 3s1200efg320-5
+
+ Number of Slices:                     1625  out of   8672    18%  
+ Number of 4 input LUTs:               2842  out of  17344    16%  
+ Number of IOs:                          53
+ Number of bonded IOBs:                  53  out of    250    21%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+TIMING REPORT
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+No clock signals found in this design
+
+Asynchronous Control Signals Information:
+----------------------------------------
+No asynchronous control signals found in this design
+
+Timing Summary:
+---------------
+Speed Grade: -5
+
+   Minimum period: No path found
+   Minimum input arrival time before clock: No path found
+   Maximum output required time after clock: No path found
+   Maximum combinational path delay: 381.059ns
+
+Timing Detail:
+--------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default path analysis
+  Total number of paths / destination ports: 94549186231060416000000000000000 / 16
+-------------------------------------------------------------------------
+Delay:               381.059ns (Levels of Logic = 323)
+  Source:            f<0> (PAD)
+  Destination:       r<15> (PAD)
+
+  Data Path: f<0> to r<15>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O           374   1.106   1.165  f_0_IBUF (XYZ1/Sh44)
+     BUF:I->O            377   0.612   1.234  f_0_IBUF_1 (f_0_IBUF_1)
+     LUT2:I1->O            1   0.612   0.000  XYZ1/curSeq_3_cmp_eq000012 (XYZ1/curSeq_3_cmp_eq000011)
+     MUXCY:S->O            0   0.404   0.000  XYZ1/Mmult_Cst_mult0000_Madd1_cy<2> (XYZ1/Mmult_Cst_mult0000_Madd1_cy<2>)
+     XORCY:CI->O           5   0.699   0.607  XYZ1/Mmult_Cst_mult0000_Madd1_xor<3> (XYZ1/Cst_mult0000<3>)
+     LUT4:I1->O            1   0.612   0.000  XYZ1/Cst_cmp_eq001511 (XYZ1/Cst_cmp_eq00151)
+     MUXF5:I0->O          11   0.278   0.796  XYZ1/Cst_cmp_eq00151_f5 (XYZ1/Cst_cmp_eq0015)
+     LUT4:I3->O            1   0.612   0.387  XYZ1/Mmux_Cst24_SW0 (N1104)
+     LUT3:I2->O            3   0.612   0.481  XYZ1/Mmux_Cst24 (XYZ1/Cst<1>)
+     LUT3:I2->O            2   0.612   0.532  XYZ1/AddSub1ZGen[1].AddSub1ZN/COut1 (XYZ1/ZCarry<1>)
+     LUT4:I0->O            2   0.612   0.532  XYZ1/AddSub1ZGen[3].AddSub1ZN/COut1 (XYZ1/ZCarry<3>)
+     LUT4:I0->O            2   0.612   0.532  XYZ1/AddSub1ZGen[4].AddSub1ZN/COut1 (XYZ1/ZCarry<4>)
+     LUT4:I0->O            2   0.612   0.532  XYZ1/AddSub1ZGen[5].AddSub1ZN/COut1 (XYZ1/ZCarry<5>)
+     LUT4:I0->O            2   0.612   0.532  XYZ1/AddSub1ZGen[6].AddSub1ZN/COut1 (XYZ1/ZCarry<6>)
+     LUT4:I0->O            2   0.612   0.532  XYZ1/AddSub1ZGen[7].AddSub1ZN/COut1 (XYZ1/ZCarry<7>)
+     LUT4:I0->O            2   0.612   0.532  XYZ1/AddSub1ZGen[8].AddSub1ZN/COut1 (XYZ1/ZCarry<8>)
+     LUT4:I0->O            2   0.612   0.532  XYZ1/AddSub1ZGen[9].AddSub1ZN/COut1 (XYZ1/ZCarry<9>)
+     LUT4:I0->O            2   0.612   0.532  XYZ1/AddSub1ZGen[10].AddSub1ZN/COut1 (XYZ1/ZCarry<10>)
+     LUT4:I0->O            2   0.612   0.532  XYZ1/AddSub1ZGen[11].AddSub1ZN/COut1 (XYZ1/ZCarry<11>)
+     LUT4:I0->O            2   0.612   0.532  XYZ1/AddSub1ZGen[12].AddSub1ZN/COut1 (XYZ1/ZCarry<12>)
+     LUT4:I0->O            2   0.612   0.532  XYZ1/AddSub1ZGen[13].AddSub1ZN/COut1 (XYZ1/ZCarry<13>)
+     LUT4:I0->O            2   0.612   0.532  XYZ1/AddSub1ZGen[14].AddSub1ZN/COut1 (XYZ1/ZCarry<14>)
+     LUT4:I0->O            2   0.612   0.532  XYZ1/AddSub1ZGen[15].AddSub1ZN/COut1 (XYZ1/ZCarry<15>)
+     LUT4:I0->O            2   0.612   0.532  XYZ1/AddSub1ZGen[16].AddSub1ZN/COut1 (XYZ1/ZCarry<16>)
+     LUT3:I0->O            2   0.612   0.449  XYZ1/AddSub1ZGen[17].AddSub1ZN/COut1 (XYZ1/ZCarry<17>)
+     LUT3:I1->O           24   0.612   1.094  XYZ1/AddSub1ZGen[19].AddSub1ZN/Mxor_S_xo<0>1_SW0 (N368)
+     LUT3:I2->O           77   0.612   1.154  d_1_mux00001 (d<1>)
+     LUT4:I1->O            2   0.612   0.532  GenXYZRows[0].XYZRowN/XYCellGen[1].XYCellN/YAddSub/COut1 (GenXYZRows[0].XYZRowN/YCarry<1>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[0].XYZRowN/XYCellGen[2].XYCellN/YAddSub/COut1 (GenXYZRows[0].XYZRowN/YCarry<2>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[0].XYZRowN/XYCellGen[3].XYCellN/YAddSub/COut1 (GenXYZRows[0].XYZRowN/YCarry<3>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[0].XYZRowN/XYCellGen[4].XYCellN/YAddSub/COut1 (GenXYZRows[0].XYZRowN/YCarry<4>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[0].XYZRowN/XYCellGen[5].XYCellN/YAddSub/COut1 (GenXYZRows[0].XYZRowN/YCarry<5>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[0].XYZRowN/XYCellGen[6].XYCellN/YAddSub/COut1 (GenXYZRows[0].XYZRowN/YCarry<6>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[0].XYZRowN/XYCellGen[7].XYCellN/YAddSub/COut1 (GenXYZRows[0].XYZRowN/YCarry<7>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[0].XYZRowN/XYCellGen[8].XYCellN/YAddSub/COut1 (GenXYZRows[0].XYZRowN/YCarry<8>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[0].XYZRowN/XYCellGen[9].XYCellN/YAddSub/COut1 (GenXYZRows[0].XYZRowN/YCarry<9>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[0].XYZRowN/XYCellGen[10].XYCellN/YAddSub/COut1 (GenXYZRows[0].XYZRowN/YCarry<10>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[0].XYZRowN/XYCellGen[11].XYCellN/YAddSub/COut1 (GenXYZRows[0].XYZRowN/YCarry<11>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[0].XYZRowN/XYCellGen[12].XYCellN/YAddSub/COut1 (GenXYZRows[0].XYZRowN/YCarry<12>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[0].XYZRowN/XYCellGen[13].XYCellN/YAddSub/COut1 (GenXYZRows[0].XYZRowN/YCarry<13>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[0].XYZRowN/XYCellGen[14].XYCellN/YAddSub/COut1 (GenXYZRows[0].XYZRowN/YCarry<14>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[0].XYZRowN/XYCellGen[15].XYCellN/YAddSub/COut1 (GenXYZRows[0].XYZRowN/YCarry<15>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[0].XYZRowN/XYCellGen[16].XYCellN/YAddSub/COut1 (GenXYZRows[0].XYZRowN/YCarry<16>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[0].XYZRowN/XYCellGen[17].XYCellN/YAddSub/COut1 (GenXYZRows[0].XYZRowN/YCarry<17>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[0].XYZRowN/XYCellGen[18].XYCellN/YAddSub/COut1 (GenXYZRows[0].XYZRowN/YCarry<18>)
+     LUT3:I0->O           25   0.612   1.101  GenXYZRows[0].XYZRowN/XYCellGen[19].XYCellN/YAddSub/Mxor_S_xo<0>1 (yOuts<349>)
+     LUT3:I2->O           70   0.612   1.235  d_2_mux00001 (GenXYZRows[1].XYZRowN/XYCellGen[20].XYCellN/YAddSub/COut_xor0000)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[1].XYZRowN/XYCell0/YAddSub/COut1 (GenXYZRows[1].XYZRowN/YCarry<0>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[1].XYZRowN/XYCellGen[1].XYCellN/YAddSub/COut1 (GenXYZRows[1].XYZRowN/YCarry<1>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[1].XYZRowN/XYCellGen[2].XYCellN/YAddSub/COut1 (GenXYZRows[1].XYZRowN/YCarry<2>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[1].XYZRowN/XYCellGen[3].XYCellN/YAddSub/COut1 (GenXYZRows[1].XYZRowN/YCarry<3>)
+     LUT4:I0->O            3   0.612   0.603  GenXYZRows[1].XYZRowN/XYCellGen[4].XYCellN/YAddSub/COut1 (GenXYZRows[1].XYZRowN/YCarry<4>)
+     LUT4:I0->O            5   0.612   0.690  GenXYZRows[1].XYZRowN/XYCellGen[5].XYCellN/YAddSub/COut1 (GenXYZRows[1].XYZRowN/YCarry<5>)
+     LUT3:I0->O            4   0.612   0.651  GenXYZRows[1].XYZRowN/XYCellGen[6].XYCellN/YAddSub/COut1 (GenXYZRows[1].XYZRowN/YCarry<6>)
+     LUT3:I0->O            3   0.612   0.603  GenXYZRows[1].XYZRowN/XYCellGen[7].XYCellN/YAddSub/COut1 (GenXYZRows[1].XYZRowN/YCarry<7>)
+     LUT3:I0->O            3   0.612   0.603  GenXYZRows[1].XYZRowN/XYCellGen[8].XYCellN/YAddSub/COut1 (GenXYZRows[1].XYZRowN/YCarry<8>)
+     LUT3:I0->O            3   0.612   0.603  GenXYZRows[1].XYZRowN/XYCellGen[9].XYCellN/YAddSub/COut1 (GenXYZRows[1].XYZRowN/YCarry<9>)
+     LUT3:I0->O            3   0.612   0.603  GenXYZRows[1].XYZRowN/XYCellGen[10].XYCellN/YAddSub/COut1 (GenXYZRows[1].XYZRowN/YCarry<10>)
+     LUT3:I0->O            3   0.612   0.603  GenXYZRows[1].XYZRowN/XYCellGen[11].XYCellN/YAddSub/COut1 (GenXYZRows[1].XYZRowN/YCarry<11>)
+     LUT3:I0->O            3   0.612   0.603  GenXYZRows[1].XYZRowN/XYCellGen[12].XYCellN/YAddSub/COut1 (GenXYZRows[1].XYZRowN/YCarry<12>)
+     LUT3:I0->O            3   0.612   0.603  GenXYZRows[1].XYZRowN/XYCellGen[13].XYCellN/YAddSub/COut1 (GenXYZRows[1].XYZRowN/YCarry<13>)
+     LUT3:I0->O            3   0.612   0.603  GenXYZRows[1].XYZRowN/XYCellGen[14].XYCellN/YAddSub/COut1 (GenXYZRows[1].XYZRowN/YCarry<14>)
+     LUT3:I0->O            4   0.612   0.651  GenXYZRows[1].XYZRowN/XYCellGen[15].XYCellN/YAddSub/COut1 (GenXYZRows[1].XYZRowN/YCarry<15>)
+     LUT3:I0->O            4   0.612   0.651  GenXYZRows[1].XYZRowN/XYCellGen[16].XYCellN/YAddSub/COut1 (GenXYZRows[1].XYZRowN/YCarry<16>)
+     LUT3:I0->O            3   0.612   0.603  GenXYZRows[1].XYZRowN/XYCellGen[17].XYCellN/YAddSub/COut1 (GenXYZRows[1].XYZRowN/YCarry<17>)
+     LUT3:I0->O            2   0.612   0.532  GenXYZRows[1].XYZRowN/XYCellGen[18].XYCellN/YAddSub/COut1 (GenXYZRows[1].XYZRowN/YCarry<18>)
+     LUT3:I0->O           11   0.612   0.823  GenXYZRows[1].XYZRowN/XYCellGen[19].XYCellN/YAddSub/Mxor_S_xo<0>1 (yOuts<327>)
+     LUT3:I2->O           79   0.612   1.089  d_3_mux00001 (GenXYZRows[2].XYZRowN/XYCellGen[20].XYCellN/YAddSub/COut_xor0000)
+     LUT4:I3->O            1   0.612   0.000  GenXYZRows[2].XYZRowN/AddSub1Z0/COut11 (GenXYZRows[2].XYZRowN/AddSub1Z0/COut1)
+     MUXF5:I1->O           2   0.278   0.532  GenXYZRows[2].XYZRowN/AddSub1Z0/COut1_f5 (GenXYZRows[2].XYZRowN/ZCarry<0>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[2].XYZRowN/AddSub1ZGen[1].AddSub1ZN/COut1 (GenXYZRows[2].XYZRowN/ZCarry<1>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[2].XYZRowN/AddSub1ZGen[2].AddSub1ZN/COut1 (GenXYZRows[2].XYZRowN/ZCarry<2>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[2].XYZRowN/AddSub1ZGen[3].AddSub1ZN/COut1 (GenXYZRows[2].XYZRowN/ZCarry<3>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[2].XYZRowN/AddSub1ZGen[4].AddSub1ZN/COut1 (GenXYZRows[2].XYZRowN/ZCarry<4>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[2].XYZRowN/AddSub1ZGen[5].AddSub1ZN/COut1 (GenXYZRows[2].XYZRowN/ZCarry<5>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[2].XYZRowN/AddSub1ZGen[6].AddSub1ZN/COut1 (GenXYZRows[2].XYZRowN/ZCarry<6>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[2].XYZRowN/AddSub1ZGen[7].AddSub1ZN/COut1 (GenXYZRows[2].XYZRowN/ZCarry<7>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[2].XYZRowN/AddSub1ZGen[8].AddSub1ZN/COut1 (GenXYZRows[2].XYZRowN/ZCarry<8>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[2].XYZRowN/AddSub1ZGen[9].AddSub1ZN/COut1 (GenXYZRows[2].XYZRowN/ZCarry<9>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[2].XYZRowN/AddSub1ZGen[10].AddSub1ZN/COut1 (GenXYZRows[2].XYZRowN/ZCarry<10>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[2].XYZRowN/AddSub1ZGen[11].AddSub1ZN/COut1 (GenXYZRows[2].XYZRowN/ZCarry<11>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[2].XYZRowN/AddSub1ZGen[12].AddSub1ZN/COut1 (GenXYZRows[2].XYZRowN/ZCarry<12>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[2].XYZRowN/AddSub1ZGen[13].AddSub1ZN/COut1 (GenXYZRows[2].XYZRowN/ZCarry<13>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[2].XYZRowN/AddSub1ZGen[14].AddSub1ZN/COut1 (GenXYZRows[2].XYZRowN/ZCarry<14>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[2].XYZRowN/AddSub1ZGen[15].AddSub1ZN/COut1 (GenXYZRows[2].XYZRowN/ZCarry<15>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[2].XYZRowN/AddSub1ZGen[16].AddSub1ZN/COut1 (GenXYZRows[2].XYZRowN/ZCarry<16>)
+     LUT3:I0->O            2   0.612   0.449  GenXYZRows[2].XYZRowN/AddSub1ZGen[17].AddSub1ZN/COut1 (GenXYZRows[2].XYZRowN/ZCarry<17>)
+     LUT4:I1->O            3   0.612   0.520  GenXYZRows[2].XYZRowN/AddSub1ZGen[19].AddSub1ZN/Mxor_S_xo<0>1 (zOuts<305>)
+     LUT3:I1->O           96   0.612   1.093  d_4_mux00001 (GenXYZRows[3].XYZRowN/XYCellGen[18].XYCellN/YAddSub/COut_xor0000)
+     LUT4:I3->O            2   0.612   0.532  GenXYZRows[3].XYZRowN/XYCell0/YAddSub/COut1 (GenXYZRows[3].XYZRowN/YCarry<0>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[3].XYZRowN/XYCellGen[1].XYCellN/YAddSub/COut1 (GenXYZRows[3].XYZRowN/YCarry<1>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[3].XYZRowN/XYCellGen[2].XYCellN/YAddSub/COut1 (GenXYZRows[3].XYZRowN/YCarry<2>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[3].XYZRowN/XYCellGen[3].XYCellN/YAddSub/COut1 (GenXYZRows[3].XYZRowN/YCarry<3>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[3].XYZRowN/XYCellGen[4].XYCellN/YAddSub/COut1 (GenXYZRows[3].XYZRowN/YCarry<4>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[3].XYZRowN/XYCellGen[5].XYCellN/YAddSub/COut1 (GenXYZRows[3].XYZRowN/YCarry<5>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[3].XYZRowN/XYCellGen[6].XYCellN/YAddSub/COut1 (GenXYZRows[3].XYZRowN/YCarry<6>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[3].XYZRowN/XYCellGen[7].XYCellN/YAddSub/COut1 (GenXYZRows[3].XYZRowN/YCarry<7>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[3].XYZRowN/XYCellGen[8].XYCellN/YAddSub/COut1 (GenXYZRows[3].XYZRowN/YCarry<8>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[3].XYZRowN/XYCellGen[9].XYCellN/YAddSub/COut1 (GenXYZRows[3].XYZRowN/YCarry<9>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[3].XYZRowN/XYCellGen[10].XYCellN/YAddSub/COut1 (GenXYZRows[3].XYZRowN/YCarry<10>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[3].XYZRowN/XYCellGen[11].XYCellN/YAddSub/COut1 (GenXYZRows[3].XYZRowN/YCarry<11>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[3].XYZRowN/XYCellGen[12].XYCellN/YAddSub/COut1 (GenXYZRows[3].XYZRowN/YCarry<12>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[3].XYZRowN/XYCellGen[13].XYCellN/YAddSub/COut1 (GenXYZRows[3].XYZRowN/YCarry<13>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[3].XYZRowN/XYCellGen[14].XYCellN/YAddSub/COut1 (GenXYZRows[3].XYZRowN/YCarry<14>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[3].XYZRowN/XYCellGen[15].XYCellN/YAddSub/COut1 (GenXYZRows[3].XYZRowN/YCarry<15>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[3].XYZRowN/XYCellGen[16].XYCellN/YAddSub/COut1 (GenXYZRows[3].XYZRowN/YCarry<16>)
+     LUT4:I0->O            3   0.612   0.481  GenXYZRows[3].XYZRowN/XYCellGen[17].XYCellN/YAddSub/COut1 (GenXYZRows[3].XYZRowN/YCarry<17>)
+     LUT4:I2->O            5   0.612   0.568  GenXYZRows[3].XYZRowN/XYCellGen[19].XYCellN/YAddSub/Mxor_S_xo<0>1 (GenXYZRows[4].XYZRowN/Sh124)
+     LUT3:I2->O           94   0.612   1.159  d_5_mux00001 (GenXYZRows[4].XYZRowN/XYCellGen[17].XYCellN/YAddSub/COut_xor0000)
+     LUT3:I1->O            2   0.612   0.532  GenXYZRows[4].XYZRowN/XYCell0/YAddSub/COut1 (GenXYZRows[4].XYZRowN/YCarry<0>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[4].XYZRowN/XYCellGen[1].XYCellN/YAddSub/COut1 (GenXYZRows[4].XYZRowN/YCarry<1>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[4].XYZRowN/XYCellGen[2].XYCellN/YAddSub/COut1 (GenXYZRows[4].XYZRowN/YCarry<2>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[4].XYZRowN/XYCellGen[3].XYCellN/YAddSub/COut1 (GenXYZRows[4].XYZRowN/YCarry<3>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[4].XYZRowN/XYCellGen[4].XYCellN/YAddSub/COut1 (GenXYZRows[4].XYZRowN/YCarry<4>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[4].XYZRowN/XYCellGen[5].XYCellN/YAddSub/COut1 (GenXYZRows[4].XYZRowN/YCarry<5>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[4].XYZRowN/XYCellGen[6].XYCellN/YAddSub/COut1 (GenXYZRows[4].XYZRowN/YCarry<6>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[4].XYZRowN/XYCellGen[7].XYCellN/YAddSub/COut1 (GenXYZRows[4].XYZRowN/YCarry<7>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[4].XYZRowN/XYCellGen[8].XYCellN/YAddSub/COut1 (GenXYZRows[4].XYZRowN/YCarry<8>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[4].XYZRowN/XYCellGen[9].XYCellN/YAddSub/COut1 (GenXYZRows[4].XYZRowN/YCarry<9>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[4].XYZRowN/XYCellGen[10].XYCellN/YAddSub/COut1 (GenXYZRows[4].XYZRowN/YCarry<10>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[4].XYZRowN/XYCellGen[11].XYCellN/YAddSub/COut1 (GenXYZRows[4].XYZRowN/YCarry<11>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[4].XYZRowN/XYCellGen[12].XYCellN/YAddSub/COut1 (GenXYZRows[4].XYZRowN/YCarry<12>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[4].XYZRowN/XYCellGen[13].XYCellN/YAddSub/COut1 (GenXYZRows[4].XYZRowN/YCarry<13>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[4].XYZRowN/XYCellGen[14].XYCellN/YAddSub/COut1 (GenXYZRows[4].XYZRowN/YCarry<14>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[4].XYZRowN/XYCellGen[15].XYCellN/YAddSub/COut1 (GenXYZRows[4].XYZRowN/YCarry<15>)
+     LUT4:I0->O            3   0.612   0.603  GenXYZRows[4].XYZRowN/XYCellGen[16].XYCellN/YAddSub/COut1 (GenXYZRows[4].XYZRowN/YCarry<16>)
+     LUT3:I0->O            2   0.612   0.410  GenXYZRows[4].XYZRowN/XYCellGen[17].XYCellN/YAddSub/COut1 (GenXYZRows[4].XYZRowN/YCarry<17>)
+     LUT4:I2->O            5   0.612   0.568  GenXYZRows[4].XYZRowN/XYCellGen[19].XYCellN/YAddSub/Mxor_S_xo<0>1 (GenXYZRows[5].XYZRowN/Sh123)
+     LUT3:I2->O           96   0.612   1.159  d_6_mux00001 (GenXYZRows[5].XYZRowN/XYCellGen[16].XYCellN/YAddSub/COut_xor0000)
+     LUT3:I1->O            2   0.612   0.532  GenXYZRows[5].XYZRowN/XYCell0/YAddSub/COut1 (GenXYZRows[5].XYZRowN/YCarry<0>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[5].XYZRowN/XYCellGen[1].XYCellN/YAddSub/COut1 (GenXYZRows[5].XYZRowN/YCarry<1>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[5].XYZRowN/XYCellGen[2].XYCellN/YAddSub/COut1 (GenXYZRows[5].XYZRowN/YCarry<2>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[5].XYZRowN/XYCellGen[3].XYCellN/YAddSub/COut1 (GenXYZRows[5].XYZRowN/YCarry<3>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[5].XYZRowN/XYCellGen[4].XYCellN/YAddSub/COut1 (GenXYZRows[5].XYZRowN/YCarry<4>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[5].XYZRowN/XYCellGen[5].XYCellN/YAddSub/COut1 (GenXYZRows[5].XYZRowN/YCarry<5>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[5].XYZRowN/XYCellGen[6].XYCellN/YAddSub/COut1 (GenXYZRows[5].XYZRowN/YCarry<6>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[5].XYZRowN/XYCellGen[7].XYCellN/YAddSub/COut1 (GenXYZRows[5].XYZRowN/YCarry<7>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[5].XYZRowN/XYCellGen[8].XYCellN/YAddSub/COut1 (GenXYZRows[5].XYZRowN/YCarry<8>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[5].XYZRowN/XYCellGen[9].XYCellN/YAddSub/COut1 (GenXYZRows[5].XYZRowN/YCarry<9>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[5].XYZRowN/XYCellGen[10].XYCellN/YAddSub/COut1 (GenXYZRows[5].XYZRowN/YCarry<10>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[5].XYZRowN/XYCellGen[11].XYCellN/YAddSub/COut1 (GenXYZRows[5].XYZRowN/YCarry<11>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[5].XYZRowN/XYCellGen[12].XYCellN/YAddSub/COut1 (GenXYZRows[5].XYZRowN/YCarry<12>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[5].XYZRowN/XYCellGen[13].XYCellN/YAddSub/COut1 (GenXYZRows[5].XYZRowN/YCarry<13>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[5].XYZRowN/XYCellGen[14].XYCellN/YAddSub/COut1 (GenXYZRows[5].XYZRowN/YCarry<14>)
+     LUT4:I0->O            4   0.612   0.568  GenXYZRows[5].XYZRowN/XYCellGen[15].XYCellN/YAddSub/COut1 (GenXYZRows[5].XYZRowN/YCarry<15>)
+     LUT4:I1->O            2   0.612   0.410  GenXYZRows[5].XYZRowN/XYCellGen[17].XYCellN/YAddSub/COut1 (GenXYZRows[5].XYZRowN/YCarry<17>)
+     LUT4:I2->O            5   0.612   0.568  GenXYZRows[5].XYZRowN/XYCellGen[19].XYCellN/YAddSub/Mxor_S_xo<0>1 (GenXYZRows[6].XYZRowN/Sh122)
+     LUT3:I2->O           94   0.612   1.159  d_7_mux00001 (GenXYZRows[6].XYZRowN/XYCellGen[15].XYCellN/YAddSub/COut_xor0000)
+     LUT3:I1->O            2   0.612   0.532  GenXYZRows[6].XYZRowN/XYCell0/YAddSub/COut1 (GenXYZRows[6].XYZRowN/YCarry<0>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[6].XYZRowN/XYCellGen[1].XYCellN/YAddSub/COut1 (GenXYZRows[6].XYZRowN/YCarry<1>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[6].XYZRowN/XYCellGen[2].XYCellN/YAddSub/COut1 (GenXYZRows[6].XYZRowN/YCarry<2>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[6].XYZRowN/XYCellGen[3].XYCellN/YAddSub/COut1 (GenXYZRows[6].XYZRowN/YCarry<3>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[6].XYZRowN/XYCellGen[4].XYCellN/YAddSub/COut1 (GenXYZRows[6].XYZRowN/YCarry<4>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[6].XYZRowN/XYCellGen[5].XYCellN/YAddSub/COut1 (GenXYZRows[6].XYZRowN/YCarry<5>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[6].XYZRowN/XYCellGen[6].XYCellN/YAddSub/COut1 (GenXYZRows[6].XYZRowN/YCarry<6>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[6].XYZRowN/XYCellGen[7].XYCellN/YAddSub/COut1 (GenXYZRows[6].XYZRowN/YCarry<7>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[6].XYZRowN/XYCellGen[8].XYCellN/YAddSub/COut1 (GenXYZRows[6].XYZRowN/YCarry<8>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[6].XYZRowN/XYCellGen[9].XYCellN/YAddSub/COut1 (GenXYZRows[6].XYZRowN/YCarry<9>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[6].XYZRowN/XYCellGen[10].XYCellN/YAddSub/COut1 (GenXYZRows[6].XYZRowN/YCarry<10>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[6].XYZRowN/XYCellGen[11].XYCellN/YAddSub/COut1 (GenXYZRows[6].XYZRowN/YCarry<11>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[6].XYZRowN/XYCellGen[12].XYCellN/YAddSub/COut1 (GenXYZRows[6].XYZRowN/YCarry<12>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[6].XYZRowN/XYCellGen[13].XYCellN/YAddSub/COut1 (GenXYZRows[6].XYZRowN/YCarry<13>)
+     LUT4:I0->O            4   0.612   0.651  GenXYZRows[6].XYZRowN/XYCellGen[14].XYCellN/YAddSub/COut1 (GenXYZRows[6].XYZRowN/YCarry<14>)
+     LUT3:I0->O            2   0.612   0.449  GenXYZRows[6].XYZRowN/XYCellGen[15].XYCellN/YAddSub/COut1 (GenXYZRows[6].XYZRowN/YCarry<15>)
+     LUT4:I1->O            2   0.612   0.410  GenXYZRows[6].XYZRowN/XYCellGen[17].XYCellN/YAddSub/COut1 (GenXYZRows[6].XYZRowN/YCarry<17>)
+     LUT4:I2->O            5   0.612   0.568  GenXYZRows[6].XYZRowN/XYCellGen[19].XYCellN/YAddSub/Mxor_S_xo<0>1 (GenXYZRows[7].XYZRowN/Sh121)
+     LUT3:I2->O           95   0.612   1.159  d_8_mux00001 (GenXYZRows[7].XYZRowN/XYCellGen[14].XYCellN/YAddSub/COut_xor0000)
+     LUT3:I1->O            2   0.612   0.532  GenXYZRows[7].XYZRowN/XYCell0/YAddSub/COut1 (GenXYZRows[7].XYZRowN/YCarry<0>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[7].XYZRowN/XYCellGen[1].XYCellN/YAddSub/COut1 (GenXYZRows[7].XYZRowN/YCarry<1>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[7].XYZRowN/XYCellGen[2].XYCellN/YAddSub/COut1 (GenXYZRows[7].XYZRowN/YCarry<2>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[7].XYZRowN/XYCellGen[3].XYCellN/YAddSub/COut1 (GenXYZRows[7].XYZRowN/YCarry<3>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[7].XYZRowN/XYCellGen[4].XYCellN/YAddSub/COut1 (GenXYZRows[7].XYZRowN/YCarry<4>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[7].XYZRowN/XYCellGen[5].XYCellN/YAddSub/COut1 (GenXYZRows[7].XYZRowN/YCarry<5>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[7].XYZRowN/XYCellGen[6].XYCellN/YAddSub/COut1 (GenXYZRows[7].XYZRowN/YCarry<6>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[7].XYZRowN/XYCellGen[7].XYCellN/YAddSub/COut1 (GenXYZRows[7].XYZRowN/YCarry<7>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[7].XYZRowN/XYCellGen[8].XYCellN/YAddSub/COut1 (GenXYZRows[7].XYZRowN/YCarry<8>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[7].XYZRowN/XYCellGen[9].XYCellN/YAddSub/COut1 (GenXYZRows[7].XYZRowN/YCarry<9>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[7].XYZRowN/XYCellGen[10].XYCellN/YAddSub/COut1 (GenXYZRows[7].XYZRowN/YCarry<10>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[7].XYZRowN/XYCellGen[11].XYCellN/YAddSub/COut1 (GenXYZRows[7].XYZRowN/YCarry<11>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[7].XYZRowN/XYCellGen[12].XYCellN/YAddSub/COut1 (GenXYZRows[7].XYZRowN/YCarry<12>)
+     LUT4:I0->O            4   0.612   0.568  GenXYZRows[7].XYZRowN/XYCellGen[13].XYCellN/YAddSub/COut1 (GenXYZRows[7].XYZRowN/YCarry<13>)
+     LUT4:I1->O            3   0.612   0.520  GenXYZRows[7].XYZRowN/XYCellGen[15].XYCellN/YAddSub/COut1 (GenXYZRows[7].XYZRowN/YCarry<15>)
+     LUT4:I1->O            2   0.612   0.410  GenXYZRows[7].XYZRowN/XYCellGen[17].XYCellN/YAddSub/COut1 (GenXYZRows[7].XYZRowN/YCarry<17>)
+     LUT4:I2->O            5   0.612   0.568  GenXYZRows[7].XYZRowN/XYCellGen[19].XYCellN/YAddSub/Mxor_S_xo<0>1 (GenXYZRows[8].XYZRowN/Sh120)
+     LUT3:I2->O           93   0.612   1.158  d_9_mux00001 (GenXYZRows[8].XYZRowN/XYCellGen[13].XYCellN/YAddSub/COut_xor0000)
+     LUT3:I1->O            2   0.612   0.532  GenXYZRows[8].XYZRowN/XYCell0/YAddSub/COut1 (GenXYZRows[8].XYZRowN/YCarry<0>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[8].XYZRowN/XYCellGen[1].XYCellN/YAddSub/COut1 (GenXYZRows[8].XYZRowN/YCarry<1>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[8].XYZRowN/XYCellGen[2].XYCellN/YAddSub/COut1 (GenXYZRows[8].XYZRowN/YCarry<2>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[8].XYZRowN/XYCellGen[3].XYCellN/YAddSub/COut1 (GenXYZRows[8].XYZRowN/YCarry<3>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[8].XYZRowN/XYCellGen[4].XYCellN/YAddSub/COut1 (GenXYZRows[8].XYZRowN/YCarry<4>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[8].XYZRowN/XYCellGen[5].XYCellN/YAddSub/COut1 (GenXYZRows[8].XYZRowN/YCarry<5>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[8].XYZRowN/XYCellGen[6].XYCellN/YAddSub/COut1 (GenXYZRows[8].XYZRowN/YCarry<6>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[8].XYZRowN/XYCellGen[7].XYCellN/YAddSub/COut1 (GenXYZRows[8].XYZRowN/YCarry<7>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[8].XYZRowN/XYCellGen[8].XYCellN/YAddSub/COut1 (GenXYZRows[8].XYZRowN/YCarry<8>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[8].XYZRowN/XYCellGen[9].XYCellN/YAddSub/COut1 (GenXYZRows[8].XYZRowN/YCarry<9>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[8].XYZRowN/XYCellGen[10].XYCellN/YAddSub/COut1 (GenXYZRows[8].XYZRowN/YCarry<10>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[8].XYZRowN/XYCellGen[11].XYCellN/YAddSub/COut1 (GenXYZRows[8].XYZRowN/YCarry<11>)
+     LUT4:I0->O            4   0.612   0.651  GenXYZRows[8].XYZRowN/XYCellGen[12].XYCellN/YAddSub/COut1 (GenXYZRows[8].XYZRowN/YCarry<12>)
+     LUT3:I0->O            2   0.612   0.449  GenXYZRows[8].XYZRowN/XYCellGen[13].XYCellN/YAddSub/COut1 (GenXYZRows[8].XYZRowN/YCarry<13>)
+     LUT4:I1->O            3   0.612   0.520  GenXYZRows[8].XYZRowN/XYCellGen[15].XYCellN/YAddSub/COut1 (GenXYZRows[8].XYZRowN/YCarry<15>)
+     LUT4:I1->O            2   0.612   0.410  GenXYZRows[8].XYZRowN/XYCellGen[17].XYCellN/YAddSub/COut1 (GenXYZRows[8].XYZRowN/YCarry<17>)
+     LUT4:I2->O            5   0.612   0.568  GenXYZRows[8].XYZRowN/XYCellGen[19].XYCellN/YAddSub/Mxor_S_xo<0>1 (GenXYZRows[9].XYZRowN/Sh119)
+     LUT3:I2->O           91   0.612   1.158  d_10_mux00001 (GenXYZRows[9].XYZRowN/XYCellGen[12].XYCellN/YAddSub/COut_xor0000)
+     LUT3:I1->O            2   0.612   0.532  GenXYZRows[9].XYZRowN/XYCell0/YAddSub/COut1 (GenXYZRows[9].XYZRowN/YCarry<0>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[9].XYZRowN/XYCellGen[1].XYCellN/YAddSub/COut1 (GenXYZRows[9].XYZRowN/YCarry<1>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[9].XYZRowN/XYCellGen[2].XYCellN/YAddSub/COut1 (GenXYZRows[9].XYZRowN/YCarry<2>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[9].XYZRowN/XYCellGen[3].XYCellN/YAddSub/COut1 (GenXYZRows[9].XYZRowN/YCarry<3>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[9].XYZRowN/XYCellGen[4].XYCellN/YAddSub/COut1 (GenXYZRows[9].XYZRowN/YCarry<4>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[9].XYZRowN/XYCellGen[5].XYCellN/YAddSub/COut1 (GenXYZRows[9].XYZRowN/YCarry<5>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[9].XYZRowN/XYCellGen[6].XYCellN/YAddSub/COut1 (GenXYZRows[9].XYZRowN/YCarry<6>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[9].XYZRowN/XYCellGen[7].XYCellN/YAddSub/COut1 (GenXYZRows[9].XYZRowN/YCarry<7>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[9].XYZRowN/XYCellGen[8].XYCellN/YAddSub/COut1 (GenXYZRows[9].XYZRowN/YCarry<8>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[9].XYZRowN/XYCellGen[9].XYCellN/YAddSub/COut1 (GenXYZRows[9].XYZRowN/YCarry<9>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[9].XYZRowN/XYCellGen[10].XYCellN/YAddSub/COut1 (GenXYZRows[9].XYZRowN/YCarry<10>)
+     LUT4:I0->O            4   0.612   0.568  GenXYZRows[9].XYZRowN/XYCellGen[11].XYCellN/YAddSub/COut1 (GenXYZRows[9].XYZRowN/YCarry<11>)
+     LUT4:I1->O            3   0.612   0.520  GenXYZRows[9].XYZRowN/XYCellGen[13].XYCellN/YAddSub/COut1 (GenXYZRows[9].XYZRowN/YCarry<13>)
+     LUT4:I1->O            3   0.612   0.520  GenXYZRows[9].XYZRowN/XYCellGen[15].XYCellN/YAddSub/COut1 (GenXYZRows[9].XYZRowN/YCarry<15>)
+     LUT4:I1->O            2   0.612   0.410  GenXYZRows[9].XYZRowN/XYCellGen[17].XYCellN/YAddSub/COut1 (GenXYZRows[9].XYZRowN/YCarry<17>)
+     LUT4:I2->O            5   0.612   0.568  GenXYZRows[9].XYZRowN/XYCellGen[19].XYCellN/YAddSub/Mxor_S_xo<0>1 (GenXYZRows[10].XYZRowN/Sh118)
+     LUT3:I2->O           89   0.612   1.157  d_11_mux00001 (GenXYZRows[10].XYZRowN/XYCellGen[11].XYCellN/YAddSub/COut_xor0000)
+     LUT3:I1->O            2   0.612   0.532  GenXYZRows[10].XYZRowN/XYCell0/YAddSub/COut1 (GenXYZRows[10].XYZRowN/YCarry<0>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[10].XYZRowN/XYCellGen[1].XYCellN/YAddSub/COut1 (GenXYZRows[10].XYZRowN/YCarry<1>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[10].XYZRowN/XYCellGen[2].XYCellN/YAddSub/COut1 (GenXYZRows[10].XYZRowN/YCarry<2>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[10].XYZRowN/XYCellGen[3].XYCellN/YAddSub/COut1 (GenXYZRows[10].XYZRowN/YCarry<3>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[10].XYZRowN/XYCellGen[4].XYCellN/YAddSub/COut1 (GenXYZRows[10].XYZRowN/YCarry<4>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[10].XYZRowN/XYCellGen[5].XYCellN/YAddSub/COut1 (GenXYZRows[10].XYZRowN/YCarry<5>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[10].XYZRowN/XYCellGen[6].XYCellN/YAddSub/COut1 (GenXYZRows[10].XYZRowN/YCarry<6>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[10].XYZRowN/XYCellGen[7].XYCellN/YAddSub/COut1 (GenXYZRows[10].XYZRowN/YCarry<7>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[10].XYZRowN/XYCellGen[8].XYCellN/YAddSub/COut1 (GenXYZRows[10].XYZRowN/YCarry<8>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[10].XYZRowN/XYCellGen[9].XYCellN/YAddSub/COut1 (GenXYZRows[10].XYZRowN/YCarry<9>)
+     LUT4:I0->O            4   0.612   0.651  GenXYZRows[10].XYZRowN/XYCellGen[10].XYCellN/YAddSub/COut1 (GenXYZRows[10].XYZRowN/YCarry<10>)
+     LUT3:I0->O            2   0.612   0.449  GenXYZRows[10].XYZRowN/XYCellGen[11].XYCellN/YAddSub/COut1 (GenXYZRows[10].XYZRowN/YCarry<11>)
+     LUT4:I1->O            3   0.612   0.520  GenXYZRows[10].XYZRowN/XYCellGen[13].XYCellN/YAddSub/COut1 (GenXYZRows[10].XYZRowN/YCarry<13>)
+     LUT4:I1->O            3   0.612   0.520  GenXYZRows[10].XYZRowN/XYCellGen[15].XYCellN/YAddSub/COut1 (GenXYZRows[10].XYZRowN/YCarry<15>)
+     LUT4:I1->O            2   0.612   0.410  GenXYZRows[10].XYZRowN/XYCellGen[17].XYCellN/YAddSub/COut1 (GenXYZRows[10].XYZRowN/YCarry<17>)
+     LUT4:I2->O            5   0.612   0.568  GenXYZRows[10].XYZRowN/XYCellGen[19].XYCellN/YAddSub/Mxor_S_xo<0>1 (GenXYZRows[11].XYZRowN/Sh117)
+     LUT3:I2->O           89   0.612   1.157  d_12_mux00001 (GenXYZRows[11].XYZRowN/XYCellGen[10].XYCellN/YAddSub/COut_xor0000)
+     LUT3:I1->O            2   0.612   0.532  GenXYZRows[11].XYZRowN/XYCell0/YAddSub/COut1 (GenXYZRows[11].XYZRowN/YCarry<0>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[11].XYZRowN/XYCellGen[1].XYCellN/YAddSub/COut1 (GenXYZRows[11].XYZRowN/YCarry<1>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[11].XYZRowN/XYCellGen[2].XYCellN/YAddSub/COut1 (GenXYZRows[11].XYZRowN/YCarry<2>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[11].XYZRowN/XYCellGen[3].XYCellN/YAddSub/COut1 (GenXYZRows[11].XYZRowN/YCarry<3>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[11].XYZRowN/XYCellGen[4].XYCellN/YAddSub/COut1 (GenXYZRows[11].XYZRowN/YCarry<4>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[11].XYZRowN/XYCellGen[5].XYCellN/YAddSub/COut1 (GenXYZRows[11].XYZRowN/YCarry<5>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[11].XYZRowN/XYCellGen[6].XYCellN/YAddSub/COut1 (GenXYZRows[11].XYZRowN/YCarry<6>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[11].XYZRowN/XYCellGen[7].XYCellN/YAddSub/COut1 (GenXYZRows[11].XYZRowN/YCarry<7>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[11].XYZRowN/XYCellGen[8].XYCellN/YAddSub/COut1 (GenXYZRows[11].XYZRowN/YCarry<8>)
+     LUT4:I0->O            5   0.612   0.607  GenXYZRows[11].XYZRowN/XYCellGen[9].XYCellN/YAddSub/COut1 (GenXYZRows[11].XYZRowN/YCarry<9>)
+     LUT4:I1->O            3   0.612   0.520  GenXYZRows[11].XYZRowN/XYCellGen[11].XYCellN/YAddSub/COut1 (GenXYZRows[11].XYZRowN/YCarry<11>)
+     LUT4:I1->O            3   0.612   0.520  GenXYZRows[11].XYZRowN/XYCellGen[13].XYCellN/YAddSub/COut1 (GenXYZRows[11].XYZRowN/YCarry<13>)
+     LUT4:I1->O            3   0.612   0.520  GenXYZRows[11].XYZRowN/XYCellGen[15].XYCellN/YAddSub/COut1 (GenXYZRows[11].XYZRowN/YCarry<15>)
+     LUT4:I1->O            2   0.612   0.410  GenXYZRows[11].XYZRowN/XYCellGen[17].XYCellN/YAddSub/COut1 (GenXYZRows[11].XYZRowN/YCarry<17>)
+     LUT4:I2->O            5   0.612   0.568  GenXYZRows[11].XYZRowN/XYCellGen[19].XYCellN/YAddSub/Mxor_S_xo<0>1 (GenXYZRows[12].XYZRowN/Sh116)
+     LUT3:I2->O           89   0.612   1.091  d_13_mux00001 (GenXYZRows[12].XYZRowN/XYCellGen[10].XYCellN/YAddSub/COut_xor0000)
+     LUT4:I3->O            2   0.612   0.532  GenXYZRows[12].XYZRowN/XYCell0/YAddSub/COut1 (GenXYZRows[12].XYZRowN/YCarry<0>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[12].XYZRowN/XYCellGen[1].XYCellN/YAddSub/COut1 (GenXYZRows[12].XYZRowN/YCarry<1>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[12].XYZRowN/XYCellGen[2].XYCellN/YAddSub/COut1 (GenXYZRows[12].XYZRowN/YCarry<2>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[12].XYZRowN/XYCellGen[3].XYCellN/YAddSub/COut1 (GenXYZRows[12].XYZRowN/YCarry<3>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[12].XYZRowN/XYCellGen[4].XYCellN/YAddSub/COut1 (GenXYZRows[12].XYZRowN/YCarry<4>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[12].XYZRowN/XYCellGen[5].XYCellN/YAddSub/COut1 (GenXYZRows[12].XYZRowN/YCarry<5>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[12].XYZRowN/XYCellGen[6].XYCellN/YAddSub/COut1 (GenXYZRows[12].XYZRowN/YCarry<6>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[12].XYZRowN/XYCellGen[7].XYCellN/YAddSub/COut1 (GenXYZRows[12].XYZRowN/YCarry<7>)
+     LUT4:I0->O            4   0.612   0.651  GenXYZRows[12].XYZRowN/XYCellGen[8].XYCellN/YAddSub/COut1 (GenXYZRows[12].XYZRowN/YCarry<8>)
+     LUT3:I0->O            2   0.612   0.449  GenXYZRows[12].XYZRowN/XYCellGen[9].XYCellN/YAddSub/COut1 (GenXYZRows[12].XYZRowN/YCarry<9>)
+     LUT4:I1->O            4   0.612   0.568  GenXYZRows[12].XYZRowN/XYCellGen[11].XYCellN/YAddSub/COut1 (GenXYZRows[12].XYZRowN/YCarry<11>)
+     LUT4:I1->O            3   0.612   0.520  GenXYZRows[12].XYZRowN/XYCellGen[13].XYCellN/YAddSub/COut1 (GenXYZRows[12].XYZRowN/YCarry<13>)
+     LUT4:I1->O            3   0.612   0.520  GenXYZRows[12].XYZRowN/XYCellGen[15].XYCellN/YAddSub/COut1 (GenXYZRows[12].XYZRowN/YCarry<15>)
+     LUT4:I1->O            3   0.612   0.481  GenXYZRows[12].XYZRowN/XYCellGen[17].XYCellN/YAddSub/COut1 (GenXYZRows[12].XYZRowN/YCarry<17>)
+     LUT4:I2->O           12   0.612   0.847  GenXYZRows[12].XYZRowN/XYCellGen[19].XYCellN/YAddSub/Mxor_S_xo<0>1 (yOuts<85>)
+     LUT3:I2->O           82   0.612   1.155  d_14_mux00001 (GenXYZRows[13].XYZRowN/XYCellGen[10].XYCellN/YAddSub/COut_xor0000)
+     LUT3:I1->O            2   0.612   0.532  GenXYZRows[13].XYZRowN/XYCell0/YAddSub/COut1 (GenXYZRows[13].XYZRowN/YCarry<0>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[13].XYZRowN/XYCellGen[1].XYCellN/YAddSub/COut1 (GenXYZRows[13].XYZRowN/YCarry<1>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[13].XYZRowN/XYCellGen[2].XYCellN/YAddSub/COut1 (GenXYZRows[13].XYZRowN/YCarry<2>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[13].XYZRowN/XYCellGen[3].XYCellN/YAddSub/COut1 (GenXYZRows[13].XYZRowN/YCarry<3>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[13].XYZRowN/XYCellGen[4].XYCellN/YAddSub/COut1 (GenXYZRows[13].XYZRowN/YCarry<4>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[13].XYZRowN/XYCellGen[5].XYCellN/YAddSub/COut1 (GenXYZRows[13].XYZRowN/YCarry<5>)
+     LUT3:I0->O            2   0.612   0.532  GenXYZRows[13].XYZRowN/XYCellGen[6].XYCellN/YAddSub/COut1 (GenXYZRows[13].XYZRowN/YCarry<6>)
+     LUT3:I0->O            2   0.612   0.532  GenXYZRows[13].XYZRowN/XYCellGen[7].XYCellN/YAddSub/COut1 (GenXYZRows[13].XYZRowN/YCarry<7>)
+     LUT3:I0->O            4   0.612   0.651  GenXYZRows[13].XYZRowN/XYCellGen[8].XYCellN/YAddSub/COut1 (GenXYZRows[13].XYZRowN/YCarry<8>)
+     LUT3:I0->O            2   0.612   0.449  GenXYZRows[13].XYZRowN/XYCellGen[9].XYCellN/YAddSub/COut1 (GenXYZRows[13].XYZRowN/YCarry<9>)
+     LUT4:I1->O            4   0.612   0.568  GenXYZRows[13].XYZRowN/XYCellGen[11].XYCellN/YAddSub/COut1 (GenXYZRows[13].XYZRowN/YCarry<11>)
+     LUT4:I1->O            4   0.612   0.568  GenXYZRows[13].XYZRowN/XYCellGen[13].XYCellN/YAddSub/COut1 (GenXYZRows[13].XYZRowN/YCarry<13>)
+     LUT4:I1->O            4   0.612   0.568  GenXYZRows[13].XYZRowN/XYCellGen[15].XYCellN/YAddSub/COut1 (GenXYZRows[13].XYZRowN/YCarry<15>)
+     LUT4:I1->O            2   0.612   0.410  GenXYZRows[13].XYZRowN/XYCellGen[17].XYCellN/YAddSub/COut1 (GenXYZRows[13].XYZRowN/YCarry<17>)
+     LUT4:I2->O           11   0.612   0.823  GenXYZRows[13].XYZRowN/XYCellGen[19].XYCellN/YAddSub/Mxor_S_xo<0>1 (yOuts<63>)
+     LUT3:I2->O           90   0.612   1.091  d_15_mux00001 (GenXYZRows[14].XYZRowN/XYCellGen[10].XYCellN/YAddSub/COut_xor0000)
+     LUT4:I3->O            2   0.612   0.532  GenXYZRows[14].XYZRowN/XYCell0/YAddSub/COut1 (GenXYZRows[14].XYZRowN/YCarry<0>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[14].XYZRowN/XYCellGen[1].XYCellN/YAddSub/COut1 (GenXYZRows[14].XYZRowN/YCarry<1>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[14].XYZRowN/XYCellGen[2].XYCellN/YAddSub/COut1 (GenXYZRows[14].XYZRowN/YCarry<2>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[14].XYZRowN/XYCellGen[3].XYCellN/YAddSub/COut1 (GenXYZRows[14].XYZRowN/YCarry<3>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[14].XYZRowN/XYCellGen[4].XYCellN/YAddSub/COut1 (GenXYZRows[14].XYZRowN/YCarry<4>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[14].XYZRowN/XYCellGen[5].XYCellN/YAddSub/COut1 (GenXYZRows[14].XYZRowN/YCarry<5>)
+     LUT3:I0->O            2   0.612   0.532  GenXYZRows[14].XYZRowN/XYCellGen[6].XYCellN/YAddSub/COut1 (GenXYZRows[14].XYZRowN/YCarry<6>)
+     LUT3:I0->O            5   0.612   0.607  GenXYZRows[14].XYZRowN/XYCellGen[7].XYCellN/YAddSub/COut1 (GenXYZRows[14].XYZRowN/YCarry<7>)
+     LUT4:I1->O            4   0.612   0.568  GenXYZRows[14].XYZRowN/XYCellGen[9].XYCellN/YAddSub/COut1 (GenXYZRows[14].XYZRowN/YCarry<9>)
+     LUT4:I1->O            4   0.612   0.568  GenXYZRows[14].XYZRowN/XYCellGen[11].XYCellN/YAddSub/COut1 (GenXYZRows[14].XYZRowN/YCarry<11>)
+     LUT4:I1->O            4   0.612   0.568  GenXYZRows[14].XYZRowN/XYCellGen[13].XYCellN/YAddSub/COut1 (GenXYZRows[14].XYZRowN/YCarry<13>)
+     LUT4:I1->O            2   0.612   0.449  GenXYZRows[14].XYZRowN/XYCellGen[15].XYCellN/YAddSub/COut1 (GenXYZRows[14].XYZRowN/YCarry<15>)
+     LUT4:I1->O            3   0.612   0.481  GenXYZRows[14].XYZRowN/XYCellGen[17].XYCellN/YAddSub/COut1 (GenXYZRows[14].XYZRowN/YCarry<17>)
+     LUT4:I2->O            9   0.612   0.727  GenXYZRows[14].XYZRowN/XYCellGen[19].XYCellN/YAddSub/Mxor_S_xo<0>1 (yOuts<41>)
+     LUT3:I2->O           59   0.612   1.083  d_16_mux00001 (GenXYZRows[15].XYZRowN/XYCellGen[10].XYCellN/YAddSub/COut_xor0000)
+     LUT4:I3->O            1   0.612   0.509  GenXYZRows[15].XYZRowN/AddSub1Z0/COut1 (GenXYZRows[15].XYZRowN/ZCarry<0>)
+     LUT4:I0->O            1   0.612   0.509  GenXYZRows[15].XYZRowN/AddSub1ZGen[1].AddSub1ZN/COut1 (GenXYZRows[15].XYZRowN/ZCarry<1>)
+     LUT4:I0->O            1   0.612   0.509  GenXYZRows[15].XYZRowN/AddSub1ZGen[2].AddSub1ZN/COut1 (GenXYZRows[15].XYZRowN/ZCarry<2>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[15].XYZRowN/AddSub1ZGen[3].AddSub1ZN/COut1 (GenXYZRows[15].XYZRowN/ZCarry<3>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[15].XYZRowN/AddSub1ZGen[4].AddSub1ZN/COut1 (GenXYZRows[15].XYZRowN/ZCarry<4>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[15].XYZRowN/AddSub1ZGen[5].AddSub1ZN/COut1 (GenXYZRows[15].XYZRowN/ZCarry<5>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[15].XYZRowN/AddSub1ZGen[6].AddSub1ZN/COut1 (GenXYZRows[15].XYZRowN/ZCarry<6>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[15].XYZRowN/AddSub1ZGen[7].AddSub1ZN/COut1 (GenXYZRows[15].XYZRowN/ZCarry<7>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[15].XYZRowN/AddSub1ZGen[8].AddSub1ZN/COut1 (GenXYZRows[15].XYZRowN/ZCarry<8>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[15].XYZRowN/AddSub1ZGen[9].AddSub1ZN/COut1 (GenXYZRows[15].XYZRowN/ZCarry<9>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[15].XYZRowN/AddSub1ZGen[10].AddSub1ZN/COut1 (GenXYZRows[15].XYZRowN/ZCarry<10>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[15].XYZRowN/AddSub1ZGen[11].AddSub1ZN/COut1 (GenXYZRows[15].XYZRowN/ZCarry<11>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[15].XYZRowN/AddSub1ZGen[12].AddSub1ZN/COut1 (GenXYZRows[15].XYZRowN/ZCarry<12>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[15].XYZRowN/AddSub1ZGen[13].AddSub1ZN/COut1 (GenXYZRows[15].XYZRowN/ZCarry<13>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[15].XYZRowN/AddSub1ZGen[14].AddSub1ZN/COut1 (GenXYZRows[15].XYZRowN/ZCarry<14>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[15].XYZRowN/AddSub1ZGen[15].AddSub1ZN/COut1 (GenXYZRows[15].XYZRowN/ZCarry<15>)
+     LUT4:I0->O            2   0.612   0.532  GenXYZRows[15].XYZRowN/AddSub1ZGen[16].AddSub1ZN/COut1 (GenXYZRows[15].XYZRowN/ZCarry<16>)
+     LUT3:I0->O            2   0.612   0.449  GenXYZRows[15].XYZRowN/AddSub1ZGen[17].AddSub1ZN/COut1 (GenXYZRows[15].XYZRowN/ZCarry<17>)
+     LUT4:I1->O            1   0.612   0.000  r<15>209_SW0_G (N1211)
+     MUXF5:I1->O           1   0.278   0.426  r<15>209_SW0 (N876)
+     LUT2:I1->O            1   0.612   0.000  r<15>2091 (r<15>209)
+     MUXF5:I1->O           1   0.278   0.357  r<15>209_f5 (r_15_OBUF)
+     OBUF:I->O                 3.169          r_15_OBUF (r<15>)
+    ----------------------------------------
+    Total                    381.059ns (199.270ns logic, 181.790ns route)
+                                       (52.3% logic, 47.7% route)
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 22.00 secs
+Total CPU time to Xst completion: 21.93 secs
+ 
+-->
+
+Total memory usage is 4614480 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :   45 (   0 filtered)
+Number of infos    :    0 (   0 filtered)
