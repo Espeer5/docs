@@ -7,3 +7,6 @@
 [submodule "filesys/CliMA/ClimaArtifacts"]
 	path = filesys/CliMA/ClimaArtifacts
 	url = git@github.com:CliMA/ClimaArtifacts.git
+[submodule "filesys/Trust4_Cli"]
+	path = filesys/Trust4_Cli
+	url = git@github.com:Espeer5/Trust4_Cli.git

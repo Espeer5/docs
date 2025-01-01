@@ -140,7 +140,6 @@ architecture DataFlow of XYZRow is
                                                        "0000000000000000000011";
 
     -- atanhs for i = 0 to 16
-    -- Repeat iterations 4 and 13 to ensure convergence
     -- Leave a placeholder for iter 0 to keep indexing consistent
     constant htans : std_logic_vector(373 downto 0) := "0000000000000000000000" &
                                                        "0000100011001001111101" &
