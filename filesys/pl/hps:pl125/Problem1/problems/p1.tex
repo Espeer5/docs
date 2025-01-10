@@ -1,0 +1,58 @@
+\emph{\textbf{Q:} Could you produce the analogous argument for the same
+      conclusion using the state
+      $\ket{A} = \ket{z\uparrow}_R\ket{z\downarrow}_L$ in which the spins
+      are aligned?}
+\hfill \\
+
+Let's attempt to construct the analogous argument for the given state. The
+original argument hinges on the fact that knowing the spin of one particle
+along some axis allows us to predict with certainty the spin of the other
+particle, mathematically shown to hold regardless of the axis along which you
+measure or predict the spin. The mathematic proof in question is simply to 
+rewrite the z-spin state in terms of the x-spin state and observe the
+consequences. So allow us to do the same and rewrite $\ket{A}$ in the x-state.
+We know that $\ket{z\uparrow} = \frac{1}{\sqrt{2}}\ket{x\uparrow}+
+\frac{1}{\sqrt{2}}\ket{x\downarrow}$, such that
+\[\ket{A} = \ket{z\uparrow}_R\ket{z\downarrow}_L = (\frac{1}{\sqrt{2}}
+\ket{x\uparrow}_R+\frac{1}{\sqrt{2}}\ket{x\downarrow}_R)(\frac{1}{\sqrt{2}}
+\ket{x\uparrow}_L+\frac{1}{\sqrt{2}}\ket{x\downarrow}_L)\]
+\[= \frac{1}{2}(\ket{x\uparrow}_R\ket{x\uparrow}_L +
+    \ket{x\uparrow}_R\ket{x\downarrow}_L +
+    \ket{x\downarrow}_R\ket{x\uparrow}_L +
+    \ket{x\downarrow}_R\ket{\downarrow}_L)\]
+
+Now we can see that, in terms of x-spin, the state $\ket{A}$ is an equal
+superposition of all possible x-spin states. This means that the EPR argument
+doesn't apply - given the x-spin of one particle, we can't predict anything
+about the x-spin of the other particle. Why is this?
+
+Note that the issue is not the alignment of the spins. To prove this,
+consider instead a superposition of 2 spin-aligned states, and see if the EPR
+argument holds.
+\[\ket{L} = \frac{1}{\sqrt{2}}\ket{z\uparrow}_R\ket{z\uparrow}_L
+          + \frac{1}{\sqrt{2}}\ket{z\downarrow}_R\ket{z\downarrow}_L\]
+\[=\frac{1}{\sqrt{2}}(
+  (\frac{1}{\sqrt{2}}\ket{x\uparrow}_R+\frac{1}{\sqrt{2}}\ket{x\downarrow}_R)
+  (\frac{1}{\sqrt{2}}\ket{x\uparrow}_L+\frac{1}{\sqrt{2}}\ket{x\downarrow}_L) +
+  (\frac{1}{\sqrt{2}}\ket{x\uparrow}_R-\frac{1}{\sqrt{2}}\ket{x\downarrow}_R)
+  (\frac{1}{\sqrt{2}}\ket{x\uparrow}_L-\frac{1}{\sqrt{2}}\ket{x\downarrow}_L))\]
+\[=\frac{1}{\sqrt{2}}\ket{x\uparrow}_R\ket{x\uparrow}_L +
+   \frac{1}{\sqrt{2}}\ket{x\downarrow}_R\ket{x\downarrow}_L\]
+
+and in this aligned-spin state, we again are able to predict the spin of one
+particle given the spin of the other along any axis. So clearly, it is not
+the alignment or anti-alignment of the state that does the work here - it is
+instead the entanglement of the state.
+
+Notice that state $\ket{A}$ is a product state - it can be written as a simple
+product of 2 z-spin states, meaning that the spins of the 
+two particles are independent of each other. Yes, the spins are aligned, but 
+this alignment is not due to any entanglement, it is just the way the state was
+constructed. This means that the spins of the two particles are not correlated
+in any way, and so the EPR argument does not apply to this state.
+
+On the other hand, both $\ket{S}$ and $\ket{L}$ are entangled states. The wave 
+functions do not have the same separability and do not factor into a simple 
+product of the state of the right particle and the left particle. This means
+that the spins of the two particles are correlated in some way, and the nature
+of this correlation is what gives rise to the EPR argument.
