@@ -1,0 +1,136 @@
+\documentclass[11pt, a4paper]{article}
+\usepackage[a4paper, left=30mm, right=30mm]{geometry} % margin=2.6cm
+
+\usepackage[utf8]{inputenc}  % allow utf-8 input
+\usepackage[T1]{fontenc}     % use 8-bit T1 fonts
+\usepackage{ebgaramond}
+
+\usepackage{hyperref}         % hyperlinks
+\usepackage{url}              % simple URL typesetting
+\usepackage{booktabs}         % professional-quality tables
+\usepackage{amsfonts}         % blackboard math symbols
+\usepackage{nicefrac}         % compact symbols for 1/2, etc.
+\usepackage{microtype}        % microtypography
+\usepackage{xcolor}           % colors
+\usepackage{bbm}
+\usepackage{amsthm}
+\usepackage{rotating}
+\usepackage{braket}
+
+\hypersetup{                 % setup the hyperref package
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=blue,
+    urlcolor=blue,
+    citecolor=blue,
+    bookmarks=true,
+}
+
+\usepackage{graphicx} % Required for inserting images
+\usepackage[ngerman, english]{babel}
+\usepackage[iso, ngerman]{isodate}
+
+\usepackage{bbold}
+\usepackage{mathtools}
+\usepackage{amsmath} % Required for \DeclareMathOperator
+\usepackage{nicefrac}
+\usepackage{tikz}
+\usepackage{subcaption}
+\usepackage{centernot} % for the comparison
+
+%\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+
+\usepackage{verbatim}
+
+\RequirePackage[T1]{fontenc} 
+\RequirePackage[tt=false, type1=true]{libertine} 
+\RequirePackage[varqu]{zi4} 
+\RequirePackage[libertine]{newtxmath}
+
+\usepackage[round,comma]{natbib}
+\bibliographystyle{plainnat}
+
+\newcommand{\monthyeardate}{\ifcase \month \or January\or February\or March\or %
+April\or May \or June\or July\or August\or September\or October\or November\or %
+December\fi, \number \year} 
+
+\title{HPS/Pl 125: Problem 2}
+\author{%
+  Edward Speer
+  \\
+  California Institute of Technology\\
+  HPS/Pl 125, WI '25 \\
+}
+\date{\monthyeardate}
+
+\begin{document}
+
+\maketitle
+
+\noindent \emph{In Maudlin's figure 14, the wave function shown is of the form
+                \[\psi(x)=Ae^{i\alpha x}\]
+                where $A$ and $\alpha$ are real constants, and the wave function
+                is normalized.}
+
+\section{Part a} \emph{Show that $\psi(x)$ is an eigenstate of the momentum
+                       operator}
+\\ \hfill \\
+$\psi(x)$ is an eigenstate of the momentum operator iff
+$\hat{p}\psi(x)=k\psi(x)$ for some constant $k$, where $k$ is the eigenvalue of
+the momentum operator, $\hat{p} = -i\hbar\frac{\partial}{\partial x}$
+\[\hat{p}\psi(x) = -i\hbar\frac{\partial}{\partial x}[Ae^{i\alpha x}]
+  = -i\hbar(i\alpha Ae^{i\alpha x}) = \hbar\alpha Ae^{i\alpha x} =
+  \hbar\alpha\psi(x)\]
+
+\noindent Therefore, $\psi{x}$ is an eigenstate of the momentum operator with
+eigenvalue $k=\hbar\alpha$.
+
+\section{Part b} \emph{Use the time-dependent schrödinger equation to determine
+                       the way this state evolves over time, $\psi(x, t)$}
+\\ \hfill \\
+The time-dependent Schrödinger equation (with $V = 0$) is given by
+\[i\hbar\frac{\partial}{\partial t}\psi(x, t) =
+-\frac{\hbar^2}{2m}\frac{\partial^2}{\partial x^2}[\psi(x, t)]\]
+Using seperation of variables, write $\psi(x, t)$ as the product of a spatial
+component and a temporal component, $\psi(x, t) = \psi(x)\phi(t)$ — note that 
+$\psi(x)$ is the wave function given in the problem statement. Substituting:
+\[i\hbar\frac{\partial}{\partial t}[\psi(x)\phi(t)] =
+-\frac{\hbar^2}{2m}\frac{\partial^2}{\partial x^2}[\psi(x)\phi(t)]\]
+\[i\hbar\psi(x)\frac{\partial}{\partial t}\phi(t) =
+-\frac{\hbar^2}{2m}\phi(t)\frac{\partial^2}{\partial x^2}\psi(x)\]
+Seperate all time and spatial components to opposite sides of the equation:
+\[\frac{i\hbar}{\phi(t)}\frac{\partial}{\partial t}\phi(t) =
+-\frac{\hbar^2}{2m\psi(x)}\frac{\partial^2}{\partial x^2}\psi(x)\]
+We know the derivative of $\psi(x)$ is $i\alpha\psi(x)$, so:
+\[\frac{i\hbar}{\phi(t)}\frac{\partial}{\partial t}\phi(t) =
+-\frac{\hbar^2}{2m\psi(x)}(-\alpha^2\psi(x)) = 
+\frac{\hbar^2\alpha^2}{2m}\]
+\[\frac{1}{\phi(t)}\frac{\partial}{\partial t}\phi(t) =
+\frac{-i\hbar\alpha^2}{2m}\]
+\[\ln(\phi(t)) = \frac{-i\hbar\alpha^2}{2m}t + C\]
+\[\phi(t)=e^C e^{\frac{-i\hbar\alpha^2}{2m}t}\]
+Recombine the spatial and temporal components and absorb all constants
+into one normalizing constant to get the full wave function:
+\[\psi(x, t) = Ce^{i\alpha x}e^{\frac{-i\hbar\alpha^2}{2m}t}\]
+
+\section{Part c} \emph{Describe what figure 14 would look like if you animated 
+                       it to show the time evolution of this wave function}
+\\ \hfill \\
+As I see it, there are two options for this animation depending on how you
+conceive of the lines. The first option would be as follows: the lines are
+placed on the regions of the wavefunction with equal phase, and animated to 
+follow these lines of equal phase, such that the lines are always associated
+with the same phase throughout the duration of the animation. If this is the
+case, then the lines should ``move along with the wavefunction'', meaning that 
+they will slide to the right at a constant speed off the page. The second option
+is that the lines are drawn on regions of space with equal phase, but not
+affixed to the wavefunction, such that they are stationary in space. In this
+case, we should see periodic behavior of the labeled phase of each line. The 
+phase at each line will oscillate between $0$ and $2\pi$ as the wavefunction
+evolves over time. At each line, we should see oscillation at the same rate, and
+each time one of the labels returns to its original phase, so too should all the
+others.
+
+\end{document}
