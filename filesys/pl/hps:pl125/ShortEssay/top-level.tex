@@ -1,0 +1,254 @@
+\documentclass[11pt, a4paper]{article}
+\usepackage[a4paper, left=30mm, right=30mm]{geometry} % margin=2.6cm
+
+\usepackage[utf8]{inputenc}  % allow utf-8 input
+\usepackage[T1]{fontenc}     % use 8-bit T1 fonts
+\usepackage{ebgaramond}
+
+\usepackage{hyperref}         % hyperlinks
+\usepackage{url}              % simple URL typesetting
+\usepackage{booktabs}         % professional-quality tables
+\usepackage{amsfonts}         % blackboard math symbols
+\usepackage{nicefrac}         % compact symbols for 1/2, etc.
+\usepackage{microtype}        % microtypography
+\usepackage{xcolor}           % colors
+\usepackage{bbm}
+\usepackage{amsthm}
+\usepackage{rotating}
+
+\hypersetup{                 % setup the hyperref package
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=blue,
+    urlcolor=blue,
+    citecolor=blue,
+    pdftitle={Entitlement Justice and Measures of Algorithmic Fairness},
+    pdfauthor={Edward Speer, Llama-2-7b},
+    pdfkeywords={entitlement justice, algorithmic fairness, AI ethics},
+    bookmarks=true,
+}
+
+
+\usepackage{graphicx} % Required for inserting images
+\usepackage[ngerman, english]{babel}
+\usepackage[iso, ngerman]{isodate}
+
+
+\usepackage{bbold}
+\usepackage{mathtools}
+\usepackage{amsmath} % Required for \DeclareMathOperator
+\usepackage{nicefrac}
+\usepackage{tikz}
+\usepackage{subcaption}
+\usepackage{centernot} % for the comparison
+
+%\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+
+\usepackage{verbatim}
+
+\RequirePackage[T1]{fontenc} 
+\RequirePackage[tt=false, type1=true]{libertine} 
+\RequirePackage[varqu]{zi4} 
+\RequirePackage[libertine]{newtxmath}
+
+\usepackage[round,comma]{natbib}
+\bibliographystyle{plainnat}
+
+\newcommand{\monthyeardate}{\ifcase \month \or January\or February\or March\or %
+April\or May \or June\or July\or August\or September\or October\or November\or %
+December\fi, \number \year} 
+
+\title{``Ethereal Non-Locality'' and Causal Influence in Quantum Mechanics}
+\author{%
+  Edward Speer
+  \\
+  California Institute of Technology\\
+  HPS/Pl 125, WI '25 \\
+}
+\date{\monthyeardate}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+In 1935, Einstein, Podolsky, and Rosen (EPR) published a paper,~\cite{EPR_1935},
+which set up the first half of a conundrum in quantum mechanics. EPR argued
+through a thought experiment that assuming locality in quantum mechanics meant 
+that the $\psi$-function could not provide a complete description of a physical
+system — that there must be hidden variables that pre-determine the outcomes of
+measurements. Thirty years later, in 1964, John Bell published a
+paper,~\cite{Bell_1964}, that showed there could be no such hidden variables. 
+Together, these two papers can be thought of as setting up the following
+argument: if the predictions of quantum mechanics are correct, then quantum 
+mechanics is an inherently non-local theory. 
+
+What is troubling about non-locality? Einstein was famously opposed to it,
+naming the implied non-locality of quantum mechanics ``spooky action at a
+distance.'' This ``action at a distance'' is the idea that two particles can be
+space-like separated, and yet still be correlated in a way that is not
+deterministic. This notion directly conflicts with a natural understanding of
+causality, inspiring the resistance against it. Yet perhaps not all is lost. 
+A general attitude towards this non-locality is shown by this quote
+from~\cite{Griffiths_2020}: ``Causal influences cannot propagate faster than
+light, but there is no compelling reason why ethereal ones should not. The 
+influences associated with the collapse of the wave function are of the latter
+type, and the fact that they 'travel' faster than light may be surprising, but
+it is not, after all, catastrophic.''
+
+In this essay, I will explore the concept of ``ethereal non-locality'' and its
+implications for causal influence in quantum mechanics. I will challenge 
+Griffiths' claim that ethereal influences are not catastrophic (catastrophic to
+whose or what's ends?) and argue that the non-locality of quantum mechanics does 
+indeed pose a major challenge to our philosophy of causality.
+
+I will first present the EPR argument and Bell's theorem, and demonstrate the 
+relevant technical details of quantum theory. I will then discuss dominant
+theories of causation and causal inference, and show how they are challenged by
+the non-locality of quantum mechanics. Finally, I will argue that rather than 
+accepting ethereal non-locality as a benign feature of quantum mechanics and 
+arguing that it is not catastrophic, we should instead take it as a serious
+challenge to be addressed by future research in the philosophy of physics, with 
+consequences not only for our understanding of quantum mechanics, but also for
+our understanding and broader application of causal inference.
+
+\section{The EPR-Bell Argument}
+
+The EPR and Bell arguments both deal with the concept of entanglement. Entangled
+particles are those which have been prepared such that they are described by a
+wave function that is not separable into the wave functions of the individual
+particles, resulting in a correlation between the two particles. For simplicity,
+we will sum up both EPR and Bell using the same example of an entangled system,
+the GHZ state given in~\cite{GHZ_2007}. The GHZ is a three-particle entangled
+state, with the following properties:
+\begin{itemize}
+    \item If spin is measured along the $x$-axis for all three particles, the 
+          number of particles with spin up will always be odd.
+    \item If spin is measured along the $x$ axis for the one particle, and along
+          the $z$-axis for the third particle, the number of particles with spin
+          up will always be even.
+\end{itemize}
+
+On this experimental setup, the EPR argument would ask us to consider the
+following: In the case of either measurement, all $x$ spin or one $x$ and two
+$z$ spins, if we measure the first two outcomes, we can predict the third outcome
+with certainty. \textit{Before I ever measure} teh third particle, I know what 
+the outcome of the measurement will be. However, I could not predict this
+outcome from the preparation of the state alone. This means that one of two
+things happened: either the state of the third particle was determined at the
+time of preparation, or the measurement of the first two particles somehow
+influenced the outcome of the third particle instantaneously. EPR assume
+locality to hold, and so they conclude that the state of the third particle must
+determined prior to measurement. However, the key takeaway is that if quantum
+mechanics is local, then the $\psi$-function cannot provide a complete
+description of the physical system — there must be some hidden variable which 
+determined the outcome prior to the measurement which was not captured in the 
+$\psi$-function.
+
+Bell's work, on the other hand, shows that there can be no such hidden variable.
+If the outcomes of the measurement are determined by some hidden variable prior
+to measurement, then there must be some way to assign outcomes of measurements 
+to each of the particles in the state before measurement. Bell showed that this
+cannot be done — There is no way to assign the states of the particles in the 
+GHZ state so that the parities of the outcomes of the measurements are
+consistent with the predictions of quantum mechanics.
+
+EPR and Bell put together show the following: If the relevant predictions of 
+quantum mechanics are correct, then the theory is non-local. The wealth of 
+experimental evidence put together since the 1960s has shown that the predictions
+of quantum mechanics are indeed correct, and therefore, quantum mechanics is a
+non-local theory.
+
+\section{Non-local Causation?}
+
+As previously mentioned, Griffiths acknowledges the locality given by EPR-Bell, 
+but refers to this non-locality as ``ethereal'' and not causal. This begs the
+question of what we mean by causality, and when we can conclude that an
+interaction is or isn't causal. Until we have a clear account of causality, we 
+cannot say whether or not the correlation between the measurements in the GHZ
+state is causal.
+
+There are a number of philosophical theories of causation, but the two most
+relevant to this discussion are the counterfactual theory of causation and the
+process theory of causation. The counterfactual theory of causation, as
+formulated by~\cite{Lewis_1973}, states that $A$ causes $B$ if and only if $B$
+would not have occurred if $A$ had not occurred. The process theory of
+causation, on the other hand, states that $A$ causes $B$ if and only if there is
+a causal process that connects $A$ to $B$.
+
+If one adopts a process theory of causation, then it seems that we may safely 
+conclude that the correlation between the measurements in the GHZ state is not
+causal. One simply concludes that ``processes'' may not travel faster than the
+speed of light (this can be considered an outcome of the theory of relativity)
+and so the correlation between the measurements in the GHZ state cannot be
+causal.
+
+However, the dominant theory of causation which underlies the process of causal 
+discovery and inference is the counterfactual theory. The statistical method of
+causal discovery, as formulated by~\cite{Pearl_1995} relies on this theory, 
+formulating a counterfactual as a conditional probability. The counterfactual
+probability if $B$ given $A$ is the probability that $B$ would have occurred if
+$A$ had occurred, while holding fixed all those variables which do not lie along
+a causal pathway from $A$ to $B$. This method has been used to great success in
+a number of fields, including epidemiology, economics, and computer science.
+
+Let us consider the GHZ state in the context of this method of causal inference.
+If we consider the counterfactual probability of the outcome of the third
+particle given the outcomes of the first two particles, we find that the outcome
+of the third particle is perfectly correlated with the outcomes of the first two
+particles. By preparing the GHZ state specifically we have conditioned on the 
+preparation of the state, and so, as in the EPR argument, we reach the following
+conlusion. Either there are some other variables to be considered in our causal
+model, or the correlation between the measurements in the GHZ state is causal
+according to our causal inference. Given Bell's work, there may be no hidden 
+variable to consider, and so we must conclude that according to our common 
+understanding of causality, this influence is causal.
+
+We are now left with two options. Either we accept this relationship as causal,
+and thus must acccept causal influence that travels faster than the speed of
+light, or our dominant approach to causality is flawed and requires revision.
+As Griffiths points out, the former is catastrophic — however, I contend, so is
+the latter. If a dominant theory and approach to causation is marked flawed by
+fundamental physics, then we must interrogate our use of causal inference and 
+understanding if and why it still works.
+
+\section{Discussion}
+
+Due to the physical consequences of accepting non-local causality, we should
+prefer to accept that quantum mechanics provides a fundamental challenge to the 
+counterfactual approach to causal inference and the theory that underlies it.
+If this is the case, we should examine what precise aspects of causal inference
+fail, and what we can do to revise them.
+
+One key assumption underlying causal inference is the assumption of the
+faithfulness condition. This assumption holds that any two variables in a causal
+model which are dependent are either causally related or have a common cause.
+This is the assumption that clearly fails in the GHZ state — the outcomes of the
+measurements are fully dependent, but there is no common cause, and we want to
+assume that there is no causal relationship between the measurements.
+
+This violation of faithfulness is concerning. Despite the fact that faithfulness
+holds in the majority of cases, the fact that it fails for fundamental physics
+shows that the universe may be inherently non-faithful. If this is the case,
+then it is not clear how we can justify our assumption of faithfulness when we 
+perform causal analysis. It is probable that we can still assume faithfulness 
+on certain types of variables and certain circumstances, but we may then need
+an account of when we can and cannot assume faithfulness, and how our
+fundamental physics can predict the faithfulness of a system.
+
+In conclusion, the non-locality of quantum mechanics shown through the 
+EPR and Bell arguments poses a fundamental challenge to the assumptions
+underlying our dominant theories of causation and causal inference. While we
+have theories of causation such as process theory which can handle the exclusion
+of non-local causation, the counterfactual approach which underlies
+techniques of causal inference and discovery is fundamentally challenged by the
+non-locality of quantum mechanics. While Griffiths may consider this challenge 
+to be ``non-catastrophic'', I argue that it poses a fundamental challenge to our
+understanding of causality and requires further research in the philosophy of
+physics and causal inference.
+
+\bibliography{references}
+
+\end{document}
