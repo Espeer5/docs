@@ -1,0 +1,126 @@
+\documentclass[11pt, a4paper]{article}
+\usepackage[a4paper, left=30mm, right=30mm]{geometry} % margin=2.6cm
+
+\usepackage[utf8]{inputenc}  % allow utf-8 input
+\usepackage[T1]{fontenc}     % use 8-bit T1 fonts
+\usepackage{ebgaramond}
+
+\usepackage{hyperref}         % hyperlinks
+\usepackage{url}              % simple URL typesetting
+\usepackage{booktabs}         % professional-quality tables
+\usepackage{amsfonts}         % blackboard math symbols
+\usepackage{nicefrac}         % compact symbols for 1/2, etc.
+\usepackage{microtype}        % microtypography
+\usepackage{xcolor}           % colors
+\usepackage{bbm}
+\usepackage{amsthm}
+\usepackage{rotating}
+\usepackage{braket}
+
+\hypersetup{                 % setup the hyperref package
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=blue,
+    urlcolor=blue,
+    citecolor=blue,
+    bookmarks=true,
+}
+
+\usepackage{graphicx} % Required for inserting images
+\usepackage[ngerman, english]{babel}
+\usepackage[iso, ngerman]{isodate}
+
+\usepackage{bbold}
+\usepackage{mathtools}
+\usepackage{amsmath} % Required for \DeclareMathOperator
+\usepackage{nicefrac}
+\usepackage{tikz}
+\usepackage{subcaption}
+\usepackage{centernot} % for the comparison
+
+%\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+
+\usepackage{verbatim}
+
+\RequirePackage[T1]{fontenc} 
+\RequirePackage[tt=false, type1=true]{libertine} 
+\RequirePackage[varqu]{zi4} 
+\RequirePackage[libertine]{newtxmath}
+
+\usepackage[round,comma]{natbib}
+\bibliographystyle{plainnat}
+
+\newcommand{\monthyeardate}{\ifcase \month \or January\or February\or March\or %
+April\or May \or June\or July\or August\or September\or October\or November\or %
+December\fi, \number \year} 
+
+\title{HPS/Pl 125: Problem 4}
+\author{%
+  Edward Speer
+  \\
+  California Institute of Technology\\
+  HPS/Pl 125, WI '25 \\
+}
+\date{\monthyeardate}
+
+\begin{document}
+
+\maketitle
+
+\noindent \emph{Choose one or two of Maudlin's 8 experiments, and develop an 
+argument that either Bohmian mechanics or GRW theory provide a better
+explanation of your selected experiments.}
+\\\hfill\\
+I confess I am enitrely unsettled by a question regarding explanation in quantum
+mechanics.I have in the past been quite set on causal explanations, but given 
+that I haven't yet been convinced that causality is safe in quantum mechanics,
+or that the influences shown between particles in quantum mechanics are causal,
+I am not sure exactly which route to take towards discussing explanation in 
+quantum mechanics. In such a situation, I would like to fall back to a simpler
+model of explanation, like the DN model, but here I am greeted by 2 sets of laws
+which are each capable of logically yielding the equal empirical phenomena. It
+seems likely that both approaches offer similarly unifying explanations of the
+phenomena, so a unificationist account also does not provide a clear answer on
+a cursory look. Unsure of where else to turn, I will fall back on a pragmatic
+account of explanation, and look for features of the two theories which might
+be more appealing or useful in practice when applied to the two experiments.
+
+For the experiment which I think serves to show the greatest contrast
+between the two provided explanations, I will choose that of the classic double
+slit experiment. To summarize, in the double slit experiment, a particle is
+fired at a screen with two slits, and an interference pattern is observed on a
+screen behind the slits. The interference pattern is consistent with wave
+behavior, but when the particle is fired one at a time, it is observed in
+discrete flashes on the screen, as if it were a particle. We never observe a
+deviation from the standard predictions of quantum mechanics in this experiment
+as it has been performed. 
+
+Let us first address the double slit experiment. Bohmian mechanics offers a 
+straightforward explanation. Both the particle and the wave are real entities.
+Since the particle is guided by the wave, it is not surprising that the particle
+will behave as a particle when observed, and as a wave when not observed. The
+wave is a real entity, and so it is not surprising that it will interfere with
+itself. Particle-wave duality is a natural consequence of the theory. In GRW, 
+however, we find a different explanation. We have a single element of our
+ontology, which is the wave. The wave is a real entity, and it is subject to
+a stocastic process of collapse. The collapse is a real physical process, which
+is incredibly unlikely to occur until the wave becomes entangled with the
+macroscopic screen behind the slits. This explanation is pragmatically less
+desireable for the reason of ``likelihoods''. In principle, if the slits were
+made long enough, or if the experiment were repeated enough times, we should see
+collapses before the screens, and we could possibly see a particle fail to
+collapse for a short time at the screen. Our observed pattern of wave-particle 
+duality as we typically see it is then subject to potential violations. The
+pattern we observe is not a necessary pattern, but one which falls out of 
+statistical likelihoods with the potential for violation. In Bohmian mechanics,
+the wave is always guiding the particle, and there is nothing random about the
+process. Every particle will obey the guiding equation, and we don't have to
+worry about these random unlikely events outside of our standard predictions or
+results. So on pragmatic grounds, we should prefer the explanation from Bohmian
+mechanics. This type of reasoning can be expanded to the broader issue of tails
+in GRW theory to apply similarly to the EPR experiment as well.
+
+
+\end{document}

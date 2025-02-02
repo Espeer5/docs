@@ -1,0 +1,134 @@
+\documentclass[11pt, a4paper]{article}
+\usepackage[a4paper, left=30mm, right=30mm]{geometry} % margin=2.6cm
+
+\usepackage[utf8]{inputenc}  % allow utf-8 input
+\usepackage[T1]{fontenc}     % use 8-bit T1 fonts
+\usepackage{ebgaramond}
+
+\usepackage{hyperref}         % hyperlinks
+\usepackage{url}              % simple URL typesetting
+\usepackage{booktabs}         % professional-quality tables
+\usepackage{amsfonts}         % blackboard math symbols
+\usepackage{nicefrac}         % compact symbols for 1/2, etc.
+\usepackage{microtype}        % microtypography
+\usepackage{xcolor}           % colors
+\usepackage{bbm}
+\usepackage{amsthm}
+\usepackage{rotating}
+\usepackage{braket}
+
+\hypersetup{                 % setup the hyperref package
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=blue,
+    urlcolor=blue,
+    citecolor=blue,
+    bookmarks=true,
+}
+
+\usepackage{graphicx} % Required for inserting images
+\usepackage[ngerman, english]{babel}
+\usepackage[iso, ngerman]{isodate}
+
+\usepackage{bbold}
+\usepackage{mathtools}
+\usepackage{amsmath} % Required for \DeclareMathOperator
+\usepackage{nicefrac}
+\usepackage{tikz}
+\usepackage{subcaption}
+\usepackage{centernot} % for the comparison
+
+%\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+
+\usepackage{verbatim}
+
+\RequirePackage[T1]{fontenc} 
+\RequirePackage[tt=false, type1=true]{libertine} 
+\RequirePackage[varqu]{zi4} 
+\RequirePackage[libertine]{newtxmath}
+
+\usepackage[round,comma]{natbib}
+\bibliographystyle{plainnat}
+
+\newcommand{\monthyeardate}{\ifcase \month \or January\or February\or March\or %
+April\or May \or June\or July\or August\or September\or October\or November\or %
+December\fi, \number \year} 
+
+\title{HPS/Pl 125: Problem 3}
+\author{%
+  Edward Speer
+  \\
+  California Institute of Technology\\
+  HPS/Pl 125, WI '25 \\
+}
+\date{\monthyeardate}
+
+\begin{document}
+
+\maketitle
+
+\noindent \emph{Consider the Gaussian wave packet given by
+\[\psi(x)=(\frac{1}{\pi\omega^2})^{\frac{1}{4}}e^{\frac{-x^2}{2\omega^2}+ikx}\]}
+
+\emph{* Note that all odd integrals dissapear and all integrals shown are taken
+over $-\infty$ to $\infty$.}
+
+\section{Part a} \emph{Compute the expectation values of $\hat{p}$ and
+$\hat{H}$ on this state}
+\\ \hfill \\
+The expectation value of an operator $\hat{A}$ on a state $\psi$ is given by
+\[\braket{\hat{A}} = \int \psi^*(x)\hat{A}\psi(x)dx\] over all space. Thus:
+
+\[\braket{\hat{p}} = \int \psi^*(x)\hat{p}\psi(x)dx\]
+\[= -i\hbar(\frac{1}{\pi\omega^2})^{\frac{1}{2}}\int e^{\frac{-x^2}{2\omega^2}-ikx} \frac{\partial}{\partial x}[e^{\frac{-x^2}{2\omega^2}+ikx}]dx\]
+\[=-i\hbar(\frac{1}{\pi\omega^2})^{\frac{1}{2}}\int e^{\frac{-x^2}{2\omega^2}}(\frac{-x}{\omega^2}+ik)dx\]
+\[= -i^2\hbar k(\frac{1}{\pi\omega^2})^{\frac{1}{2}}(\pi\omega^2)^{\frac{1}{2}}\]
+\[\boxed{=\hbar k}\]
+
+\[\braket{\hat{H}} = \int \psi^*(x)\hat{H}\psi(x)dx\]
+\[= \frac{-\hbar^2}{2m}(\frac{1}{\pi\omega^2})^\frac{1}{2}\int e^{\frac{-x^2}{2\omega^2}-ikx}\frac{\partial^2}{\partial x^2}[e^{\frac{-x^2}{2\omega^2}+ikx}]dx\]
+\[=\frac{-\hbar^2}{2m}(\frac{1}{\pi\omega^2})^\frac{1}{2}\int e^{\frac{-x^2}{\omega^2}}(\frac{x^2}{\omega^4}-\frac{1}{\omega^2}-\frac{2ikx}{\omega^2}-k^2)dx\]
+\[= \frac{-\hbar}{2m}(\frac{1}{2\omega^2}-\frac{1}{\omega^2}-k^2)\]
+\[\boxed{=\frac{\hbar^2}{2m}(\frac{1}{2\omega^2}+k^2)}\]
+
+\section{Part b} \emph{Collapse the wave function by multiplying it by a
+gaussian given as \[(\frac{\omega^2}{\sigma^2}+1)^{\frac{1}{4}}e^{\frac{-x^2}{2\sigma^2}}\]
+Compute the expectation values of $\hat{p}$ and $\hat{H}$ on this state}
+\\ \hfill \\
+\[\braket{\hat{p}} = \int (\frac{\omega^2}{\sigma^2}+1)^{\frac{1}{4}}e^{\frac{-x^2}{2\sigma^2}}\psi^*(x)\hat{p}(\frac{\omega^2}{\sigma^2}+1)^{\frac{1}{4}}e^{\frac{-x^2}{2\sigma^2}}\psi(x)dx\]
+\[=-i\hbar(\frac{1}{\pi\sigma^2}+\frac{1}{\pi\omega^2})^\frac{1}{2}\int e^{-(\frac{1}{2\sigma^2}+\frac{1}{2\omega^2})x^2-ikx}\frac{\partial}{\partial x}[e^{-(\frac{1}{2\sigma^2}+\frac{1}{2\omega^2})x^2+ikx}]dx\]
+\[=-i\hbar(\frac{1}{\pi\sigma^2}+\frac{1}{\pi\omega^2})^\frac{1}{2}\int e^{-(\frac{1}{\sigma^2}+\frac{1}{\omega^2})x^2}(\frac{x}{\sigma^2}-\frac{x}{\omega^2}+ik)dx\]
+\[=-i\hbar(\frac{1}{\pi\sigma^2}+\frac{1}{\pi\omega^2})^\frac{1}{2}(ik)(\frac{\pi}{\frac{1}{\sigma^2}+\frac{1}{\omega^2}})^{\frac{1}{2}}\]
+\[=\boxed{\hbar k}\]
+
+\[\braket{\hat{H}} = \int (\frac{\omega^2}{\sigma^2}+1)^{\frac{1}{4}}e^{\frac{-x^2}{2\sigma^2}}\psi^*(x)\hat{H}(\frac{\omega^2}{\sigma^2}+1)^{\frac{1}{4}}e^{\frac{-x^2}{2\sigma^2}}\psi(x)dx\]
+\[=\frac{-\hbar^2}{2m}(\frac{1}{\pi\sigma^2}+\frac{1}{\pi\omega^2})^\frac{1}{2}\int e^{-(\frac{1}{2\sigma^2}+\frac{1}{2\omega^2})x^2-ikx}\frac{\partial^2}{\partial x^2}[e^{-(\frac{1}{2\sigma^2}+\frac{1}{2\omega^2})x^2+ikx}]dx\]
+\[=\frac{-\hbar^2}{2m}(\frac{1}{\pi\sigma^2}+\frac{1}{\pi\omega^2})^\frac{1}{2}\int e^{-(\frac{1}{\sigma^2}+\frac{1}{\omega^2})x^2}(k^2+(\frac{1}{2\sigma^2}+\frac{1}{2\omega^2})-2ik(\frac{x}{2\sigma^2}+\frac{x}{2\omega^2})+(\frac{x}{2\sigma^2}+\frac{x}{2\omega^2})^2)dx\]
+\[=\frac{-\hbar^2}{2m}(\frac{1}{\pi\sigma^2}+\frac{1}{\pi\omega^2})^\frac{1}{2}(\frac{\pi}{\frac{1}{\sigma^2}+\frac{1}{\omega^2}})^{\frac{1}{2}}(-k^2-\frac{1}{2\sigma^2}-\frac{1}{2\omega^2})\]
+\[\boxed{=\frac{\hbar}{2m}(\frac{1}{2\sigma^2}+\frac{1}{2\omega^2}+k^2)}\]
+
+\section{Part c} \emph{Explain why the collapse law multiplies the $\psi$ by a
+Gaussian instead of just replacing it with a gaussian.}
+\\ \hfill \\
+We see by comparing the expectation of the momentum operator from parts a and b
+that multiplying by a gaussian preserves the expectation value of the momentum
+operator. If the expectation value of momentum were to change, the collapse law
+would be unphysical and create a discontinuity in both momentum and energy
+space. Simply replacing the wavefunction with a gaussian would not preseve the 
+expectation value of momentum and would create a discontinuity in momentum space.
+
+\section{Part d} \emph{Explain why $\sigma$ should not be made arbitrarily
+small.}
+\\ \hfill \\
+Compare the expectation of the energy operator from parts a and b. We see that
+the system has increased in the expectation of energy by a gain which is given 
+by $\frac{\hbar}{2m}(\frac{1}{2\sigma^2})$. If $\sigma$ were to be made
+arbitrarily small, this gain would tend towards infinity, meaning that the
+system would have a sudden infinite spike in energy. This is unphysical and
+would violate observation. In other words, there is a bound in the precision of
+localization of a particle for this type of collapse law in order to avoid a
+system of infinite energy.
+
+\end{document}
