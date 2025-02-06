@@ -1,0 +1,111 @@
+\documentclass[11pt, a4paper]{article}
+\usepackage[a4paper, left=30mm, right=30mm]{geometry} % margin=2.6cm
+
+\usepackage[utf8]{inputenc}  % allow utf-8 input
+\usepackage[T1]{fontenc}     % use 8-bit T1 fonts
+\usepackage{ebgaramond}
+
+\usepackage{hyperref}         % hyperlinks
+\usepackage{url}              % simple URL typesetting
+\usepackage{booktabs}         % professional-quality tables
+\usepackage{amsfonts}         % blackboard math symbols
+\usepackage{nicefrac}         % compact symbols for 1/2, etc.
+\usepackage{microtype}        % microtypography
+\usepackage{xcolor}           % colors
+\usepackage{bbm}
+\usepackage{amsthm}
+\usepackage{rotating}
+\usepackage{braket}
+\usepackage{physics}
+
+\hypersetup{                 % setup the hyperref package
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=blue,
+    urlcolor=blue,
+    citecolor=blue,
+    bookmarks=true,
+}
+
+\usepackage{graphicx} % Required for inserting images
+\usepackage[ngerman, english]{babel}
+\usepackage[iso, ngerman]{isodate}
+
+\usepackage{bbold}
+\usepackage{mathtools}
+\usepackage{amsmath} % Required for \DeclareMathOperator
+\usepackage{nicefrac}
+\usepackage{tikz}
+\usepackage{subcaption}
+\usepackage{centernot} % for the comparison
+
+%\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+
+\usepackage{verbatim}
+
+\RequirePackage[T1]{fontenc} 
+\RequirePackage[tt=false, type1=true]{libertine} 
+\RequirePackage[varqu]{zi4} 
+\RequirePackage[libertine]{newtxmath}
+
+\usepackage[round,comma]{natbib}
+\bibliographystyle{plainnat}
+
+\newcommand{\monthyeardate}{\ifcase \month \or January\or February\or March\or %
+April\or May \or June\or July\or August\or September\or October\or November\or %
+December\fi, \number \year} 
+
+\title{HPS/Pl 125: Problem 5}
+\author{%
+  Edward Speer
+  \\
+  California Institute of Technology\\
+  HPS/Pl 125, WI '25 \\
+}
+\date{\monthyeardate}
+
+\begin{document}
+
+\maketitle
+
+\noindent \emph{Consider the following three energy eigenstate wave functions
+for an electron in a hydrogen atom:
+\[\psi_{100}(r, \theta, \phi, t) = \frac{1}{\sqrt{a^3\pi}}e^{\frac{-r}{a}-i\frac{E_1t}{\hbar}}\]
+\[\psi_{211}(r, \theta, \phi, t) = \frac{-1}{8\sqrt{a^5\pi}}r\sin\theta e^{\frac{-r}{2a}+i\phi-i\frac{E_1t}{4\hbar}}\]
+\[\psi_{21-1}(r, \theta, \phi, t) = \frac{1}{8\sqrt{a^5\pi}}r\sin\theta e^{\frac{-r}{2a}-i\phi-i\frac{E_1t}{4\hbar}}\]}
+
+\section{Part a} \emph{Calculate the Bohmian velocity of the electron for each
+of the three wavefunctions using the standard Bohmian guidance equation}
+\\ \hfill \\
+\[\overrightarrow{v}_{100} = \frac{\hbar}{m}\Im[\frac{\overrightarrow{\nabla}\psi_{100}}{\psi_{100}}] = \frac{\hbar}{m}\Im[\frac{\hat{r}\frac{\partial \psi_{100}}{\partial r} + \frac{1}{r}\hat{\theta}\frac{\partial \psi_{100}}{\partial\theta} + \frac{1}{r\sin\theta}\hat{\phi}\frac{\partial \psi_{100}}{\partial \phi}}{\psi_{100}}] = \frac{\hbar}{m}\Im[\frac{\frac{-1}{\sqrt{a^5\pi}}\hat{r}\psi_{100}}{\psi_{100}}] = \boxed{0}\]
+\\ \hfill \\
+\[\overrightarrow{v}_{211} = \frac{\hbar}{m}\Im[\frac{\overrightarrow{\nabla}\psi_{211}}{\psi_{211}}] = \frac{\hbar}{m}\Im[\frac{\hat{r}\frac{\partial \psi_{211}}{\partial r} + \frac{1}{r}\hat{\theta}\frac{\partial \psi_{211}}{\partial\theta} + \frac{1}{r\sin\theta}\hat{\phi}\frac{\partial \psi_{211}}{\partial \phi}}{\psi_{211}}]\]
+\[= \frac{\hbar}{m}\Im[\frac{(1 - \frac{r}{2a})\hat{r}\psi_{211}+\cot\theta\frac{1}{r}\hat{\phi}\psi_{211} + \frac{i}{r\sin\theta}\hat{\phi}\psi_{211}}{\psi_{211}}] = \boxed{\frac{\hbar}{2mr\sin\theta}\hat{\phi}}\]
+\\ \hfill \\
+\[\overrightarrow{v}_{21-1} = \frac{\hbar}{m}\Im[\frac{\overrightarrow{\nabla}\psi_{21-1}}{\psi_{21-1}}] = \frac{\hbar}{m}\Im[\frac{\hat{r}\frac{\partial \psi_{21-1}}{\partial r} + \frac{1}{r}\hat{\theta}\frac{\partial \psi_{21-1}}{\partial\theta} + \frac{1}{r\sin\theta}\hat{\phi}\frac{\partial \psi_{21-1}}{\partial \phi}}{\psi_{21-1}}]\]
+\[= \frac{\hbar}{m}\Im[\frac{(1 - \frac{r}{2a})\hat{r}\psi_{21-1}+\cot\theta\frac{1}{r}\hat{\phi}\psi_{21-1} - \frac{i}{r\sin\theta}\hat{\phi}\psi_{21-1}}{\psi_{21-1}}] = \boxed{\frac{-\hbar}{2mr\sin\theta}\hat{\phi}}\]
+
+\section{Part b} \emph{Explain in words the trajectories of the electron for
+each wave function and how they compare to what one would expect from the Bohr
+model of the atom.}
+
+The trajectory of the first wave function, $\psi_{100}$ is quite unexpected. You
+have a stationary electron which is not moving, simply inhabiting one point in 
+space around the nucleus. This obviously contrast with the classical Bohr mdoel
+of the atom in which we expect to see the electron orbiting the nucleus in a
+circle.
+
+The trajectories of the second and third wave functions, $\psi_{211}$ and
+$\psi_{21-1}$, are more in line with what we would expect from the Bohr model,
+but still significantly differentl. We see a velocity in the azimuthal direction,
+which would correspond to the electron orbiting the nucleus. However, we see
+that the velocity is inversely proportional to both the radius of the electron's
+orbit and the sine of the polar angle. This means that the electron is moving
+faster when it is closer to the nucleus and when it is closer to the poles of
+the atom. This is in stark contrast to the Bohr model, where the electron moves
+at a constant velocity in a circular orbit around the nucleus.
+
+
+\end{document}
