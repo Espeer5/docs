@@ -1,0 +1,137 @@
+\documentclass[11pt, a4paper]{article}
+\usepackage[a4paper, left=30mm, right=30mm]{geometry} % margin=2.6cm
+
+\usepackage[utf8]{inputenc}  % allow utf-8 input
+\usepackage[T1]{fontenc}     % use 8-bit T1 fonts
+\usepackage{ebgaramond}
+
+\usepackage{hyperref}         % hyperlinks
+\usepackage{url}              % simple URL typesetting
+\usepackage{booktabs}         % professional-quality tables
+\usepackage{amsfonts}         % blackboard math symbols
+\usepackage{nicefrac}         % compact symbols for 1/2, etc.
+\usepackage{microtype}        % microtypography
+\usepackage{xcolor}           % colors
+\usepackage{bbm}
+\usepackage{amsthm}
+\usepackage{rotating}
+\usepackage{braket}
+\usepackage{physics}
+
+\hypersetup{                 % setup the hyperref package
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=blue,
+    urlcolor=blue,
+    citecolor=blue,
+    bookmarks=true,
+}
+
+\usepackage{graphicx} % Required for inserting images
+\usepackage[ngerman, english]{babel}
+\usepackage[iso, ngerman]{isodate}
+
+\usepackage{bbold}
+\usepackage{mathtools}
+\usepackage{amsmath} % Required for \DeclareMathOperator
+\usepackage{nicefrac}
+\usepackage{tikz}
+\usepackage{subcaption}
+\usepackage{centernot} % for the comparison
+
+% \DeclareMathOperator{\Tr}{Tr} % trace operation
+
+%\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+
+\usepackage{verbatim}
+
+\RequirePackage[T1]{fontenc} 
+\RequirePackage[tt=false, type1=true]{libertine} 
+\RequirePackage[varqu]{zi4} 
+\RequirePackage[libertine]{newtxmath}
+
+\usepackage[round,comma]{natbib}
+\bibliographystyle{plainnat}
+
+\newcommand{\monthyeardate}{\ifcase \month \or January\or February\or March\or %
+April\or May \or June\or July\or August\or September\or October\or November\or %
+December\fi, \number \year} 
+
+\title{HPS/Pl 125: Problem 7}
+\author{%
+  Edward Speer
+  \\
+  California Institute of Technology\\
+  HPS/Pl 125, WI '25 \\
+}
+\date{\monthyeardate}
+
+\begin{document}
+
+\maketitle
+
+\noindent \emph{Complete exercise 2.71 and 2.75 from Nielsen and Chuang.}
+
+\section{2.71} \emph{Show that $\Tr(\rho^2) \leq 1$ with equality iff $\rho$ is
+a pure state.}
+\\ \hfill \\
+Begin with the definition of $\rho$: $\rho = \sum_{i}p_i\ket{\psi_i}\bra{\psi_i}$.
+Then:
+\[\rho^2 = (\sum_{i}p_i\ket{\psi_i}\bra{\psi_i})(\sum_{j}p_j\ket{\psi_j}\bra{\psi_j}) = \sum_{i, j}p_ip_j\ket{\psi_i}\bra{\psi_i}\ket{\psi_j}\bra{\psi_j}\]
+Note from equation 2.157 of the text that in the spectral decomposition of the 
+density matrix, the state-space vectors form an orthogonal basis. Therefore,
+unless $i = j$, $\bra{\psi_i}\ket{\psi_j} = 0$. Thus:
+\[\rho^2 = \sum_{i}p_i^2\ket{\psi_i}\bra{\psi_i}\]
+Applying the trace and using equation 2.153:
+\[\Tr(\rho^2) = \sum_{i}p_i^2\]
+In a pure state, the only non-zero $p_i$ is 1. Therefore, $\Tr(\rho^2) = 1$ in a
+pure state. In a mixed state, we have multiple non-zero $p_i$ which are subject
+to the condition $\sum_{i}p_i = 1$. Thus each $p_i < 1$. If $p_i < 1$, then 
+$p_i^2 < p_i$. Therefore, $\sum_{i}p_i^2 < \sum_{i}p_i = 1$. Thus, in the case
+of a mixed state, $\Tr(\rho^2) < 1$. Therefore $\Tr(\rho^2) = 1$ iff $\rho$ is a
+pure state.
+
+\section{2.75} \emph{Find the reduced density operators for each particle in
+each of the four Bell states:
+\[\ket{\beta_{00}} = \frac{\ket{00} + \ket{11}}{\sqrt{2}},\quad\ket{\beta_{01}} = \frac{\ket{01} + \ket{10}}{\sqrt{2}}\]
+\[\ket{\beta_{10}} = \frac{\ket{00} - \ket{11}}{\sqrt{2}},\quad\ket{\beta_{11}} = \frac{\ket{01} - \ket{10}}{\sqrt{2}}\]
+}
+
+First, find the density operator for each Bell state:
+\[\rho_{\beta_{00}} = \ket{\beta_{00}}\bra{\beta_{00}} = \frac{\ket{00}\bra{00} + \ket{11}\bra{00} + \ket{00}\bra{11} + \ket{11}\bra{11}}{2}\]
+\[\rho_{\beta_{01}} = \ket{\beta_{01}}\bra{\beta_{01}} = \frac{\ket{01}\bra{01} + \ket{10}\bra{01} + \ket{01}\bra{10} + \ket{10}\bra{10}}{2}\]
+\[\rho_{\beta_{10}} = \ket{\beta_{10}}\bra{\beta_{10}} = \frac{\ket{00}\bra{00} - \ket{11}\bra{00} - \ket{00}\bra{11} + \ket{11}\bra{11}}{2}\]
+\[\rho_{\beta_{11}} = \ket{\beta_{11}}\bra{\beta_{11}} = \frac{\ket{01}\bra{01} - \ket{10}\bra{01} - \ket{01}\bra{10} + \ket{10}\bra{10}}{2}\]
+
+Apply the reduced density operator (partial trace) to each Bell state for each 
+particle.
+
+\[\rho^1 = \Tr_2(\rho), \quad \rho^2 = \Tr_1(\rho)\]
+
+Note that the following general pattern will emerge:
+\[\Tr_2(\ket{AB}\bra{CD}) = \Tr_2(\ket{A}\bra{C}\otimes\ket{B}\bra{D}) = \ket{A}\bra{C}\Tr(\ket{B}\bra{D}) = \ket{A}\bra{C}\bra{D}\ket{B}\]
+
+Since the qubit basis is orthogonal, $\bra{D}\ket{B} = 0$ unless $D = B$. If 
+$D = B$, then $\bra{D}\ket{B} = 1$. Therefore:
+
+\[\rho^1_{B_{00}} = \Tr_2(\frac{\ket{00}\bra{00} + \ket{11}\bra{00} + \ket{00}\bra{11} + \ket{11}\bra{11}}{2}) = \frac{\ket{0}\bra{0} + \ket{1}\bra{1}}{2} = \boxed{\frac{I}{2}}\]
+Examine the symmetry here. We can see that if we had traced out particle 1
+instead of 2, the positions of the outer products in the numerator would've been
+swapped, i.e $\frac{\ket{1}\bra{1} + \ket{0}\bra{0}}{2}$. Therefore the reduced
+density operator for particle 2 is the same as for particle 1, {$\boxed{\frac{I}{2}}$}
+
+\[\rho^1_{B_{01}} = \Tr_2(\frac{\ket{01}\bra{01} + \ket{10}\bra{01} + \ket{01}\bra{10} + \ket{10}\bra{10}}{2}) = \frac{\ket{0}\bra{0} + \ket{1}\bra{1}}{2} = \boxed{\frac{I}{2}}\]
+An equal symmetry argument applies here as well, so the reduced density operator
+for particle 2 is the same as for particle 1, {$\boxed{\frac{I}{2}}$}
+
+\[\rho^1_{B_{10}} = \Tr_2(\frac{\ket{00}\bra{00} - \ket{11}\bra{00} - \ket{00}\bra{11} + \ket{11}\bra{11}}{2}) = \frac{\ket{0}\bra{0} + \ket{1}\bra{1}}{2} = \boxed{\frac{I}{2}}\]
+Symmetry applies here as well, so the reduced density operator for particle 2 is
+the same as for particle 1, {$\boxed{\frac{I}{2}}$}
+
+\[\rho^1_{B_{11}} = \Tr_2(\frac{\ket{01}\bra{01} - \ket{10}\bra{01} - \ket{01}\bra{10} + \ket{10}\bra{10}}{2}) = \frac{\ket{0}\bra{0} + \ket{1}\bra{1}}{2} = \boxed{\frac{I}{2}}\]
+Symmetry applies here as well, so the reduced density operator for particle 2 is
+the same as for particle 1, {$\boxed{\frac{I}{2}}$}
+
+\end{document}
