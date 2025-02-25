@@ -1,0 +1,134 @@
+\documentclass[11pt, a4paper]{article}
+\usepackage[a4paper, left=30mm, right=30mm]{geometry} % margin=2.6cm
+
+\usepackage[utf8]{inputenc}  % allow utf-8 input
+\usepackage[T1]{fontenc}     % use 8-bit T1 fonts
+\usepackage{ebgaramond}
+
+\usepackage{hyperref}         % hyperlinks
+\usepackage{url}              % simple URL typesetting
+\usepackage{booktabs}         % professional-quality tables
+\usepackage{amsfonts}         % blackboard math symbols
+\usepackage{nicefrac}         % compact symbols for 1/2, etc.
+\usepackage{microtype}        % microtypography
+\usepackage{xcolor}           % colors
+\usepackage{bbm}
+\usepackage{amsthm}
+\usepackage{rotating}
+\usepackage{braket}
+\usepackage{physics}
+
+\hypersetup{                 % setup the hyperref package
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=blue,
+    urlcolor=blue,
+    citecolor=blue,
+    bookmarks=true,
+}
+
+\usepackage{graphicx} % Required for inserting images
+\usepackage[ngerman, english]{babel}
+\usepackage[iso, ngerman]{isodate}
+
+\usepackage{bbold}
+\usepackage{mathtools}
+\usepackage{amsmath} % Required for \DeclareMathOperator
+\usepackage{nicefrac}
+\usepackage{tikz}
+\usepackage{subcaption}
+\usepackage{centernot} % for the comparison
+
+% \DeclareMathOperator{\Tr}{Tr} % trace operation
+
+%\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+
+\usepackage{verbatim}
+
+\RequirePackage[T1]{fontenc} 
+\RequirePackage[tt=false, type1=true]{libertine} 
+\RequirePackage[varqu]{zi4} 
+\RequirePackage[libertine]{newtxmath}
+
+\usepackage[round,comma]{natbib}
+\bibliographystyle{plainnat}
+
+\newcommand{\monthyeardate}{\ifcase \month \or January\or February\or March\or %
+April\or May \or June\or July\or August\or September\or October\or November\or %
+December\fi, \number \year} 
+
+\title{HPS/Pl 125: Problem 8}
+\author{%
+  Edward Speer
+  \\
+  California Institute of Technology\\
+  HPS/Pl 125, WI '25 \\
+}
+\date{\monthyeardate}
+
+\begin{document}
+
+\maketitle
+
+\noindent \emph{Wallace mentions an objection to Bohmian mechanics originally
+due to David Deutsch: because Bohmian mechanics includes a wave function
+evolving via the Schrodinger equation (and that's all the many-worlds
+interpretation says that there is), Bohmian mechanics includes a vast number of
+parallel universes (adding particles does nothing to remove these parallel
+universes). Thinking about the ontology of Bohmian mechanics and the many-worlds
+interpretation, how do you think a Bohmian could best respond to this
+objection?}
+\\ \hfill \\
+The many-worlds of the Everett interpretation stem from the need to resolve a
+basic issue. The quantum algorithm gives us a probability amplitude for each
+possible outcome of a quantum computation. However, the result of any
+measurement made is deterministic. For reasons we've covered at length, we think
+that quantum mechanics must be a $\psi$-ontic theory (where the wave function is
+a real element of the ontology). This means that \emph{something} must happen to
+transition from the probability amplitude to a definite outcome since both
+reflect the true state of the world. The many-worlds interpretation resolves
+this by \emph{avoiding} resolving it — simply conclude that the definite
+outcomes all occur, so that the only thing we need to be real is the probability
+almplitude (or, more precisely, the wave function that defines it). In this way,
+subscribers to the many-worlds interpretation say that the many-worlds
+\emph{emerge} from standard wave function time evolution. Then, by this account,
+any interpretation that includes a wave function evolving in time by the
+schrodinger equation without an explicit collapse law should also give rise to
+the same emergent many-worlds.
+
+Bohmian mechanics is such an interpretation. The wave function evolves in time
+via the schrodinger equation, but with a key difference from the standard 
+interpretation. Under Bohmian mechanics, there is both a wave function and a
+particle in the fundamental ontology. The wave function evolves in accordance
+with the schrodinger equation as normal, but in addition, the particles have
+definite positions and velocities at each moment in time. The particles move
+according to the guidance equation, which is a deterministic equation that
+depends on the wave function. Put precisely, the world according to Bohmian
+mechanics consists of a set of particles which move around with definite
+positions with velocities determined by the wave function.
+
+The determinism here is what allows us to avoid the objection mentioned from the
+many-worlds interpretation. The particles have a definite position at each
+moment in time, and follow deterministic trajectories. Put another way, there is
+a single physical world defined by the particles' positions, which are fully
+determined by the specification of the universal wave function and the initial
+conditions of the particles. Multiple worlds do \emph{not} emerge from 
+schrodinger evolution. The Schdrodinger evolution acts on the wave function,
+which plays a guiding role in the particles' motion, but it is the motion of the
+particles that defines the physical world.
+
+As an example, consider the case of entanglements that are often used to
+showcase the many-worlds interpretation. In the case of Schrodingers cat, 
+proponents of many-worlds claim that we see a branching of worlds. In one world,
+the cat is alive, while in the other, the cat is dead. Under Bohmian mechanics,
+however, we will see that this branching is not necessery. Yes the wave function
+will decohere into two distinct packets, one with a living cat and one with a 
+dead cat, but in the physical world, the cat willl always be either alive or
+dead at any given time. Expressed in a simplified manner, it was always
+determined from the initial conditions of the cat and the experimental setup
+that the cat would live or die, meaning that the cat follows only one trajectory
+given by the decohered wave function. 
+
+\end{document}
