@@ -1,0 +1,141 @@
+\documentclass[11pt, a4paper]{article}
+\usepackage[a4paper, left=30mm, right=30mm]{geometry} % margin=2.6cm
+
+\usepackage[utf8]{inputenc}  % allow utf-8 input
+\usepackage[T1]{fontenc}     % use 8-bit T1 fonts
+\usepackage{ebgaramond}
+
+\usepackage{hyperref}         % hyperlinks
+\usepackage{url}              % simple URL typesetting
+\usepackage{booktabs}         % professional-quality tables
+\usepackage{amsfonts}         % blackboard math symbols
+\usepackage{nicefrac}         % compact symbols for 1/2, etc.
+\usepackage{microtype}        % microtypography
+\usepackage{xcolor}           % colors
+\usepackage{bbm}
+\usepackage{amsthm}
+\usepackage{rotating}
+\usepackage{braket}
+\usepackage{physics}
+
+\hypersetup{                 % setup the hyperref package
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=blue,
+    urlcolor=blue,
+    citecolor=blue,
+    bookmarks=true,
+}
+
+\usepackage{graphicx} % Required for inserting images
+\usepackage[ngerman, english]{babel}
+\usepackage[iso, ngerman]{isodate}
+
+\usepackage{bbold}
+\usepackage{mathtools}
+\usepackage{amsmath} % Required for \DeclareMathOperator
+\usepackage{nicefrac}
+\usepackage{tikz}
+\usepackage{subcaption}
+\usepackage{centernot} % for the comparison
+
+% \DeclareMathOperator{\Tr}{Tr} % trace operation
+
+%\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+
+\usepackage{verbatim}
+
+\RequirePackage[T1]{fontenc} 
+\RequirePackage[tt=false, type1=true]{libertine} 
+\RequirePackage[varqu]{zi4} 
+\RequirePackage[libertine]{newtxmath}
+
+\usepackage[round,comma]{natbib}
+\bibliographystyle{plainnat}
+
+\newcommand{\monthyeardate}{\ifcase \month \or January\or February\or March\or %
+April\or May \or June\or July\or August\or September\or October\or November\or %
+December\fi, \number \year} 
+
+\title{HPS/Pl 125: Problem 9}
+\author{%
+  Edward Speer
+  \\
+  California Institute of Technology\\
+  HPS/Pl 125, WI '25 \\
+}
+\date{\monthyeardate}
+
+\begin{document}
+
+\maketitle
+
+\noindent \emph{Explain the incoreherence problem with respect to Everettian 
+quantum mehcanics, and either defend what you take to be the best solution, or
+argue that the incoherence problem cannot be solved.}
+\\ \hfill \\
+The many-worlds interpretation of quantum mechanics fundamentally changes the
+way we must think about probabilities. In the Copenhagen interpretation, we have
+only a single outcome of a measurement, and assign probabilities to the possible
+outcomes. This is in keeping with our classical intuition about probabilities
+(though, as Wallace goes to great lengths to point out, this ``classical'' 
+understanding of probability is itself subject to tremendous issues). In the 
+many-worlds interpretation, however, we have a branching of the universe in
+which \emph{all} possible outcomes of our measurement occur. This is a radical
+departure from our classical intuition about probability — if all possible
+measurements obtain, what does it mean to say that one outcome is more likely
+than another?
+
+The objection raised above is the \emph{incoherence problem}. Why should we
+assign probabilities, and particularly different probabilities, to outcomes
+that all actually occur? If many-worlds is correct, then we must have some 
+justification for assigning probabilities to outcomes that are all realized
+according to the Born rule.
+
+The most compelling option for solving the incoherence problem is that of
+non-frequentist, non-primitivist rationalism. This approach avoids critical
+issues that can be found in frequentism and primitivism. 
+
+Frequentism is inherently flawed as a solution to the incoherence problem,
+because it is fundamentally incompatible with the many-worlds interpretation.
+Each outcome of a measurement obtains in a different branch, so what does it
+mean for an outcome to be more frequent? We need to fall back on some notion of
+branch counting over long term frequencies, but this is unsatisfying. Our
+quantum algorithm tells us to assign weights to different branches in the case
+of a single measurement. On this single measurement, both outcomes will occur, 
+and it seems clear to me that without a radical move to understand frequentist
+probabilities in an unintuituve way, we cannot justify using these weights as
+probabilities through frequentism.
+
+Primitivism is also unsatisfying, for reasons more pragmatic than technical.
+Primitivism is the view that probabilities are primitive, a law of nature
+that is accepted alongside Everettian quantum theory. This is a non-starter —
+quantum theory has dynamics that are well understood and precise, and it is
+not clear that we should have to accept unmotivated primitive probabilities.
+With the many-worlds interpretation, we have a precise way to assign weights to
+branches, and a clear physical account of what occurs in a measurement. We 
+should therefore resist the urge to take as primitive these probabilities as
+long as it is possible to avoid it by making progress considering the physical
+consequences of the theory.
+
+The rationalist approach avoids these issues by taking probabilities to be
+derived from the credences of rational agents. An agent has an uncertainty 
+about which quantum branch they will find themselves on following a quantum 
+measurement. Since they are rational, they must apportion their credences about
+which branch they will end up on in a way that maximizes their utility. Now we
+have a setup to work with. Since the rational agent should apportion their
+credences in accordance with true probabilities, if we can derive from decision
+theory plus quantum theory that the rational agent should assign credences in a
+particular way that matches the Born rule, then we have a solution to the
+incoherence problem. Wallace provides an example of such a proof in the reading,
+and there are other examples of candidate proofs given in the literature. 
+
+While these proofs aren't without their issues (Wallace's proof, for example, 
+requires one to make heavy assumptions about the probability space of the
+agent's credences), they are the best candidate solution to the incoherence
+problem. The rationalist approach makes true progress by deriving the Born rule
+from therefore should be pursued as far as it remains viable.
+
+\end{document}
