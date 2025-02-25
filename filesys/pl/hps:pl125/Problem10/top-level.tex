@@ -1,0 +1,152 @@
+\documentclass[11pt, a4paper]{article}
+\usepackage[a4paper, left=30mm, right=30mm]{geometry} % margin=2.6cm
+
+\usepackage[utf8]{inputenc}  % allow utf-8 input
+\usepackage[T1]{fontenc}     % use 8-bit T1 fonts
+\usepackage{ebgaramond}
+
+\usepackage{hyperref}         % hyperlinks
+\usepackage{url}              % simple URL typesetting
+\usepackage{booktabs}         % professional-quality tables
+\usepackage{amsfonts}         % blackboard math symbols
+\usepackage{nicefrac}         % compact symbols for 1/2, etc.
+\usepackage{microtype}        % microtypography
+\usepackage{xcolor}           % colors
+\usepackage{bbm}
+\usepackage{amsthm}
+\usepackage{rotating}
+\usepackage{braket}
+\usepackage{physics}
+
+\hypersetup{                 % setup the hyperref package
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=blue,
+    urlcolor=blue,
+    citecolor=blue,
+    bookmarks=true,
+}
+
+\usepackage{graphicx} % Required for inserting images
+\usepackage[ngerman, english]{babel}
+\usepackage[iso, ngerman]{isodate}
+
+\usepackage{bbold}
+\usepackage{mathtools}
+\usepackage{amsmath} % Required for \DeclareMathOperator
+\usepackage{nicefrac}
+\usepackage{tikz}
+\usepackage{subcaption}
+\usepackage{centernot} % for the comparison
+
+% \DeclareMathOperator{\Tr}{Tr} % trace operation
+
+%\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+
+\usepackage{verbatim}
+
+\RequirePackage[T1]{fontenc} 
+\RequirePackage[tt=false, type1=true]{libertine} 
+\RequirePackage[varqu]{zi4} 
+\RequirePackage[libertine]{newtxmath}
+
+\usepackage[round,comma]{natbib}
+\bibliographystyle{plainnat}
+
+\newcommand{\monthyeardate}{\ifcase \month \or January\or February\or March\or %
+April\or May \or June\or July\or August\or September\or October\or November\or %
+December\fi, \number \year} 
+
+\title{HPS/Pl 125: Problem 10}
+\author{%
+  Edward Speer
+  \\
+  California Institute of Technology\\
+  HPS/Pl 125, WI '25 \\
+}
+\date{\monthyeardate}
+
+\begin{document}
+
+\maketitle
+
+\noindent \emph{Consider Maudlin's experiment 6, the Mach-Zender interferometer.
+                In the many-worlds interpretation, should we say there is a
+                world in which the electron travels along the upper path and 
+                another in which the electron travels along the lower path?}
+\\ \hfill \\
+
+In the Mach-Zender interferometer experiment as Maudlin presented it on pages 
+23—24, we have the following setup: a beam of x-spin up electrons is sent
+through a z-oriented Stern-Gerlach. Since x-spin up is an equal superposition of
+z-spin up and z-spin down, the beam will be split into two beams. One beam will
+be z-spin up, sent up from the z-axis, and the other will be z-spin down, sent
+down from the z-axis. Each of these two beams has definite z-spin and therefore
+is an equal superposition of x-spin up and a-spin down. It seems we have
+destroyed the x-spin information contained in the original beam. However, if we
+then reflect each beam back towards each other and recombine them, then send the
+resulting single beam through an x-oriented Stern-Gerlach, we will see that the
+recombined beam is entirely x-spin up. This is a mystery; along each path, we
+can verify that there is an equal superposition of x-spin up and x-spin down 
+(no x-spin information), yet somehow the information about the beam preparation
+is transmitted through the mechanism as a whole.
+
+In most interpretations of quantum mechanics, this issue is resolved by adopting
+a $\psi$-ontic view of the wavefunction. In this view, the wavefunction is a
+real physical object that describes the state of the system. The wavefunction
+exists along each path of the Mach-Zender interferometer (regardless of whether
+the particle does or not) and thus the wavefunction is able to carry the
+information about the beam preparation through the mechanism as a whole. This
+approach holds true for the many-worlds interpretation as well, as the
+x-spin up information is carried by the wavefunction and the result predicted
+by ordinary time evolution, which functions as the full specification of the
+many-worlds interpretation. However, under the many-worlds interpretation, we
+end up with an entirely different mystery which arises from this experiment.
+
+Under the many-worlds interpretation, we know that certain superpositions of 
+states result in a branching of the universe. In the classic Schroedinger's cat
+experiment, the cat is in a superposition of alive and dead states, which 
+manifests as a branching of the universe into two worlds: one in which the cat
+is alive and one in which the cat is dead. In the Mach-Zender interferometer
+experiment, we have a similar situation. The electron is in a superposition of
+travelling along the upper path and travelling along the lower path. At a first
+glance, it appears that this superposition should result in a branching of the
+into two worlds just as the cat experiment does. However, on this view, we
+encounter a significant problem. In the many-worlds interpretation, the
+different worlds that result from a branching are supposed to be orthogonal to
+each other. This means that the worlds are not able to interact with each other
+in any way. If this is not the case, then the many-worlds interpretation
+wouldn't solve the measurement problem — it is possible that I could still see
+macroscopic superpositions of states in my everyday life if my world interacted
+with other worlds that resulted from a branch. However, in the Mach-Zender
+interferometer experiment, the two worlds that would result from the branching
+of the electron travelling along the upper path and the electron travelling
+along the lower path are not orthogonal to each other. In fact, they are
+entangled with each other and the recombination of the two beams shows that
+they must interact. Therefore we \emph{cannot} conclude that there is a
+branching of worlds at the beam-splitter if we want many-worlds to remain
+viable.
+
+Then clearly, with this in mind, we must reconsider when branching happens in
+the many-worlds interpretation. What is it about Schroedinger's cat that causes
+branching while the Mach-Zender interferometer does not at the point of the beam
+splitter (Note that we still need branching to happen when we measure the final
+output of the interferometer)? The best answer available is that branching is
+not a result of simple superpositions of states in the wavefunction, but rather
+a result of the decoherence of the wavefunction. Decoherence is a process by
+which the wavefunction of a system becomes entangled with the wavefunction of
+its environment and separates into sufficiently separated components to be
+considered separate worlds. In the case of the Mach-Zender interferometer, the
+wavefunction of the electron becomes entangled with the wavefunction of the
+environment only after passing through the full apparatus and being measured
+by a measuring device at the end of the experiment. Thus the wavefunction only
+decoheres at the end of the experiment, when the electron is measured. This
+means that branching only occurs at the end of the experiment, and should not
+be considered to have happened at the beam-splitter. While not entirely
+unproblematic, this approach allows us to retain the usefulness of the
+many-worlds interpretation while still correctly generating the results of the
+Mach-Zender interferometer experiment.
+
+\end{document}
