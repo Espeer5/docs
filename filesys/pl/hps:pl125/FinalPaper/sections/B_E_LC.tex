@@ -1,0 +1,95 @@
+The Bell-EPR theorem is the quintessential evidence of non-locality in quantum
+mechanics. I will begin with a careful presentation of the theorem, so that I
+can later show how the MWI undermines the non-locality it implies. 
+
+\subsection{Bell-EPR}
+
+In 1935, Einstein, Podolsky, and Rosen (EPR) published a paper which attempted
+to prove that quantum mechanics and the quantum wave function provide an
+incomplete description of reality \citep{EPR_1935}. They ask the reader to imagine
+two particles entangled in such a way that they must have opposite spins along
+some axis $Z$. Prior to any measurement, each particle has a 50\% chance of
+being $Z$ spin-up or $Z$ spin-down. When one of the particles is measured using
+a Stern-Gerlach apparatus, quantum formalism allows us to immediately predict
+the outcome of a measurement performed on the other particle. EPR assume
+locality, and conclude that the measurement on the first particle could not have
+influenced the second particle, and therefore the outcome of the measurement
+must have been fixed from preparation. They conclude that some hidden variable
+of each particle not included in the wave function must have encoded the spin of
+the particle for the duration of the experiment, and that the wave function 
+therefore did not provide a complete description of the state of the particle.
+
+This conclusion was challenged by John Bell in 1964, when he
+published a paper which showed that the type of hidden variable demanded by EPR
+could not exist \citep{Bell_1964}. Bell's theorem can be most easily grasped by
+considering a 3 particle state known as the Greenberger-Horne-Zeilinger (GHZ)
+state. The GHZ state is a three-particle entangled state with the following
+properties:
+\begin{itemize}
+    \item If spin is measured along the $x$-axis for all three particles, the 
+          number of particles with spin up will always be odd.
+    \item If spin is measured along the $z$ axis for two particles, and along
+          the $x$-axis for the third particle, the number of particles with spin
+          up will always be even.
+\end{itemize}
+Notice that given the measurement of the first two particles along $x, x$ or
+$x, z$, we can immediately predict with certainty the outcome of a measurement
+performed on the third particle along $x$, just as we could in the original EPR
+case. However, we now should attempt to assign the outcomes of the measurements
+prior to measurement, such that the outcomes will always agree with these
+predictions. The problem: there is no way to assign these outcomes prior to
+measurement to satisfy the constraints. The outcome of the third measurement 
+must change depending on the the experimenter's choice of measurement axes for 
+the first and second particles measured, and therefore the outcome cannot be
+fixed prior to measurement. Bell's theorem shows that no hidden variable theory
+can satisfy the constraints of the GHZ state, and therefore that EPR cannot
+hold. We therefore obtain a proof by contradiction: If quantum mechanics is local,
+then there must be a hidden variable which fixes the outcomes of measurements on
+entangled systems from preparation. There may be no such hidden variables, and 
+therefore quantum mechanics must be non-local.
+
+\subsection{Non-local Causality}
+
+The Bell-EPR theorem provides us with a puzzling mystery. We have two particles
+separated from each other, and simply measuring the state of one particle seems
+to have an immediate impact on the state of the other particle across a
+space-like separation. Many physicists are happy to accept this non-locality and
+dismiss it as ``non-causal''. Take what Griffiths has to say about the subject
+for example, ``Causal influences cannot propagate faster than light, but there is
+no compelling reason why ethereal ones should not. The influences associated
+with the collapse of the wave function are of the latter type, and the fact that
+they `travel' faster than light may be surprising, but it is not, after all,
+catastrophic.'' But on what grounds can we dismiss this non-locality as not
+causal? What is the difference between a causal and a non-causal influence? To
+answer this question, we must first define what we mean by a causal influence.
+
+To define a causal influence, I will draw on the dominant theory of causality
+in contemporary philosophy, know as the counterfactual theory of causation.
+According to this theory, conditioning on all other relevant features of the
+environment, an event $A$ is a cause of an event $B$ if and only if, had $B$ no
+longer occurred, $A$ would not have occurred either. This definition of
+causality holds a place of prominence in the philosophy of causation as well as
+in practical scientific applications for inferring causal relationships from
+correlational data \citep{Lewis_1973} \citep{Pearl_1995}. This method of causal
+inference rests on a foundational assumption known as the causal markov
+condition (CMC), which holds that given all causal parents of a variable, the
+variable is independent of all of its non-causal ancestors and descendants. This
+essentially means that if we hold fixed all potential causes of an event, then
+any statistical independence we observe between the event and other variables
+must be due to causal relationships \citep{Geiger_1990}. 
+
+Now, we can apply this definition of causality to the Bell-EPR theorem. We
+have two particles, $A$ and $B$, which are entangled in such a way that
+measuring the state of $A$ will immediately determine the state of $B$. We are
+able to condition on the preparation of the particles, and we know that there
+are no unobserved confounding variables which could be causing the correlation
+between them — this is what Bell's theorem shows us. This means that despite
+conditioning on the possible causal parents of the two particles, we still
+observe a statistical independence between the two particles. Therefore we have
+two options: either the particles are causally related (meaning we have
+non-local causation) or fundamental physics demonstrates that the causal markov
+condition is false. This is a difficult pill to swallow — either option implies
+that we will have to revise our fundamental understanding of causality and 
+reckon with unfortunate consequences for our understanding of the universe. As a
+result, an alternative that would allow us to avoid this conundrum would be
+very welcome. The MWI will provide just such an alternative.

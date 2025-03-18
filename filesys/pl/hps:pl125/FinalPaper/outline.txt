@@ -1,0 +1,94 @@
+################################################################################
+#                                                                              #
+#  HPS/PL 125: Philosophical Issues in Quantum Physics, WI '25                 #
+#  Research Paper Outline                                                      #
+#  Edward Speer                                                                #
+#  2/27/25                                                                     #
+#                                                                              #
+################################################################################
+
+################################################################################
+#  Research Question:                                                          #
+################################################################################
+
+Can the many-worlds interpretation of quantum mechanics fully resolve the
+question of causality introduced by the Bell-EPR argument?
+
+################################################################################
+#  Argument:                                                                   #
+################################################################################
+
+Accepting the many-worlds interpretation of quantum mechanics allows us to
+reject action at a distance despite the Bell-EPR argument, resolving questions
+around the nature of local causality.
+
+################################################################################
+#  Summary:                                                                    #
+################################################################################
+
+The Bell-EPR argument relies on measurement having one result or the other. The
+fundamental mystery is how measuring the outcome of one entangled particle in
+the EPR state fixes the outcome of measurement on the other particle
+instantaneously across a spatial divide. However, the many-world interpretation
+changes this picture significantly - both measurement outcomes are realized on
+both particles. There is no meaningful sense in which the measurement of the
+first particle "fixes" the result of measurement on the other particle. How
+should we make sense of the observed correlations in this view?
+
+In the EPR state, the wave function decoheres into an |up> + |down> packet and
+a |down> + |up> packet. Alice is measuring the first packet at a location with
+a spatial separation from Bob who is measuring the second. When Alice measures
+that her particle is spin-up, we are meant to conclude that Bob will measure
+spin-down. This is a threat to causality — did the outcome of the first particle
+cause the outcome of the second instantly across a spatial separation?
+
+Many-worlds gives us a solution. There are two Alices, and two Bobs, with a
+version of Alice and Bob who measure each outcome on their particles. When Alice
+does a measurement, we learn nothing knew about Bob's outcome, because we 
+already know the full details of what will happen when Bob makes a measurement.
+All we learn is that one particular Alice will only ever meet one particular Bob
+— but this meeting or exchange of information between them is an influence that
+cannot propogate faster than the speed of light. Because these branch effects
+propogate unproblematically within the light cone, our concerns about causality
+are resolved.
+
+################################################################################
+#  Outline:                                                                    #
+################################################################################
+
+ - Introduction
+     - Describe the historical development of Bell-EPR and the characters who
+       gave rise to it
+     - Present the basic issue: the Bell-EPR argument appears to fully ensure
+       there must be action at a distance in QM 
+     - Why is this problematic? Relativity and causal influence
+     - State thesis
+     - Summary of upcoming sections
+
+ - Bell-EPR and Causality
+     - Provide a careful and detailed treatment of the Bell-EPR theorem
+     - Explain how this contradicts our typical understanding of causality
+       - Present the langauge of causal inference & discuss in these terms
+     - Address the counterargument — typical no-signaling theorems and other 
+       strategies used to dismiss the issue
+
+ - Many-worlds interpretation
+     - Present the many-worlds interpretation and its historical context
+     - Provide a brief discussion of the issue of probability in MWI
+       - We will need to use these probabilities in the main argument
+
+ - Many-worlds and EPR
+     - Describe the EPR experiment and how it proceeds in the MWI
+     - Carefully track probabilities throughout the experiment
+         - Critically, nothing in probabilities related to Bob will change when
+           Alice makes a measurement
+     
+ - Discussion
+     - The ability for MWI to resolve issues in causality increases the unifying
+       character of the MWI
+         - Already, the MWI is more unifying that other interpretations through
+           its ability to generalize to quantum field theory
+     - Say a few words defending unification as a pragmatic criteria for theory
+       selection
+
+ - Conclusion
