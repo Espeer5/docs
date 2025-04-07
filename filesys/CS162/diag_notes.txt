@@ -1,0 +1,9 @@
+Interactive minimax plot on mineral cost
+
+Sliders for:
+ - Electric vehicle %
+ - Different Power source %
+
+Output variable:
+ - Total mineral cost
+ - Mineral cost divided by ICE vs EV
