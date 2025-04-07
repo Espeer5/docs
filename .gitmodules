@@ -10,3 +10,6 @@
 [submodule "filesys/Trust4_Cli"]
 	path = filesys/Trust4_Cli
 	url = git@github.com:Espeer5/Trust4_Cli.git
+[submodule "filesys/DD"]
+	path = filesys/DD
+	url = ./filesys/DD
