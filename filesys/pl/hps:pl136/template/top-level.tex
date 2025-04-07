@@ -15,6 +15,7 @@
 \usepackage{bbm}
 \usepackage{amsthm}
 \usepackage{rotating}
+\usepackage{setspace}
 
 \hypersetup{                 % setup the hyperref package
     colorlinks=true,
@@ -66,12 +67,14 @@ December\fi, \number \year}
   \\
   California Institute of Technology\\
   HPS/Pl 136, FA '24 \\
+  Prof.\ Steven Quartz \\
+  No Prompt
 }
-\date{\monthyeardate}
 
 \begin{document}
 
 \maketitle
+\doublespacing
 
 \begin{abstract}
     \input{sections/abstract.tex}
@@ -96,6 +99,6 @@ December\fi, \number \year}
 \input{sections/conclusion.tex}
 
 \pagebreak
-
+\singlespacing
 \bibliography{references}
 \end{document}
