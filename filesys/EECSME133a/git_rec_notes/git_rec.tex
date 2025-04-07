@@ -109,8 +109,8 @@ central server upstream. This allows for more flexibility and robustness in
 collaborative development.
 
 \begin{center}
-    \includegraphics[scale=0.25]{cvcs.png}
-    \includegraphics[scale=0.25]{dvcs.png}
+    \includegraphics[scale=0.25]{figs/cvcs.png}
+    \includegraphics[scale=0.25]{figs/dvcs.png}
 \end{center}
 
 The way a DVCS like Git is used is to have a repository hosted on a server - i.e
@@ -122,7 +122,7 @@ is show in the following diagram. We will be explaining and understanding each
 component of this diagram as we go:
 
 \begin{center}
-    \includegraphics[scale=0.4]{overview.png}
+    \includegraphics[scale=0.4]{figs/overview.png}
 \end{center}
 
 \section*{Setting Up - Git Config}
@@ -230,7 +230,7 @@ commit histories split off from a commmon origin that can be worked on
 independently. 
 
 \begin{center}
-    \includegraphics[scale=0.3]{branch.png}
+    \includegraphics[scale=0.3]{figs/branch.png}
 \end{center}
 
 The HEAD pointer in Git is a reference to the current branch you are working on.
@@ -268,7 +268,7 @@ git merge <branchname>
 \end{lstlisting}
 
 \begin{center}
-    \includegraphics[scale=0.3]{merge.png}
+    \includegraphics[scale=0.3]{figs/merge.png}
 \end{center}
 
 What if someone else added some changes to the main branch while I was working
@@ -361,7 +361,7 @@ yet, but you want to keep it up to date with the main branch. You can rebase the
 feature branch onto the main branch to incorporate the changes from main.
 
 \begin{center}
-    \includegraphics[scale=0.4]{rebase.png}
+    \includegraphics[scale=0.4]{figs/rebase.png}
 \end{center}
 
 Rebasing can be risky because it rewrites the commit history of the branch you
