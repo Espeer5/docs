@@ -13,3 +13,6 @@
 [submodule "filesys/DD"]
 	path = filesys/DD
 	url = ./filesys/DD
+[submodule "filesys/CS162/EV_true_cost"]
+	path = filesys/CS162/EV_true_cost
+	url = ./filesys/CS162/EV_true_cost
